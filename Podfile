@@ -9,10 +9,3 @@ target 'IronSourceSwiftDemoApp' do
 
   pod 'IronSourceSDK'
 end
-
-target 'NeftaISAdapter' do
-  project 'NeftaISAdapter.xcodeproj'
-  use_frameworks!
-
-  pod 'IronSourceSDK'
-end

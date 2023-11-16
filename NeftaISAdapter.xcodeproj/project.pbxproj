@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01219FFDAED61E27D5AE3574 /* Pods_NeftaISAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A524AC911ABC761BF7BC3132 /* Pods_NeftaISAdapter.framework */; };
 		9033B8A42B04A77800F1A03E /* NeftaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */; };
+		9033B8BA2B05E6EE00F1A03E /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */; };
 		909F23942B03AB5E006CAE1F /* NeftaIsAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 909F23932B03AB5E006CAE1F /* NeftaIsAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		909F239C2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 909F239A2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m */; };
 		909F239D2B03AB8D006CAE1F /* ISNeftaCustomAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 909F239B2B03AB8D006CAE1F /* ISNeftaCustomAdapter.h */; };
@@ -19,22 +19,9 @@
 		909F23B52B03BF50006CAE1F /* ISNeftaCustomRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 909F23B42B03BF50006CAE1F /* ISNeftaCustomRewardedVideo.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		909F23A22B03ABA3006CAE1F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		35725D6B990A3632B58FAA28 /* Pods-NeftaISAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeftaISAdapter.release.xcconfig"; path = "Target Support Files/Pods-NeftaISAdapter/Pods-NeftaISAdapter.release.xcconfig"; sourceTree = "<group>"; };
 		9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NeftaSDK.xcframework; sourceTree = "<group>"; };
+		9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IronSource.xcframework; path = Pods/IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		909F23902B03AB5E006CAE1F /* NeftaISAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		909F23932B03AB5E006CAE1F /* NeftaIsAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeftaIsAdapter.h; sourceTree = "<group>"; };
 		909F239A2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomAdapter.m; sourceTree = "<group>"; };
@@ -45,8 +32,6 @@
 		909F23B12B03BF2C006CAE1F /* ISNeftaCustomInterstitial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomInterstitial.m; path = ../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.m; sourceTree = "<group>"; };
 		909F23B32B03BF3E006CAE1F /* ISNeftaCustomRewardedVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomRewardedVideo.h; path = ../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.h; sourceTree = "<group>"; };
 		909F23B42B03BF50006CAE1F /* ISNeftaCustomRewardedVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomRewardedVideo.m; path = ../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.m; sourceTree = "<group>"; };
-		A524AC911ABC761BF7BC3132 /* Pods_NeftaISAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E06F4B8B40FF48733EC03C69 /* Pods-NeftaISAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeftaISAdapter.debug.xcconfig"; path = "Target Support Files/Pods-NeftaISAdapter/Pods-NeftaISAdapter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,31 +39,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9033B8BA2B05E6EE00F1A03E /* IronSource.xcframework in Frameworks */,
 				9033B8A42B04A77800F1A03E /* NeftaSDK.xcframework in Frameworks */,
-				01219FFDAED61E27D5AE3574 /* Pods_NeftaISAdapter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0F5114AC0FE5A09F2A5620D4 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E06F4B8B40FF48733EC03C69 /* Pods-NeftaISAdapter.debug.xcconfig */,
-				35725D6B990A3632B58FAA28 /* Pods-NeftaISAdapter.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		909F23862B03AB5E006CAE1F = {
 			isa = PBXGroup;
 			children = (
 				909F23922B03AB5E006CAE1F /* NeftaISAdapter */,
 				909F23912B03AB5E006CAE1F /* Products */,
 				909F239E2B03ABA3006CAE1F /* Frameworks */,
-				0F5114AC0FE5A09F2A5620D4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,8 +83,8 @@
 		909F239E2B03ABA3006CAE1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */,
 				9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */,
-				A524AC911ABC761BF7BC3132 /* Pods_NeftaISAdapter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -136,12 +110,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 909F23972B03AB5E006CAE1F /* Build configuration list for PBXNativeTarget "NeftaISAdapter" */;
 			buildPhases = (
-				34FF17B34B5C57A86CBE9392 /* [CP] Check Pods Manifest.lock */,
 				909F238B2B03AB5E006CAE1F /* Headers */,
 				909F238C2B03AB5E006CAE1F /* Sources */,
 				909F238D2B03AB5E006CAE1F /* Frameworks */,
 				909F238E2B03AB5E006CAE1F /* Resources */,
-				909F23A22B03ABA3006CAE1F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,31 +166,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		34FF17B34B5C57A86CBE9392 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NeftaISAdapter-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		909F238C2B03AB5E006CAE1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -238,6 +185,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -299,6 +247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -352,8 +301,8 @@
 		};
 		909F23982B03AB5E006CAE1F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E06F4B8B40FF48733EC03C69 /* Pods-NeftaISAdapter.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -383,8 +332,8 @@
 		};
 		909F23992B03AB5E006CAE1F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35725D6B990A3632B58FAA28 /* Pods-NeftaISAdapter.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

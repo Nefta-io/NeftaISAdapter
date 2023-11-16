@@ -13,18 +13,18 @@
 		471A2A461E66D27A00217BE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A451E66D27A00217BE4 /* Assets.xcassets */; };
 		471A2A491E66D27A00217BE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A471E66D27A00217BE4 /* LaunchScreen.storyboard */; };
 		7B124FB8F76B88B6730A111D /* Pods_IronSourceSwiftDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */; };
-		9033B89A2B049A7E00F1A03E /* NeftaISAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8992B049A7E00F1A03E /* NeftaISAdapter.framework */; };
-		9033B89B2B049A7E00F1A03E /* NeftaISAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8992B049A7E00F1A03E /* NeftaISAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9033B8C42B05F39A00F1A03E /* NeftaISAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8C32B05F39A00F1A03E /* NeftaISAdapter.framework */; };
+		9033B8C52B05F39A00F1A03E /* NeftaISAdapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8C32B05F39A00F1A03E /* NeftaISAdapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9033B89C2B049A7E00F1A03E /* Embed Frameworks */ = {
+		9033B8C62B05F39A00F1A03E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9033B89B2B049A7E00F1A03E /* NeftaISAdapter.framework in Embed Frameworks */,
+				9033B8C52B05F39A00F1A03E /* NeftaISAdapter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 		471A2A481E66D27A00217BE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		471A2A4A1E66D27A00217BE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IronSourceSwiftDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9033B8992B049A7E00F1A03E /* NeftaISAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9033B8C32B05F39A00F1A03E /* NeftaISAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49CD46058014E581AC43033 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronSourceSwiftDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F80DD920BEC8F88D1A5114E0 /* Pods-IronSourceSwiftDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronSourceSwiftDemoApp.release.xcconfig"; path = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9033B89A2B049A7E00F1A03E /* NeftaISAdapter.framework in Frameworks */,
 				7B124FB8F76B88B6730A111D /* Pods_IronSourceSwiftDemoApp.framework in Frameworks */,
+				9033B8C42B05F39A00F1A03E /* NeftaISAdapter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,14 +95,13 @@
 				E49CD46058014E581AC43033 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */,
 				F80DD920BEC8F88D1A5114E0 /* Pods-IronSourceSwiftDemoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		F0AFEE623213F9B180953967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9033B8992B049A7E00F1A03E /* NeftaISAdapter.framework */,
+				9033B8C32B05F39A00F1A03E /* NeftaISAdapter.framework */,
 				860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */,
 			);
 			name = Frameworks;
@@ -119,7 +118,7 @@
 				471A2A371E66D27900217BE4 /* Sources */,
 				471A2A381E66D27900217BE4 /* Frameworks */,
 				471A2A391E66D27900217BE4 /* Resources */,
-				9033B89C2B049A7E00F1A03E /* Embed Frameworks */,
+				9033B8C62B05F39A00F1A03E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
