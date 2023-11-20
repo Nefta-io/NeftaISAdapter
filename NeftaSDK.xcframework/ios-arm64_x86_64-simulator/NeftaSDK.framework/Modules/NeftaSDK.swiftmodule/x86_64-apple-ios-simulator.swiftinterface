@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NeftaSDK
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name NeftaSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVKit
 import CommonCrypto
@@ -164,10 +164,12 @@ import _StringProcessing
   @objc public var _mode: NeftaSDK.Placement.Modes
   @objc public var _bidTime: Swift.UInt
   @objc public var _loadTime: Swift.UInt
-  @objc public var _showTime: Swift.UInt
+  @objc public var _showTime: Swift.Int
   @objc public var _timeSinceContinuousLoad: Swift.UInt
+  @objc public var _isHidden: Swift.Bool
   @objc public func IsBidding() -> Swift.Bool
   @objc public func IsLoading() -> Swift.Bool
+  @objc public func IsShowing() -> Swift.Bool
   @objc public func CanLoad() -> Swift.Bool
   @objc public func CanShow() -> Swift.Bool
   @objc deinit
@@ -208,12 +210,17 @@ import _StringProcessing
   @objc override dynamic public init()
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc public class NeftaPlugin : ObjectiveC.NSObject {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class NeftaPlugin : ObjectiveC.NSObject {
   public typealias OnReadyBlock = (([Swift.String : NeftaSDK.Placement]) -> Swift.Void)
-  public typealias OnChangeBlock = ((NeftaSDK.Placement.Types, NeftaSDK.Placement) -> Swift.Void)
-  public typealias OnBidBlock = ((NeftaSDK.Placement.Types, NeftaSDK.Placement, NeftaSDK.BidResponse?) -> Swift.Void)
-  public typealias OnLoadFailBlock = ((NeftaSDK.Placement.Types, NeftaSDK.Placement, Swift.String?) -> Swift.Void)
-  public typealias OnShowBlock = ((NeftaSDK.Placement.Types, NeftaSDK.Placement, Swift.Int, Swift.Int) -> Swift.Void)
+  public typealias OnChangeBlock = ((NeftaSDK.Placement) -> Swift.Void)
+  public typealias OnBidBlock = ((NeftaSDK.Placement, NeftaSDK.BidResponse?) -> Swift.Void)
+  public typealias OnLoadFailBlock = ((NeftaSDK.Placement, Swift.String?) -> Swift.Void)
+  public typealias OnShowBlock = ((NeftaSDK.Placement, Swift.Int, Swift.Int) -> Swift.Void)
+  public typealias IOnReadyBlock = ((Swift.String) -> Swift.Void)
+  public typealias IOnBidBlock = ((Swift.String, Swift.Float) -> Swift.Void)
+  public typealias IOnChangeBlock = ((Swift.String) -> Swift.Void)
+  public typealias IOnLoadFailBlock = ((Swift.String, Swift.String?) -> Swift.Void)
+  public typealias IOnShowBlock = ((Swift.String, Swift.Int, Swift.Int) -> Swift.Void)
   @objc public static let Version: Swift.String
   @objc public var Events: NeftaSDK.NeftaEvents
   @objc public var OnReady: NeftaSDK.NeftaPlugin.OnReadyBlock?
@@ -222,15 +229,26 @@ import _StringProcessing
   @objc public var OnLoadFail: NeftaSDK.NeftaPlugin.OnLoadFailBlock?
   @objc public var OnLoad: NeftaSDK.NeftaPlugin.OnChangeBlock?
   @objc public var OnShow: NeftaSDK.NeftaPlugin.OnShowBlock?
+  @objc public var OnBannerChange: NeftaSDK.NeftaPlugin.OnShowBlock?
   @objc public var OnClick: NeftaSDK.NeftaPlugin.OnChangeBlock?
   @objc public var OnClose: NeftaSDK.NeftaPlugin.OnChangeBlock?
   @objc public var OnReward: NeftaSDK.NeftaPlugin.OnChangeBlock?
-  @objc override dynamic public init()
-  @objc public func Init(appId: Swift.String?, useMessages: Swift.Bool)
-  @objc public func EnableAds(enable: Swift.Bool)
+  @objc public var IOnReady: NeftaSDK.NeftaPlugin.IOnReadyBlock?
+  @objc public var IOnBid: NeftaSDK.NeftaPlugin.IOnBidBlock?
+  @objc public var IOnLoadStart: NeftaSDK.NeftaPlugin.IOnChangeBlock?
+  @objc public var IOnLoadFail: NeftaSDK.NeftaPlugin.IOnLoadFailBlock?
+  @objc public var IOnLoad: NeftaSDK.NeftaPlugin.IOnChangeBlock?
+  @objc public var IOnShow: NeftaSDK.NeftaPlugin.IOnShowBlock?
+  @objc public var IOnBannerChange: NeftaSDK.NeftaPlugin.IOnShowBlock?
+  @objc public var IOnClick: NeftaSDK.NeftaPlugin.IOnChangeBlock?
+  @objc public var IOnClose: NeftaSDK.NeftaPlugin.IOnChangeBlock?
+  @objc public var IOnReward: NeftaSDK.NeftaPlugin.IOnChangeBlock?
   @objc public func GetToolboxUser() -> Swift.String?
   @objc public func SetToolboxUser(json: Swift.String)
   @objc public func Record(event: Swift.String)
+  @objc(EnableAds:) public func EnableAds(enable: Swift.Bool)
+  @objc public func EnableBanner(enable: Swift.Bool)
+  @objc public func EnableBanner(id: Swift.String, enable: Swift.Bool)
   @objc public func SetPublisherUserId(id: Swift.String)
   @objc public func SetPlacementMode(type: NeftaSDK.Placement.Types, mode: NeftaSDK.Placement.Modes)
   @objc public func SetPlacementMode(id: Swift.String, mode: NeftaSDK.Placement.Modes)
@@ -244,15 +262,12 @@ import _StringProcessing
   @objc public func Show(id: Swift.String)
   @objc public func Close()
   @objc public func Close(id: Swift.String)
-  @objc public func GetMessage() -> Swift.String?
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc public class NeftaPlugin_iOS : NeftaSDK.NeftaPlugin {
-  @objc public func Init(uiView: UIKit.UIView, appId: Swift.String?, useMessages: Swift.Bool)
-  @objc override public func Init(appId: Swift.String?, useMessages: Swift.Bool)
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class NeftaPlugin_iOS : NeftaSDK.NeftaPlugin {
+  @objc public static func Init(appId: Swift.String?) -> NeftaSDK.NeftaPlugin_iOS
   @objc public func PrepareRenderer(viewController: UIKit.UIViewController)
   @objc public func PrepareRenderer(view: UIKit.UIView)
-  @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class WebController : UIKit.UIView, WebKit.WKNavigationDelegate, WebKit.WKScriptMessageHandler {

@@ -396,20 +396,33 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)Version SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, strong) NeftaEvents * _Nonnull Events;
 @property (nonatomic, copy) void (^ _Nullable OnReady)(NSDictionary<NSString *, Placement *> * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnBid)(enum Types, Placement * _Nonnull, BidResponse * _Nullable);
-@property (nonatomic, copy) void (^ _Nullable OnLoadStart)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnLoadFail)(enum Types, Placement * _Nonnull, NSString * _Nullable);
-@property (nonatomic, copy) void (^ _Nullable OnLoad)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnShow)(enum Types, Placement * _Nonnull, NSInteger, NSInteger);
-@property (nonatomic, copy) void (^ _Nullable OnClick)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnClose)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnReward)(enum Types, Placement * _Nonnull);
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)InitWithAppId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
-- (void)EnableAdsWithEnable:(BOOL)enable;
+@property (nonatomic, copy) void (^ _Nullable OnBid)(Placement * _Nonnull, BidResponse * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable OnLoadStart)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnLoadFail)(Placement * _Nonnull, NSString * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable OnLoad)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnShow)(Placement * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable OnBannerChange)(Placement * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable OnClick)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnClose)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnReward)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnReady)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnBid)(NSString * _Nonnull, float);
+@property (nonatomic, copy) void (^ _Nullable IOnLoadStart)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnLoadFail)(NSString * _Nonnull, NSString * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable IOnLoad)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnShow)(NSString * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable IOnBannerChange)(NSString * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable IOnClick)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnClose)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnReward)(NSString * _Nonnull);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)GetToolboxUser SWIFT_WARN_UNUSED_RESULT;
 - (void)SetToolboxUserWithJson:(NSString * _Nonnull)json;
 - (void)RecordWithEvent:(NSString * _Nonnull)event;
+- (void)EnableAds:(BOOL)enable;
+- (void)EnableBannerWithEnable:(BOOL)enable;
+- (void)EnableBannerWithId:(NSString * _Nonnull)id enable:(BOOL)enable;
 - (void)SetPublisherUserIdWithId:(NSString * _Nonnull)id;
 - (void)SetPlacementModeWithType:(enum Types)type mode:(enum Modes)mode;
 - (void)SetPlacementModeWithId:(NSString * _Nonnull)id mode:(enum Modes)mode;
@@ -423,19 +436,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (void)ShowWithId:(NSString * _Nonnull)id;
 - (void)Close;
 - (void)CloseWithId:(NSString * _Nonnull)id;
-- (NSString * _Nullable)GetMessage SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class UIView;
 @class UIViewController;
+@class UIView;
 
 SWIFT_CLASS("_TtC8NeftaSDK15NeftaPlugin_iOS")
 @interface NeftaPlugin_iOS : NeftaPlugin
-- (void)InitWithUiView:(UIView * _Nonnull)uiView appId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
-- (void)InitWithAppId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
++ (NeftaPlugin_iOS * _Nonnull)InitWithAppId:(NSString * _Nullable)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)PrepareRendererWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)PrepareRendererWithView:(UIView * _Nonnull)view;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -451,10 +461,12 @@ SWIFT_CLASS("_TtC8NeftaSDK9Placement")
 @property (nonatomic) enum Modes _mode;
 @property (nonatomic) NSUInteger _bidTime;
 @property (nonatomic) NSUInteger _loadTime;
-@property (nonatomic) NSUInteger _showTime;
+@property (nonatomic) NSInteger _showTime;
 @property (nonatomic) NSUInteger _timeSinceContinuousLoad;
+@property (nonatomic) BOOL _isHidden;
 - (BOOL)IsBidding SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)IsLoading SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)IsShowing SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)CanLoad SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)CanShow SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -927,20 +939,33 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)Version SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, strong) NeftaEvents * _Nonnull Events;
 @property (nonatomic, copy) void (^ _Nullable OnReady)(NSDictionary<NSString *, Placement *> * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnBid)(enum Types, Placement * _Nonnull, BidResponse * _Nullable);
-@property (nonatomic, copy) void (^ _Nullable OnLoadStart)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnLoadFail)(enum Types, Placement * _Nonnull, NSString * _Nullable);
-@property (nonatomic, copy) void (^ _Nullable OnLoad)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnShow)(enum Types, Placement * _Nonnull, NSInteger, NSInteger);
-@property (nonatomic, copy) void (^ _Nullable OnClick)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnClose)(enum Types, Placement * _Nonnull);
-@property (nonatomic, copy) void (^ _Nullable OnReward)(enum Types, Placement * _Nonnull);
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)InitWithAppId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
-- (void)EnableAdsWithEnable:(BOOL)enable;
+@property (nonatomic, copy) void (^ _Nullable OnBid)(Placement * _Nonnull, BidResponse * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable OnLoadStart)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnLoadFail)(Placement * _Nonnull, NSString * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable OnLoad)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnShow)(Placement * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable OnBannerChange)(Placement * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable OnClick)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnClose)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable OnReward)(Placement * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnReady)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnBid)(NSString * _Nonnull, float);
+@property (nonatomic, copy) void (^ _Nullable IOnLoadStart)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnLoadFail)(NSString * _Nonnull, NSString * _Nullable);
+@property (nonatomic, copy) void (^ _Nullable IOnLoad)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnShow)(NSString * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable IOnBannerChange)(NSString * _Nonnull, NSInteger, NSInteger);
+@property (nonatomic, copy) void (^ _Nullable IOnClick)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnClose)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable IOnReward)(NSString * _Nonnull);
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)GetToolboxUser SWIFT_WARN_UNUSED_RESULT;
 - (void)SetToolboxUserWithJson:(NSString * _Nonnull)json;
 - (void)RecordWithEvent:(NSString * _Nonnull)event;
+- (void)EnableAds:(BOOL)enable;
+- (void)EnableBannerWithEnable:(BOOL)enable;
+- (void)EnableBannerWithId:(NSString * _Nonnull)id enable:(BOOL)enable;
 - (void)SetPublisherUserIdWithId:(NSString * _Nonnull)id;
 - (void)SetPlacementModeWithType:(enum Types)type mode:(enum Modes)mode;
 - (void)SetPlacementModeWithId:(NSString * _Nonnull)id mode:(enum Modes)mode;
@@ -954,19 +979,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (void)ShowWithId:(NSString * _Nonnull)id;
 - (void)Close;
 - (void)CloseWithId:(NSString * _Nonnull)id;
-- (NSString * _Nullable)GetMessage SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class UIView;
 @class UIViewController;
+@class UIView;
 
 SWIFT_CLASS("_TtC8NeftaSDK15NeftaPlugin_iOS")
 @interface NeftaPlugin_iOS : NeftaPlugin
-- (void)InitWithUiView:(UIView * _Nonnull)uiView appId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
-- (void)InitWithAppId:(NSString * _Nullable)appId useMessages:(BOOL)useMessages;
++ (NeftaPlugin_iOS * _Nonnull)InitWithAppId:(NSString * _Nullable)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)PrepareRendererWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)PrepareRendererWithView:(UIView * _Nonnull)view;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -982,10 +1004,12 @@ SWIFT_CLASS("_TtC8NeftaSDK9Placement")
 @property (nonatomic) enum Modes _mode;
 @property (nonatomic) NSUInteger _bidTime;
 @property (nonatomic) NSUInteger _loadTime;
-@property (nonatomic) NSUInteger _showTime;
+@property (nonatomic) NSInteger _showTime;
 @property (nonatomic) NSUInteger _timeSinceContinuousLoad;
+@property (nonatomic) BOOL _isHidden;
 - (BOOL)IsBidding SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)IsLoading SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)IsShowing SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)CanLoad SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)CanShow SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;

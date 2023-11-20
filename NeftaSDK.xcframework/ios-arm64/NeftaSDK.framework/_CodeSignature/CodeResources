@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/NeftaSDK-Swift.h</key>
 		<data>
-		siwJK1OoIUcRJ/nimBUZ3D+386w=
+		5GJqKRhx1oThyQH+r8XCxdDoii0=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		J4R0E9CZh/mlXZ91zQopnBak/pc=
+		MCcdXLgUQzQKW2RHV23p8+k62aY=
 		</data>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		HvApStXr1ATQqFW6LRokpRzht3c=
+		DPUazi4fUsylURgX2LQEGiuYCoE=
 		</data>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		HvApStXr1ATQqFW6LRokpRzht3c=
+		DPUazi4fUsylURgX2LQEGiuYCoE=
 		</data>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		3am3BcMxLWnkujyiwJ4K5CdIVNo=
+		ZNnI2/O/1KnLdV61Ln0fj8UzQSU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,21 +65,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6rCMcxvjJPHey7hQlreOQ5rPkpSPt/6t/uTDhH503/A=
+			aKCSQgrtQ3zY4VazOfS23YvUDq03Cv9tIJBd+oL8CP8=
 			</data>
 		</dict>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7HBUuQVUaQDCHDcN66Gu135NqrtFJS2JC2Y3cTGnuvQ=
+			1qqIQ/pvjjwPqpxJHaHRaEPVBQfyLPNn5zMMGDC+O9g=
 			</data>
 		</dict>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IiBZ0HkzwVSu8a6cKQVr8xenciscj415EcXpT4wFqhI=
+			4I6C6LB0Vf0WQb0y79eHZYOAHVPYd05h2goNNHpV5pY=
 			</data>
 		</dict>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IiBZ0HkzwVSu8a6cKQVr8xenciscj415EcXpT4wFqhI=
+			4I6C6LB0Vf0WQb0y79eHZYOAHVPYd05h2goNNHpV5pY=
 			</data>
 		</dict>
 		<key>Modules/NeftaSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A0+IgPU2DB/o/IIptRXxMnQT0DImSxtaMhnle/CumvI=
+			PA1ejyYUZx7WP02WGusT3XvoCxYx0kBnmReBa/DOTFE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -32,35 +32,28 @@ dispatch_semaphore_t _semaphore;
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        _plugin = [[NeftaPlugin_iOS alloc] init];
+        _plugin = [NeftaPlugin_iOS InitWithAppId: appId];
         
         _listeners = [[NSMutableDictionary alloc] init];
         
-        _plugin.OnLoadFail = ^(Types type, Placement *placement, NSString *error) {
+        _plugin.OnLoadFail = ^(Placement *placement, NSString *error) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
             [listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:2 errorMessage:error];
         };
         
-        _plugin.OnLoad = ^(Types type, Placement *placement) {
+        _plugin.OnLoad = ^(Placement *placement) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
             if (placement._type == TypesBanner) {
                 WebPlacement *webPlacement = (WebPlacement *)placement;
                 UIView *view = webPlacement._bufferWebController;
                 [((id<ISBannerAdDelegate>)listener) adDidLoadWithView: view];
                 [_plugin ShowWithId: placement._id];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIView *parent = view.superview;
-                    if (parent != nil) {
-                        view.center = CGPointMake(CGRectGetMidX(parent.bounds), CGRectGetMidY(parent.bounds));
-                    }
-                });
             } else {
                 [listener adDidLoad];
             }
         };
         
-        _plugin.OnShow = ^(Types type, Placement *placement, NSInteger width, NSInteger height) {
+        _plugin.OnShow = ^(Placement *placement, NSInteger width, NSInteger height) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
             if (placement._type == TypesBanner) {
                 id<ISBannerAdDelegate> bannerListener = (id<ISBannerAdDelegate>) listener;
@@ -74,14 +67,14 @@ dispatch_semaphore_t _semaphore;
             }
         };
         
-        _plugin.OnClick = ^(Types type, Placement *placement) {
+        _plugin.OnClick = ^(Placement *placement) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
             [listener adDidClick];
         };
         
-        _plugin.OnClose = ^(Types type, Placement *placement) {
+        _plugin.OnClose = ^(Placement *placement) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
-            if (type == TypesBanner) {
+            if (placement._type == TypesBanner) {
                 [((id<ISBannerAdDelegate>)listener) adDidDismissScreen];
             } else {
                 id<ISAdapterAdInteractionDelegate> interactionListener = (id<ISAdapterAdInteractionDelegate>) listener;
@@ -90,8 +83,7 @@ dispatch_semaphore_t _semaphore;
             }
         };
         
-        [_plugin InitWithAppId: appId useMessages: false];
-        [_plugin EnableAdsWithEnable: true];
+        [_plugin EnableAds: true];
         
         dispatch_semaphore_signal(_semaphore);
         [delegate onInitDidSucceed];
@@ -103,7 +95,7 @@ dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.1.0";
+    return @"1.1.1";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
