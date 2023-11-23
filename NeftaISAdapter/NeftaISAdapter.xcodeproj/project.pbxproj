@@ -13,8 +13,6 @@
 		901B25822B0B9FAC0006C3FC /* ISNeftaCustomInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 901B257C2B0B9FAB0006C3FC /* ISNeftaCustomInterstitial.m */; };
 		901B25832B0B9FAC0006C3FC /* ISNeftaCustomInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = 901B257D2B0B9FAB0006C3FC /* ISNeftaCustomInterstitial.h */; };
 		901B25842B0B9FAC0006C3FC /* ISNeftaCustomRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 901B257E2B0B9FAB0006C3FC /* ISNeftaCustomRewardedVideo.m */; };
-		9033B8A42B04A77800F1A03E /* NeftaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */; };
-		9033B8BA2B05E6EE00F1A03E /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */; };
 		909F23942B03AB5E006CAE1F /* NeftaIsAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 909F23932B03AB5E006CAE1F /* NeftaIsAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		909F239C2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 909F239A2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m */; };
 		909F239D2B03AB8D006CAE1F /* ISNeftaCustomAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 909F239B2B03AB8D006CAE1F /* ISNeftaCustomAdapter.h */; };
@@ -27,8 +25,6 @@
 		901B257C2B0B9FAB0006C3FC /* ISNeftaCustomInterstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomInterstitial.m; sourceTree = "<group>"; };
 		901B257D2B0B9FAB0006C3FC /* ISNeftaCustomInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISNeftaCustomInterstitial.h; sourceTree = "<group>"; };
 		901B257E2B0B9FAB0006C3FC /* ISNeftaCustomRewardedVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomRewardedVideo.m; sourceTree = "<group>"; };
-		9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = NeftaSDK.xcframework; sourceTree = "<group>"; };
-		9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IronSource.xcframework; path = Pods/IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		909F23902B03AB5E006CAE1F /* NeftaISAdapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		909F23932B03AB5E006CAE1F /* NeftaIsAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeftaIsAdapter.h; sourceTree = "<group>"; };
 		909F239A2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomAdapter.m; sourceTree = "<group>"; };
@@ -40,8 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9033B8BA2B05E6EE00F1A03E /* IronSource.xcframework in Frameworks */,
-				9033B8A42B04A77800F1A03E /* NeftaSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +47,6 @@
 			children = (
 				909F23922B03AB5E006CAE1F /* NeftaISAdapter */,
 				909F23912B03AB5E006CAE1F /* Products */,
-				909F239E2B03ABA3006CAE1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,15 +72,6 @@
 				909F239A2B03AB8D006CAE1F /* ISNeftaCustomAdapter.m */,
 			);
 			path = NeftaISAdapter;
-			sourceTree = "<group>";
-		};
-		909F239E2B03ABA3006CAE1F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9033B8B92B05E6EE00F1A03E /* IronSource.xcframework */,
-				9033B8A32B04A77800F1A03E /* NeftaSDK.xcframework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
