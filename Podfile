@@ -14,7 +14,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     if target.name == 'NeftaISAdapter'
-      framework_ref = installer.pods_project.frameworks_group.new_reference('IronSourceSDK/IronSource/IronSource.xcframework')
+      framework_ref = installer.pods_project.reference_for_path(File.dirname(__FILE__) + '/Pods/IronSourceSDK/IronSource/IronSource.xcframework')
       target.frameworks_build_phase.add_file_reference(framework_ref, true)
     end
   end
