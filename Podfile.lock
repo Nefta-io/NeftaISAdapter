@@ -1,8 +1,8 @@
 PODS:
   - IronSourceSDK (7.5.1.0)
-  - NeftaISAdapter (1.1.1):
-    - NeftaSDK (~> 3.1.5)
-  - NeftaSDK (3.1.5)
+  - NeftaISAdapter (1.1.3):
+    - NeftaSDK (~> 3.1.8)
+  - NeftaSDK (3.1.8)
 
 DEPENDENCIES:
   - IronSourceSDK
@@ -19,9 +19,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   IronSourceSDK: fa953c42181270336bc816fe969c49d36707b7d9
-  NeftaISAdapter: eadd0701e1736e053f48b55a8bbb7cc2c00dc361
-  NeftaSDK: 8fa905f3b0f0b94abfb53b1f240768567321bb20
+  NeftaISAdapter: c09c543fcfd465676231302c8d59e4e4c94992ee
+  NeftaSDK: 52033d2f2d8c50e0ff8b3e32cedb501bbd8927c2
 
-PODFILE CHECKSUM: c3bc7a956334010426f6fa9dd0a57a9791f22c86
+PODFILE CHECKSUM: c18131119ae207aa849b617cb3ae8a4f0019ad15
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.14.3

@@ -72,6 +72,13 @@ dispatch_semaphore_t _semaphore;
             [listener adDidClick];
         };
         
+        _plugin.OnReward = ^(Placement *placement) {
+            id<ISRewardedVideoAdDelegate> listener = (id<ISRewardedVideoAdDelegate>) _listeners[placement._id];
+            if (listener != nil) {
+                [listener adRewarded];
+            }
+        };
+        
         _plugin.OnClose = ^(Placement *placement) {
             id<ISAdapterAdDelegate> listener = _listeners[placement._id];
             if (placement._type == TypesBanner) {
@@ -95,7 +102,7 @@ dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.1.1";
+    return @"1.1.4";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {

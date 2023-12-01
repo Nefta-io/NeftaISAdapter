@@ -34,7 +34,7 @@
 		04EB9FFE233D26D9429F1C1EB74E3D39 /* ISNeftaCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7B1ED13CB63E9FDEE1F2AC9507A45F /* ISNeftaCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17D4B7B1EF8F4A75269C1A859A5C68D6 /* NeftaISAdapter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4877EC06BDFA5B1D6B2D803C47A13B /* NeftaISAdapter-dummy.m */; };
 		43848891C6576155857D0B0904B848B6 /* ISNeftaCustomRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEB2689750BDBEB254D521AFDBFD98E /* ISNeftaCustomRewardedVideo.m */; };
-		46EB2E00001620 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB2E00001610 /* IronSource.xcframework */; };
+		46EB2E00001610 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229D1B6B41F8A8ADA78F99ECB0EE54F7 /* IronSource.xcframework */; };
 		5D18499D20A97199898D15E8B691AAAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		70DAA92C1281D1CFCA5780B7904E4D7E /* Pods-IronSourceSwiftDemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D48ACECEBB11C3BA3AA4048A0319CD /* Pods-IronSourceSwiftDemoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		761ABE00F7FB6EB14BEF0A2C5FDCCDAB /* Pods-IronSourceSwiftDemoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BB34F68C437E342B1FE8D548679A4B /* Pods-IronSourceSwiftDemoApp-dummy.m */; };
@@ -168,7 +168,6 @@
 		43402F4A8819FA9C097F3E8ED22E760E /* ISNetworkInitCallbackProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNetworkInitCallbackProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNetworkInitCallbackProtocol.h"; sourceTree = "<group>"; };
 		4362B8AE6C6728F5503D4035EA9D9DEF /* ISConfigurations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConfigurations.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISConfigurations.h"; sourceTree = "<group>"; };
 		43C7659E1113824AA7F1D7FFBCEB2C27 /* ISSetAPSDataProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSetAPSDataProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISSetAPSDataProtocol.h"; sourceTree = "<group>"; };
-		46EB2E00001610 /* IronSource.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = IronSource.xcframework; path = IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		47959C0F51B07C26617BDD83A35B551D /* ISInitProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInitProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/Environment/ISInitProvider.h"; sourceTree = "<group>"; };
 		48C6920E38F51354E7936901D91F9EFA /* ISAdapterAdRewardedDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdRewardedDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterAdRewardedDelegate.h"; sourceTree = "<group>"; };
 		4901F9897FFE7423B22CB7C146E14194 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
@@ -371,7 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EEB464DD2234323C0D7E766533D2FA /* Foundation.framework in Frameworks */,
-				46EB2E00001620 /* IronSource.xcframework in Frameworks */,
+				46EB2E00001610 /* IronSource.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +784,6 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				46EB2E00001610 /* IronSource.xcframework */,
 				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
@@ -1014,23 +1012,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0F0DFF4F6D52B4B245BC13E93BB6A916 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE60A485D6D8957FDB82C7058DBB29ED /* NeftaSDK.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		114869BF01764F2A38FBAC5BEB24FDD0 /* Debug */ = {
+		0B8CD805BB79EAADFEEFF959CD454DB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B267BE8D99A5AEB0777002BD2F705BBD /* NeftaSDK.debug.xcconfig */;
 			buildSettings = {
@@ -1038,7 +1020,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1136,6 +1118,22 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F371481AC18A837281045861466C593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE60A485D6D8957FDB82C7058DBB29ED /* NeftaSDK.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1380,8 +1378,8 @@
 		A2F67608F7BC4E1CF25F092230FFE8E2 /* Build configuration list for PBXAggregateTarget "NeftaSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				114869BF01764F2A38FBAC5BEB24FDD0 /* Debug */,
-				0F0DFF4F6D52B4B245BC13E93BB6A916 /* Release */,
+				0B8CD805BB79EAADFEEFF959CD454DB4 /* Debug */,
+				6F371481AC18A837281045861466C593 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
