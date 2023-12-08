@@ -102,7 +102,7 @@ dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.1.7";
+    return @"1.1.8";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
