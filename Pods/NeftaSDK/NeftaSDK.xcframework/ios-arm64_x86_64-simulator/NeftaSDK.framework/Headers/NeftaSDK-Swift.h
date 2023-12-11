@@ -337,7 +337,8 @@ typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
   ProgressionTypeAchievement = 3,
   ProgressionTypePlayerLevel = 4,
   ProgressionTypeItemLevel = 5,
-  ProgressionTypeOther = 6,
+  ProgressionTypeUnlock = 6,
+  ProgressionTypeOther = 7,
 };
 
 typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
@@ -419,6 +420,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)GetToolboxUser SWIFT_WARN_UNUSED_RESULT;
 - (void)SetToolboxUserWithJson:(NSString * _Nonnull)json;
+- (void)SetCustomBatchSize:(NSInteger)newBatchSize;
 - (void)RecordWithEvent:(NSString * _Nonnull)event;
 - (void)EnableAds:(BOOL)enable;
 - (void)EnableBannerWithEnable:(BOOL)enable;
@@ -443,6 +445,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 SWIFT_CLASS("_TtC8NeftaSDK15NeftaPlugin_iOS")
 @interface NeftaPlugin_iOS : NeftaPlugin
++ (void)EnableLogging:(BOOL)enable;
 + (NeftaPlugin_iOS * _Nonnull)InitWithAppId:(NSString * _Nullable)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)PrepareRendererWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)PrepareRendererWithView:(UIView * _Nonnull)view;
@@ -512,16 +515,16 @@ SWIFT_CLASS("_TtCC8NeftaSDK14VideoPlacement9MediaFile")
 @class NSCoder;
 @class WKWebView;
 @class WKNavigation;
-@class WKUserContentController;
-@class WKScriptMessage;
 
 SWIFT_CLASS("_TtC8NeftaSDK13WebController")
-@interface WebController : UIView <WKNavigationDelegate, WKScriptMessageHandler>
+@interface WebController : UIView <WKNavigationDelegate>
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (void)layoutSubviews;
 - (void)webView:(WKWebView * _Nonnull)webView didFailNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
 - (void)webView:(WKWebView * _Nonnull)webView didFailProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
-- (void)userContentController:(WKUserContentController * _Nonnull)userContentController didReceiveScriptMessage:(WKScriptMessage * _Nonnull)message;
+- (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
 @end
 
 
@@ -881,7 +884,8 @@ typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
   ProgressionTypeAchievement = 3,
   ProgressionTypePlayerLevel = 4,
   ProgressionTypeItemLevel = 5,
-  ProgressionTypeOther = 6,
+  ProgressionTypeUnlock = 6,
+  ProgressionTypeOther = 7,
 };
 
 typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
@@ -963,6 +967,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (NSString * _Nullable)GetToolboxUser SWIFT_WARN_UNUSED_RESULT;
 - (void)SetToolboxUserWithJson:(NSString * _Nonnull)json;
+- (void)SetCustomBatchSize:(NSInteger)newBatchSize;
 - (void)RecordWithEvent:(NSString * _Nonnull)event;
 - (void)EnableAds:(BOOL)enable;
 - (void)EnableBannerWithEnable:(BOOL)enable;
@@ -987,6 +992,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 SWIFT_CLASS("_TtC8NeftaSDK15NeftaPlugin_iOS")
 @interface NeftaPlugin_iOS : NeftaPlugin
++ (void)EnableLogging:(BOOL)enable;
 + (NeftaPlugin_iOS * _Nonnull)InitWithAppId:(NSString * _Nullable)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)PrepareRendererWithViewController:(UIViewController * _Nonnull)viewController;
 - (void)PrepareRendererWithView:(UIView * _Nonnull)view;
@@ -1056,16 +1062,16 @@ SWIFT_CLASS("_TtCC8NeftaSDK14VideoPlacement9MediaFile")
 @class NSCoder;
 @class WKWebView;
 @class WKNavigation;
-@class WKUserContentController;
-@class WKScriptMessage;
 
 SWIFT_CLASS("_TtC8NeftaSDK13WebController")
-@interface WebController : UIView <WKNavigationDelegate, WKScriptMessageHandler>
+@interface WebController : UIView <WKNavigationDelegate>
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+- (void)layoutSubviews;
 - (void)webView:(WKWebView * _Nonnull)webView didFailNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
 - (void)webView:(WKWebView * _Nonnull)webView didFailProvisionalNavigation:(WKNavigation * _Null_unspecified)navigation withError:(NSError * _Nonnull)error;
-- (void)userContentController:(WKUserContentController * _Nonnull)userContentController didReceiveScriptMessage:(WKScriptMessage * _Nonnull)message;
+- (void)webView:(WKWebView * _Nonnull)webView didFinishNavigation:(WKNavigation * _Null_unspecified)navigation;
+- (void)observeValueForKeyPath:(NSString * _Nullable)keyPath ofObject:(id _Nullable)object change:(NSDictionary<NSKeyValueChangeKey, id> * _Nullable)change context:(void * _Nullable)context;
 @end
 
 

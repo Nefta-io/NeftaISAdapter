@@ -13,6 +13,10 @@ static NeftaPlugin_iOS *_plugin;
 static NSMutableDictionary<NSString *, id<ISAdapterAdDelegate>> *_listeners;
 dispatch_semaphore_t _semaphore;
 
+- (void)setAdapterDebug:(BOOL)adapterDebug {
+    [NeftaPlugin_iOS EnableLogging: adapterDebug];
+}
+
 - (void)init:(ISAdData *)adData delegate:(id<ISNetworkInitializationDelegate>)delegate {
     if (_semaphore == nil) {
         _semaphore = dispatch_semaphore_create(1);
@@ -102,7 +106,7 @@ dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.1.8";
+    return @"1.1.9";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
