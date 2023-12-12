@@ -308,6 +308,7 @@ enum ProgressionSource : NSInteger;
 enum ResourceCategory : NSInteger;
 enum ReceiveMethod : NSInteger;
 enum SpendMethod : NSInteger;
+enum SessionCategory : NSInteger;
 
 SWIFT_CLASS("_TtC8NeftaSDK11NeftaEvents")
 @interface NeftaEvents : NSObject
@@ -320,25 +321,26 @@ SWIFT_CLASS("_TtC8NeftaSDK11NeftaEvents")
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method;
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method name:(NSString * _Nullable)name quantity:(NSInteger)quantity;
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method name:(NSString * _Nullable)name quantity:(NSInteger)quantity customPayload:(NSString * _Nullable)customPayload;
+- (void)AddSessionEventWithCategory:(enum SessionCategory)category;
+- (void)AddSessionEventWithCategory:(enum SessionCategory)category name:(NSString * _Nullable)name value:(NSInteger)value customPayload:(NSString * _Nullable)customPayload;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, ProgressionStatus, open) {
-  ProgressionStatusStart = 0,
-  ProgressionStatusCompleted = 1,
-  ProgressionStatusFail = 2,
+typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
+  ProgressionTypeAchievement = 0,
+  ProgressionTypeGameplayUnit = 1,
+  ProgressionTypeItemLevel = 2,
+  ProgressionTypeUnlock = 3,
+  ProgressionTypePlayerLevel = 4,
+  ProgressionTypeTask = 5,
+  ProgressionTypeOther = 6,
 };
 
-typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
-  ProgressionTypeUndefined = 0,
-  ProgressionTypeGameplayUnit = 1,
-  ProgressionTypeTask = 2,
-  ProgressionTypeAchievement = 3,
-  ProgressionTypePlayerLevel = 4,
-  ProgressionTypeItemLevel = 5,
-  ProgressionTypeUnlock = 6,
-  ProgressionTypeOther = 7,
+typedef SWIFT_ENUM(NSInteger, ProgressionStatus, open) {
+  ProgressionStatusStart = 0,
+  ProgressionStatusComplete = 1,
+  ProgressionStatusFail = 2,
 };
 
 typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
@@ -352,16 +354,15 @@ typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
 };
 
 typedef SWIFT_ENUM(NSInteger, ResourceCategory, open) {
-  ResourceCategoryUndefined = 0,
-  ResourceCategorySoftCurrency = 1,
-  ResourceCategoryPremiumCurrency = 2,
-  ResourceCategoryResource = 3,
-  ResourceCategoryCoreItem = 4,
-  ResourceCategoryCosmeticItem = 5,
-  ResourceCategoryConsumable = 6,
+  ResourceCategorySoftCurrency = 0,
+  ResourceCategoryPremiumCurrency = 1,
+  ResourceCategoryResource = 2,
+  ResourceCategoryConsumable = 3,
+  ResourceCategoryCosmeticItem = 4,
+  ResourceCategoryCoreItem = 5,
+  ResourceCategoryChest = 6,
   ResourceCategoryExperience = 7,
-  ResourceCategoryChest = 8,
-  ResourceCategoryOther = 9,
+  ResourceCategoryOther = 8,
 };
 
 typedef SWIFT_ENUM(NSInteger, ReceiveMethod, open) {
@@ -383,8 +384,12 @@ typedef SWIFT_ENUM(NSInteger, SpendMethod, open) {
   SpendMethodUnlock = 4,
   SpendMethodUpgrade = 5,
   SpendMethodShop = 6,
-  SpendMethodLooted = 7,
-  SpendMethodOther = 8,
+  SpendMethodOther = 7,
+};
+
+typedef SWIFT_ENUM(NSInteger, SessionCategory, open) {
+  SessionCategoryAccountConnected = 0,
+  SessionCategoryAccountUpgraded = 1,
 };
 
 @class Placement;
@@ -855,6 +860,7 @@ enum ProgressionSource : NSInteger;
 enum ResourceCategory : NSInteger;
 enum ReceiveMethod : NSInteger;
 enum SpendMethod : NSInteger;
+enum SessionCategory : NSInteger;
 
 SWIFT_CLASS("_TtC8NeftaSDK11NeftaEvents")
 @interface NeftaEvents : NSObject
@@ -867,25 +873,26 @@ SWIFT_CLASS("_TtC8NeftaSDK11NeftaEvents")
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method;
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method name:(NSString * _Nullable)name quantity:(NSInteger)quantity;
 - (void)AddSpendEventWithCategory:(enum ResourceCategory)category method:(enum SpendMethod)method name:(NSString * _Nullable)name quantity:(NSInteger)quantity customPayload:(NSString * _Nullable)customPayload;
+- (void)AddSessionEventWithCategory:(enum SessionCategory)category;
+- (void)AddSessionEventWithCategory:(enum SessionCategory)category name:(NSString * _Nullable)name value:(NSInteger)value customPayload:(NSString * _Nullable)customPayload;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, ProgressionStatus, open) {
-  ProgressionStatusStart = 0,
-  ProgressionStatusCompleted = 1,
-  ProgressionStatusFail = 2,
+typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
+  ProgressionTypeAchievement = 0,
+  ProgressionTypeGameplayUnit = 1,
+  ProgressionTypeItemLevel = 2,
+  ProgressionTypeUnlock = 3,
+  ProgressionTypePlayerLevel = 4,
+  ProgressionTypeTask = 5,
+  ProgressionTypeOther = 6,
 };
 
-typedef SWIFT_ENUM(NSInteger, ProgressionType, open) {
-  ProgressionTypeUndefined = 0,
-  ProgressionTypeGameplayUnit = 1,
-  ProgressionTypeTask = 2,
-  ProgressionTypeAchievement = 3,
-  ProgressionTypePlayerLevel = 4,
-  ProgressionTypeItemLevel = 5,
-  ProgressionTypeUnlock = 6,
-  ProgressionTypeOther = 7,
+typedef SWIFT_ENUM(NSInteger, ProgressionStatus, open) {
+  ProgressionStatusStart = 0,
+  ProgressionStatusComplete = 1,
+  ProgressionStatusFail = 2,
 };
 
 typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
@@ -899,16 +906,15 @@ typedef SWIFT_ENUM(NSInteger, ProgressionSource, open) {
 };
 
 typedef SWIFT_ENUM(NSInteger, ResourceCategory, open) {
-  ResourceCategoryUndefined = 0,
-  ResourceCategorySoftCurrency = 1,
-  ResourceCategoryPremiumCurrency = 2,
-  ResourceCategoryResource = 3,
-  ResourceCategoryCoreItem = 4,
-  ResourceCategoryCosmeticItem = 5,
-  ResourceCategoryConsumable = 6,
+  ResourceCategorySoftCurrency = 0,
+  ResourceCategoryPremiumCurrency = 1,
+  ResourceCategoryResource = 2,
+  ResourceCategoryConsumable = 3,
+  ResourceCategoryCosmeticItem = 4,
+  ResourceCategoryCoreItem = 5,
+  ResourceCategoryChest = 6,
   ResourceCategoryExperience = 7,
-  ResourceCategoryChest = 8,
-  ResourceCategoryOther = 9,
+  ResourceCategoryOther = 8,
 };
 
 typedef SWIFT_ENUM(NSInteger, ReceiveMethod, open) {
@@ -930,8 +936,12 @@ typedef SWIFT_ENUM(NSInteger, SpendMethod, open) {
   SpendMethodUnlock = 4,
   SpendMethodUpgrade = 5,
   SpendMethodShop = 6,
-  SpendMethodLooted = 7,
-  SpendMethodOther = 8,
+  SpendMethodOther = 7,
+};
+
+typedef SWIFT_ENUM(NSInteger, SessionCategory, open) {
+  SessionCategoryAccountConnected = 0,
+  SessionCategoryAccountUpgraded = 1,
 };
 
 @class Placement;
