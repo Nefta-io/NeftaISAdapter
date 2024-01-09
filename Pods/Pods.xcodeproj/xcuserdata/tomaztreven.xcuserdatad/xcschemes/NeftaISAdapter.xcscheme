@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A854AF9C1B2ADEC74C2C4F33A030FD14"
-               BuildableName = "NeftaISAdapter.framework"
+               BuildableName = "libNeftaISAdapter.a"
                BlueprintName = "NeftaISAdapter"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

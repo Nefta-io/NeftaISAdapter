@@ -12,7 +12,7 @@
 		471A2A441E66D27A00217BE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A421E66D27A00217BE4 /* Main.storyboard */; };
 		471A2A461E66D27A00217BE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A451E66D27A00217BE4 /* Assets.xcassets */; };
 		471A2A491E66D27A00217BE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A471E66D27A00217BE4 /* LaunchScreen.storyboard */; };
-		7B124FB8F76B88B6730A111D /* Pods_IronSourceSwiftDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */; };
+		8AC988C7F495C80D72B7A9A5 /* libPods-IronSourceSwiftDemoApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76A42708202FD81AB56C22D4 /* libPods-IronSourceSwiftDemoApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		471A2A451E66D27A00217BE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		471A2A481E66D27A00217BE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		471A2A4A1E66D27A00217BE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IronSourceSwiftDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76A42708202FD81AB56C22D4 /* libPods-IronSourceSwiftDemoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IronSourceSwiftDemoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49CD46058014E581AC43033 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronSourceSwiftDemoApp.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F80DD920BEC8F88D1A5114E0 /* Pods-IronSourceSwiftDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IronSourceSwiftDemoApp.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,7 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B124FB8F76B88B6730A111D /* Pods_IronSourceSwiftDemoApp.framework in Frameworks */,
+				8AC988C7F495C80D72B7A9A5 /* libPods-IronSourceSwiftDemoApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 		F0AFEE623213F9B180953967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				860E6CDF65C30D30142CB3FF /* Pods_IronSourceSwiftDemoApp.framework */,
+				76A42708202FD81AB56C22D4 /* libPods-IronSourceSwiftDemoApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,12 +190,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/NeftaISAdapter/NeftaISAdapter.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NeftaSDK/NeftaSDK.framework/NeftaSDK",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NeftaISAdapter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NeftaSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

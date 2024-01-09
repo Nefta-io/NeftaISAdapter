@@ -9,9 +9,9 @@
 /* Begin PBXAggregateTarget section */
 		1990F8EC7C57CD4EDD6B5A2A0DA72FFF /* NeftaSDK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 0E25ED59E1CACFA3DF68EF9B89229444 /* Build configuration list for PBXAggregateTarget "NeftaSDK" */;
+			buildConfigurationList = FAB7CE1C7E9B7504485092633ED4613B /* Build configuration list for PBXAggregateTarget "NeftaSDK" */;
 			buildPhases = (
-				AEA88B8BBF88AE4FEE98114DC1716FED /* [CP] Copy XCFrameworks */,
+				5B97EE890D6AF632E293729C59DB913A /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
 			);
@@ -30,69 +30,68 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		01D79DE4764FA52C62A37DD74CDAF3A7 /* ISNeftaCustomRewardedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2742F7DAA82D1BD508F7AF37B40C585E /* ISNeftaCustomRewardedVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		04EB9FFE233D26D9429F1C1EB74E3D39 /* ISNeftaCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7B1ED13CB63E9FDEE1F2AC9507A45F /* ISNeftaCustomBanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		17D4B7B1EF8F4A75269C1A859A5C68D6 /* NeftaISAdapter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4877EC06BDFA5B1D6B2D803C47A13B /* NeftaISAdapter-dummy.m */; };
-		43848891C6576155857D0B0904B848B6 /* ISNeftaCustomRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = CBEB2689750BDBEB254D521AFDBFD98E /* ISNeftaCustomRewardedVideo.m */; };
-		46EB2E00001950 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3618946BBCE6B8D4609D8BC5CB38F89 /* IronSource.xcframework */; };
-		5D18499D20A97199898D15E8B691AAAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		70DAA92C1281D1CFCA5780B7904E4D7E /* Pods-IronSourceSwiftDemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 89D48ACECEBB11C3BA3AA4048A0319CD /* Pods-IronSourceSwiftDemoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		761ABE00F7FB6EB14BEF0A2C5FDCCDAB /* Pods-IronSourceSwiftDemoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6BB34F68C437E342B1FE8D548679A4B /* Pods-IronSourceSwiftDemoApp-dummy.m */; };
-		78EEB464DD2234323C0D7E766533D2FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		841780BE47C2E50350C71ADE0004D1D9 /* NeftaIsAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B2DAC8137F6C107F215B9A031A6C91D /* NeftaIsAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8AC1E15528AC052C7E8EF81E2C7B0BC5 /* ISNeftaCustomInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = F21B4AAB184C2EC87FA3BC38DE5DCE02 /* ISNeftaCustomInterstitial.m */; };
-		D82887E0DCD34C52BA14110E3FD4EBC7 /* ISNeftaCustomBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D4799F6C5B97E65230BBBD018FDDD132 /* ISNeftaCustomBanner.m */; };
-		E46D0563B92221D5663B62D90E48DC9D /* ISNeftaCustomAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D64910AC3FAABD994EA386434EF3857F /* ISNeftaCustomAdapter.m */; };
-		E5F6F4DFBFF995F5DC1C5DB16869C12E /* ISNeftaCustomAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7061FA74647FC11551F67D4E26626197 /* ISNeftaCustomAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F193B0F8C91B9BF89CC3F00E63339B57 /* ISNeftaCustomInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = EF68C4A58079096BA862F5B58B622E68 /* ISNeftaCustomInterstitial.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F6A45D3E42DF739635EE3192D9B79150 /* NeftaISAdapter-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6D11564DA087979DBBFCCE003EE1C1E /* NeftaISAdapter-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		08512C66BF0799ED6524B935D759782B /* ISNeftaCustomInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9844DF919097A565B549ED59C42DD6 /* ISNeftaCustomInterstitial.m */; };
+		1500E2C296DCF43099A8095E6B81FDCF /* NeftaIsAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = ADC1F1EE11D71B089AF49C323022CE89 /* NeftaIsAdapter.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		36D7BD7EC038601101333FC3BF0A4429 /* ISNeftaCustomInterstitial.h in Headers */ = {isa = PBXBuildFile; fileRef = C288509F7933E6517B3EB6200829DC68 /* ISNeftaCustomInterstitial.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3C6F01575A5DE8E86C575D9E98FBFD84 /* ISNeftaCustomRewardedVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4974661A93FF9267149E7344DCA4C561 /* ISNeftaCustomRewardedVideo.m */; };
+		46EB2E000018A0 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3618946BBCE6B8D4609D8BC5CB38F89 /* IronSource.xcframework */; };
+		5A3004A4B9D91DDEF28CC109188A2413 /* ISNeftaCustomBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = BF02D7C3A2094CEDD5F7B7E97EE96283 /* ISNeftaCustomBanner.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		AE56AD753E6C9A09717F8F7FC88C25D1 /* ISNeftaCustomRewardedVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 58E05BC13C4C9F76BECE739987B8E100 /* ISNeftaCustomRewardedVideo.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		BBD414B3F8C561DBF8BC97FA9079F678 /* Pods-IronSourceSwiftDemoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F63084F254CCFA4071E33D0620A06E3 /* Pods-IronSourceSwiftDemoApp-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C4041E66EECCC9DB3FDBF18EF3B0E501 /* ISNeftaCustomAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 77B42A4DA7CE860916360C6F9FFCEFD9 /* ISNeftaCustomAdapter.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D2078AF95E8A8F9F72979B3C44EEF6A7 /* Pods-IronSourceSwiftDemoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC3502F2F156BC59F3D1C13205B20AE /* Pods-IronSourceSwiftDemoApp-dummy.m */; };
+		D52EE6D0D3339AA3329C7211D7976C01 /* ISNeftaCustomAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E913B52E8A250A2CF440678AC9DB452A /* ISNeftaCustomAdapter.m */; };
+		F8A24CF44E55122F841610743234AC0C /* NeftaISAdapter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EB3652F977A48E078CED489548B898 /* NeftaISAdapter-dummy.m */; };
+		FBCA3664CC06A80A90748BD645DD1932 /* ISNeftaCustomBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = CC322437CD48CE94C26354DFB8600BBB /* ISNeftaCustomBanner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C4C91289B7F2279D89660D13FB2F58D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF;
-			remoteInfo = NeftaSDK;
-		};
-		80D45EB88A18DBC420256757524C21E5 /* PBXContainerItemProxy */ = {
+		25813A5EB20EEB6A79CEDB8AA6415213 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 205EFBEF86DA6E7E3D5B9BABED8872EE;
 			remoteInfo = IronSourceSDK;
 		};
-		AB32516804CA6ACB0A702318C2BA787A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF;
-			remoteInfo = NeftaSDK;
-		};
-		CEEE929302410262725488E983B95A9F /* PBXContainerItemProxy */ = {
+		6289FFCD917BEF473526014614FF975D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A854AF9C1B2ADEC74C2C4F33A030FD14;
 			remoteInfo = NeftaISAdapter;
 		};
+		78BF3BEE0B791AE798E933B1D7C65A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF;
+			remoteInfo = NeftaSDK;
+		};
+		E9435F5FAF6D43F6331E17FA76B063A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF;
+			remoteInfo = NeftaSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00405D7F7E4F8F81B570619C92AB464A /* ISInterstitialAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInterstitialAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISInterstitialAdapterProtocol.h"; sourceTree = "<group>"; };
 		026B6D5A5518BACAA6361EFD19A4F29D /* IronSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IronSource.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/IronSource.h"; sourceTree = "<group>"; };
-		028B4EEEDDC786519B9A07DBD7EDDCD3 /* Pods-IronSourceSwiftDemoApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IronSourceSwiftDemoApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		034234E300EC898E9705A3FF4CA0DAF3 /* ISTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISTimer.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISTimer.h"; sourceTree = "<group>"; };
 		03FC117A00470CF011D91BB263C8F7F8 /* SupersonicLogManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SupersonicLogManager.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SupersonicLogManager.h"; sourceTree = "<group>"; };
 		043ACF6FC877CE1DB69A27059D73AE45 /* ISNEventTrackerInterface.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNEventTrackerInterface.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNEventTrackerInterface.h"; sourceTree = "<group>"; };
+		04C51EE095A44C3F17A8197A24B1A08B /* NeftaISAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NeftaISAdapter.debug.xcconfig; sourceTree = "<group>"; };
 		05DB52132B0AECFC73F1642BAFAAB359 /* SSEOrientationContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEOrientationContext.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/SSEOrientationContext.h"; sourceTree = "<group>"; };
 		067D66CB73C3124C126F9905D96DEEB9 /* LevelPlayRewardedVideoBaseDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayRewardedVideoBaseDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/LevelPlayRewardedVideoBaseDelegate.h"; sourceTree = "<group>"; };
 		06B55E98E793761FFCF9BEDB79487E65 /* ISNetworkInitializationDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNetworkInitializationDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNetworkInitializationDelegate.h"; sourceTree = "<group>"; };
 		06BC537ECFF73CA708B2E28950DABB7C /* SSESKAdNetworkService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSESKAdNetworkService.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSESKAdNetworkService.h"; sourceTree = "<group>"; };
+		0739AF23DD26B07AA102C429E0975189 /* Pods-IronSourceSwiftDemoApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IronSourceSwiftDemoApp.modulemap"; sourceTree = "<group>"; };
 		08E97E8C1F8C8CAD14E235245100D853 /* ISBaseAdapter+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ISBaseAdapter+Internal.h"; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseAdapter+Internal.h"; sourceTree = "<group>"; };
 		0963D523E137A42F368316A1FD8A6CBF /* ISLoggerManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLoggerManager.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISLoggerManager.h"; sourceTree = "<group>"; };
 		0A04A4FCFEAC99868C0FA50A3F18D9E5 /* ISAdapterDebugProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterDebugProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterDebugProtocol.h"; sourceTree = "<group>"; };
+		0A9844DF919097A565B549ED59C42DD6 /* ISNeftaCustomInterstitial.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomInterstitial.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.m; sourceTree = "<group>"; };
 		0C478E0D6C2ECE8A3D2199948885A88A /* ISNativeAdViewBinderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdViewBinderProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdViewBinderProtocol.h"; sourceTree = "<group>"; };
 		0D8D628D7B63839F6BEDD1BE544085F7 /* ISAdapterErrorType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterErrorType.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterErrorType.h"; sourceTree = "<group>"; };
 		0DD6911AFF6DA59CD50C0DADA6CF99D5 /* ISEventsSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISEventsSettings.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISEventsSettings.h"; sourceTree = "<group>"; };
@@ -118,8 +117,6 @@
 		23F588C4E6EACA57E91973E93DFA15BD /* ISGlobalDataWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGlobalDataWriter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISGlobalDataWriter.h"; sourceTree = "<group>"; };
 		24B7056CA7EEAFA00B353871787DF3C4 /* ISAdUnitAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdUnitAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdUnitAdapterProtocol.h"; sourceTree = "<group>"; };
 		25360834F849FCF48532B5699D90190C /* ISTokenProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISTokenProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISTokenProvider.h"; sourceTree = "<group>"; };
-		2742F7DAA82D1BD508F7AF37B40C585E /* ISNeftaCustomRewardedVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomRewardedVideo.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.h; sourceTree = "<group>"; };
-		27800177DA05A9A1364874A0BE1C2987 /* Pods-IronSourceSwiftDemoApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IronSourceSwiftDemoApp-frameworks.sh"; sourceTree = "<group>"; };
 		2781AA432A36856C90438C4DBB4C96FA /* UIView+ISNativeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ISNativeView.h"; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/UIView+ISNativeView.h"; sourceTree = "<group>"; };
 		27EDC844A4983637269255F264C44168 /* ISGender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGender.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISGender.h"; sourceTree = "<group>"; };
 		28778CB1476FBCB5F777D9A20FFFFE42 /* ISBaseAdAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseAdAdapter.h"; sourceTree = "<group>"; };
@@ -129,12 +126,14 @@
 		2D0206AC897224D730C2BDE436047C1C /* ISConcurrentMutableSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConcurrentMutableSet.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISConcurrentMutableSet.h"; sourceTree = "<group>"; };
 		2E2C020B43520C2460D76564BFD18B2D /* SSEApplicationContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEApplicationContext.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSEApplicationContext.h"; sourceTree = "<group>"; };
 		2E947047966F50256CA8CED3BC1FFD9A /* ISInitProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInitProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISInitProvider.h"; sourceTree = "<group>"; };
+		2F63084F254CCFA4071E33D0620A06E3 /* Pods-IronSourceSwiftDemoApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IronSourceSwiftDemoApp-umbrella.h"; sourceTree = "<group>"; };
 		300359A5D589DE4845FD430A4AB5C521 /* ISDemandOnlyInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyInterstitialDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISDemandOnlyInterstitialDelegate.h"; sourceTree = "<group>"; };
 		306F85A5BC63C44A03D24651E3C4A7E9 /* ISLifeCycleSensitiveTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLifeCycleSensitiveTimer.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISLifeCycleSensitiveTimer.h"; sourceTree = "<group>"; };
 		30E2C65698EE21FEEA84F6D433676DC0 /* ISError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISError.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISError.h"; sourceTree = "<group>"; };
 		31CEFAEF81546963D5897CFAD997F8B0 /* ISBaseAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseAdapter.h"; sourceTree = "<group>"; };
 		31E161FB559FE4C8F18092DE0217EEB2 /* NSMeasurement+ISMeasurement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMeasurement+ISMeasurement.h"; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/NSMeasurement+ISMeasurement.h"; sourceTree = "<group>"; };
 		31F3074189FEF58150A0022B44736A1A /* ISConsentViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConsentViewDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISConsentViewDelegate.h"; sourceTree = "<group>"; };
+		321965E7C6B486BEBADF319A8ED0DFD8 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IronSourceSwiftDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		343528EBC911067C11A88DFB47F58EF1 /* SSEApplicationContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEApplicationContext.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/SSEApplicationContext.h"; sourceTree = "<group>"; };
 		3465A8E92DE63DD4DBF3C44CC2942FA6 /* ISThreadSafeTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISThreadSafeTimer.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISThreadSafeTimer.h"; sourceTree = "<group>"; };
 		347A5D6678106DA5D613C6AFBC11D49B /* ISForegroundTimeCalculator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISForegroundTimeCalculator.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISForegroundTimeCalculator.h"; sourceTree = "<group>"; };
@@ -145,18 +144,14 @@
 		3763F1D8E416533345846FF42D94DB5A /* ISAdapterConsentProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterConsentProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterConsentProtocol.h"; sourceTree = "<group>"; };
 		3793C9ED2CE6ED85E7A69C98B498586F /* UIView+ISNativeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+ISNativeView.h"; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/UIView+ISNativeView.h"; sourceTree = "<group>"; };
 		395DABDBD9C384091FAAF1C047104D5D /* ISAdUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdUnit.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdUnit.h"; sourceTree = "<group>"; };
-		3A4BEE0EA720F37A6655E6C3CD7A9915 /* NeftaISAdapter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NeftaISAdapter-prefix.pch"; sourceTree = "<group>"; };
-		3ACD03792F0D2E5775378D71588EA111 /* NeftaISAdapter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NeftaISAdapter.modulemap; sourceTree = "<group>"; };
-		3B2DAC8137F6C107F215B9A031A6C91D /* NeftaIsAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NeftaIsAdapter.h; path = NeftaISAdapter/NeftaISAdapter/NeftaIsAdapter.h; sourceTree = "<group>"; };
 		3B4447DB5973AAA1688DE63B887D2ED1 /* ISMetaDataUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISMetaDataUtils.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISMetaDataUtils.h"; sourceTree = "<group>"; };
 		3BEC4D7021A791CC811832C0450D4002 /* ISGlobalDataConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGlobalDataConstants.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISGlobalDataConstants.h"; sourceTree = "<group>"; };
 		3CC3AD72D41941C28866AEE315654CD9 /* ISSupersonicAdsConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSupersonicAdsConfiguration.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISSupersonicAdsConfiguration.h"; sourceTree = "<group>"; };
-		3D3154BC8FE0BE5FBEDF78406256B802 /* Pods-IronSourceSwiftDemoApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IronSourceSwiftDemoApp-Info.plist"; sourceTree = "<group>"; };
 		3DC7C283085252CCD212D299299CE0E6 /* IronSourceSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IronSourceSDK.release.xcconfig; sourceTree = "<group>"; };
 		40CE0DFB619EFA26DFACD983F79C3671 /* ISAdapterAdRewardedDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdRewardedDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterAdRewardedDelegate.h"; sourceTree = "<group>"; };
 		415F6D4E2C8B5CFD705E907C0106917A /* ISGender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGender.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISGender.h"; sourceTree = "<group>"; };
 		41EC824CB9ECDA5335CB2A7DE0262E00 /* ISBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerView.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBannerView.h"; sourceTree = "<group>"; };
-		43350E2AE73BD6E781C8987D77B3B62A /* NeftaISAdapter */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NeftaISAdapter; path = NeftaISAdapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43350E2AE73BD6E781C8987D77B3B62A /* NeftaISAdapter */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = NeftaISAdapter; path = libNeftaISAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43EAFAA736BE7FEA8AD25F1082138DA7 /* ISAdapterMetaDataProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterMetaDataProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterMetaDataProtocol.h"; sourceTree = "<group>"; };
 		4523523B1D43402D68B24E49018E331D /* ISAdOptionsPosition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdOptionsPosition.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdOptionsPosition.h"; sourceTree = "<group>"; };
 		453AD183F60022E675445F1D30873BEF /* ISNativeAdDataProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdDataProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdDataProtocol.h"; sourceTree = "<group>"; };
@@ -165,7 +160,7 @@
 		46F8B50BF2A57A5ADFD3FC49DF1F8C71 /* ISBaseInterstitialAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseInterstitialAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseInterstitialAdapter.h"; sourceTree = "<group>"; };
 		478DD8BE6A4AA27794E46C097C07C1DD /* IronSourceNetworkSwiftBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IronSourceNetworkSwiftBridge.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/IronSourceNetworkSwiftBridge.h"; sourceTree = "<group>"; };
 		48F7B7428630241012ABD56151A72129 /* ISNativeAdProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdProtocol.h"; sourceTree = "<group>"; };
-		4901F9897FFE7423B22CB7C146E14194 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4974661A93FF9267149E7344DCA4C561 /* ISNeftaCustomRewardedVideo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomRewardedVideo.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.m; sourceTree = "<group>"; };
 		4980FAF8D08BC757DCB2972403BC9737 /* ISBaseRewardedVideoAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseRewardedVideoAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseRewardedVideoAdapter.h"; sourceTree = "<group>"; };
 		4983B9425968AA1389A6B3A1D4BB3032 /* ISAdapterNativeAdViewBinderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterNativeAdViewBinderProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterNativeAdViewBinderProtocol.h"; sourceTree = "<group>"; };
 		49B026CA74D7B7A9A693BFBAB4420BD7 /* LevelPlayRewardedVideoManualDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayRewardedVideoManualDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/LevelPlayRewardedVideoManualDelegate.h"; sourceTree = "<group>"; };
@@ -177,6 +172,7 @@
 		4C8DE6EE708374A741B228DFF9C9D1F6 /* ISEventsReporting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISEventsReporting.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISEventsReporting.h"; sourceTree = "<group>"; };
 		4CC8B6D5C33C64D038E82E1E271E8A20 /* ISAdapterAdRewardedDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdRewardedDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterAdRewardedDelegate.h"; sourceTree = "<group>"; };
 		4DF552AA92293A16731159D6E275A3BB /* ISImpressionData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISImpressionData.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISImpressionData.h"; sourceTree = "<group>"; };
+		4EA5329876050C581EC8BF506F65B544 /* NeftaISAdapter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = NeftaISAdapter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4EC6F9B1AFA23B3C11FF710602C1507C /* NSUnitDuration+ISTimeUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSUnitDuration+ISTimeUnit.h"; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/NSUnitDuration+ISTimeUnit.h"; sourceTree = "<group>"; };
 		50BE88E2DF4451E1C14D3822A7E3AB10 /* ISNativeAdProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdProtocol.h"; sourceTree = "<group>"; };
 		5149525203952B45D6E19A0701885740 /* ISLifeCycleSensitiveTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLifeCycleSensitiveTimer.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISLifeCycleSensitiveTimer.h"; sourceTree = "<group>"; };
@@ -185,7 +181,7 @@
 		556035D0D1D4718B668AA9B0F0BF3C17 /* ISNativeAdInteractionDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdInteractionDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdInteractionDelegate.h"; sourceTree = "<group>"; };
 		5644433303BF7F4F2C51E9A07C0C1C50 /* ISAdapterNativeAdViewBinder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterNativeAdViewBinder.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterNativeAdViewBinder.h"; sourceTree = "<group>"; };
 		57CFB2AE7CFBE31D93FADFDFB8A68192 /* NeftaSDK.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = NeftaSDK.xcframework; sourceTree = "<group>"; };
-		57FC6618EB6DD97335A201C386694C69 /* Pods-IronSourceSwiftDemoApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-IronSourceSwiftDemoApp.modulemap"; sourceTree = "<group>"; };
+		58E05BC13C4C9F76BECE739987B8E100 /* ISNeftaCustomRewardedVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomRewardedVideo.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.h; sourceTree = "<group>"; };
 		5980B19EE4D7B0E101D54FB47269D54A /* ISBaseBanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseBanner.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseBanner.h"; sourceTree = "<group>"; };
 		59CB2E990B036AEA93ECF5BA14D85687 /* ISAdapterNativeAdViewBinderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterNativeAdViewBinderProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterNativeAdViewBinderProtocol.h"; sourceTree = "<group>"; };
 		5A14840AC2AB849D7474B65EE22F4FB4 /* ISBaseInterstitialAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseInterstitialAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseInterstitialAdapter.h"; sourceTree = "<group>"; };
@@ -197,7 +193,6 @@
 		5D7B4ADCC074B6D7326B83E343E00999 /* IronSourceSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IronSourceSDK.debug.xcconfig; sourceTree = "<group>"; };
 		5F41A35B528F73B91B2568759E21F34A /* ISAdapterConsentProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterConsentProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterConsentProtocol.h"; sourceTree = "<group>"; };
 		5F87EC72C355EC638B8364747DEE1EC8 /* ISAdData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdData.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdData.h"; sourceTree = "<group>"; };
-		600987267447F9F3AE98AA818B5C0DFD /* NeftaISAdapter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "NeftaISAdapter-Info.plist"; sourceTree = "<group>"; };
 		6161CB12EA3517297A12ED85AF5AAE2A /* IronSourceNetworkSwiftBridge.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IronSourceNetworkSwiftBridge.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/IronSourceNetworkSwiftBridge.h"; sourceTree = "<group>"; };
 		6222AB3D8AA04B0BC926F38BC41B240B /* ISNativeAdProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdProperties.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdProperties.h"; sourceTree = "<group>"; };
 		6237FBB28939B20C7070F636A37DC35D /* ISBiddingDataAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBiddingDataAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBiddingDataAdapterProtocol.h"; sourceTree = "<group>"; };
@@ -206,6 +201,7 @@
 		64C156531987285E1FD2A355508E5171 /* ISTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISTimer.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISTimer.h"; sourceTree = "<group>"; };
 		6614B8205127F9573400DB7F852210B6 /* ISSegmentDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSegmentDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISSegmentDelegate.h"; sourceTree = "<group>"; };
 		667EEE8C12143979C8E041D1E70AF0B0 /* ISNEventTrackerWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNEventTrackerWrapper.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNEventTrackerWrapper.h"; sourceTree = "<group>"; };
+		66DF3F2BFB0DCF278E7FB4084AC22437 /* Pods-IronSourceSwiftDemoApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IronSourceSwiftDemoApp-frameworks.sh"; sourceTree = "<group>"; };
 		67F9D261D989A3D7D5B619E96ED0F50B /* IronSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IronSource.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/IronSource.h"; sourceTree = "<group>"; };
 		689391B99CA6DD941351FD715D412C90 /* ISBaseRewardedVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseRewardedVideo.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseRewardedVideo.h"; sourceTree = "<group>"; };
 		6916E40ABE90992BBA31EEBF614A4A38 /* ISBaseNetworkAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseNetworkAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseNetworkAdapter.h"; sourceTree = "<group>"; };
@@ -222,17 +218,18 @@
 		6E7A82F5180065EF8F18C85A65D038B3 /* ISDemandOnlyBannerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyBannerView.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISDemandOnlyBannerView.h"; sourceTree = "<group>"; };
 		6F4555FEDFA4F9E5357721CC3CFC7111 /* ISReleaseMemoryAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISReleaseMemoryAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISReleaseMemoryAdapterProtocol.h"; sourceTree = "<group>"; };
 		702D260C34D4F2787B933B6362E5ABDB /* LevelPlayRewardedVideoDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayRewardedVideoDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/LevelPlayRewardedVideoDelegate.h"; sourceTree = "<group>"; };
-		7061FA74647FC11551F67D4E26626197 /* ISNeftaCustomAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomAdapter.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomAdapter.h; sourceTree = "<group>"; };
 		70C92728781D2F4D578961CC49BD8567 /* ISError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISError.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISError.h"; sourceTree = "<group>"; };
 		714CDF54BF04682605C59867A7879AEB /* ISAdapterNativeAdData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterNativeAdData.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterNativeAdData.h"; sourceTree = "<group>"; };
 		72CED5285F8F428BAC3E7DCCBCA02007 /* ISUserDefaultsUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISUserDefaultsUtilities.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISUserDefaultsUtilities.h"; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		73F6EC10AFF66799AC00D62FF70F5F93 /* IronSourceSDK-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "IronSourceSDK-xcframeworks.sh"; sourceTree = "<group>"; };
+		75143FBE2191FAE3626DC8F4B33FB9AF /* Pods-IronSourceSwiftDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IronSourceSwiftDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		75263DE4D92A4939E4FF490D02124933 /* ISRewardedVideoManualDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISRewardedVideoManualDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISRewardedVideoManualDelegate.h"; sourceTree = "<group>"; };
 		7651FB798F294BCBB51618F38DFC2BFE /* ISNativeAdProperties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdProperties.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdProperties.h"; sourceTree = "<group>"; };
 		76AFAA6F2DE37263AA50ADC3635CEC54 /* ISConcurrentMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConcurrentMutableDictionary.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISConcurrentMutableDictionary.h"; sourceTree = "<group>"; };
 		7700BA7E67DEDB00341EEC8B0B6D6A2E /* ISAdUnitAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdUnitAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdUnitAdapterProtocol.h"; sourceTree = "<group>"; };
 		7795EE6F1A5DDD3E7FAA246687812537 /* ISBannerSize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerSize.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBannerSize.h"; sourceTree = "<group>"; };
+		77B42A4DA7CE860916360C6F9FFCEFD9 /* ISNeftaCustomAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomAdapter.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomAdapter.h; sourceTree = "<group>"; };
+		77EB3652F977A48E078CED489548B898 /* NeftaISAdapter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NeftaISAdapter-dummy.m"; sourceTree = "<group>"; };
 		788AF91EB422D9577ADA8A4362397CAE /* ISConsentViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConsentViewDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISConsentViewDelegate.h"; sourceTree = "<group>"; };
 		789D338DFE06C60BABD29FA5346FF5EE /* ISDemandOnlyInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyInterstitialDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISDemandOnlyInterstitialDelegate.h"; sourceTree = "<group>"; };
 		78CE1AFE7BACCEFD2D72C5E8CAB03D75 /* ISAdInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdInfo.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdInfo.h"; sourceTree = "<group>"; };
@@ -248,13 +245,13 @@
 		80989014B9A9B0D2F55A2148817C0C41 /* ISLoggerManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLoggerManager.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISLoggerManager.h"; sourceTree = "<group>"; };
 		80DDCD420C1F2E94A3ED4F1C30DF830C /* ISBannerAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBannerAdapterProtocol.h"; sourceTree = "<group>"; };
 		8108B20A2535398C1A0660A60906964C /* ISAdapterNativeAdData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterNativeAdData.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterNativeAdData.h"; sourceTree = "<group>"; };
-		81EECC23376C5C9D0070CFA226F6011C /* Pods-IronSourceSwiftDemoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IronSourceSwiftDemoApp.release.xcconfig"; sourceTree = "<group>"; };
 		825D2B542FBC311B4B9665FE5A2D621B /* ISBannerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBannerDelegate.h"; sourceTree = "<group>"; };
 		82F4C07AA0442964FAA1CC3E15B40C15 /* ISProductSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISProductSettings.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISProductSettings.h"; sourceTree = "<group>"; };
 		84D95B0B7D7AF4B23C01C985EEC61C5D /* ISNativeAdAdapterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdAdapterDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdAdapterDelegate.h"; sourceTree = "<group>"; };
 		852B22C10369B0A4983CDA78A4061D9A /* ISPlacementInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISPlacementInfo.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISPlacementInfo.h"; sourceTree = "<group>"; };
 		8629BEB77550F7B91E899C90375B4996 /* ISAdapterConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterConfig.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterConfig.h"; sourceTree = "<group>"; };
 		864B70BC5E755AA48AB9D3BDF5C3C8AD /* ISDataKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDataKeys.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISDataKeys.h"; sourceTree = "<group>"; };
+		868071139B524F7217F45DADD2ED68E2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		868BDC24E3B90A3B32292139DB7E24BF /* ISBaseInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseInterstitial.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseInterstitial.h"; sourceTree = "<group>"; };
 		86D6AA6485AB7B2C9005A8FB6B0942AE /* ISImpressionDataDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISImpressionDataDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISImpressionDataDelegate.h"; sourceTree = "<group>"; };
 		8704A630C94C4909DBFD3E58A7E838D9 /* ISGlobalDataConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGlobalDataConstants.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISGlobalDataConstants.h"; sourceTree = "<group>"; };
@@ -265,11 +262,9 @@
 		88603AF0AACA33BA8FE037B93CFF75A3 /* ISProductSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISProductSettings.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISProductSettings.h"; sourceTree = "<group>"; };
 		88E69214ABC57D42A694B2EA6E06049C /* ISRewardedVideoManualDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISRewardedVideoManualDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISRewardedVideoManualDelegate.h"; sourceTree = "<group>"; };
 		890A6FEED4ED6CEDAF2B157475B3470A /* ISMetaDataConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISMetaDataConstants.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISMetaDataConstants.h"; sourceTree = "<group>"; };
-		89D48ACECEBB11C3BA3AA4048A0319CD /* Pods-IronSourceSwiftDemoApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-IronSourceSwiftDemoApp-umbrella.h"; sourceTree = "<group>"; };
 		89F7E9317D24176749546A0DCAA5BD36 /* ISAdapterSettingsProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterSettingsProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterSettingsProtocol.h"; sourceTree = "<group>"; };
 		8A91A9932F50CFD067F657E0BEEC3F05 /* ISBaseAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseAdapter.h"; sourceTree = "<group>"; };
 		8AC9767B16FEA77BD40D53F482F49FC3 /* ISOrientationData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOrientationData.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISOrientationData.h"; sourceTree = "<group>"; };
-		8AFD5BA467D84DFDF11C690898FBDB00 /* NeftaISAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NeftaISAdapter.release.xcconfig; sourceTree = "<group>"; };
 		8B3309078221C1983A403477C0EF1C34 /* ISOfferwallAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOfferwallAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISOfferwallAdapterProtocol.h"; sourceTree = "<group>"; };
 		8B9D1BE610A791804393E349A9D6EFE9 /* ISBannerAdDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerAdDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBannerAdDelegate.h"; sourceTree = "<group>"; };
 		8BF817E0E23D3757E6B349FA9317C4F2 /* ISNSoundSamplerRingerChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNSoundSamplerRingerChecker.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNSoundSamplerRingerChecker.h"; sourceTree = "<group>"; };
@@ -277,14 +272,12 @@
 		8E369695D46C79FA1EE204301A5BE03E /* ISBaseBannerAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseBannerAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseBannerAdapter.h"; sourceTree = "<group>"; };
 		9227888625942491DFD8C127A0162711 /* ISInitializationDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInitializationDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISInitializationDelegate.h"; sourceTree = "<group>"; };
 		922DD6A95D490F889DBF6169DF096879 /* ISInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInterstitialDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISInterstitialDelegate.h"; sourceTree = "<group>"; };
-		935B3F10A1312129091CB0F6DF25AFAF /* NeftaISAdapter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NeftaISAdapter.debug.xcconfig; sourceTree = "<group>"; };
 		93D69EF13729B61C76FB362AD1D67ECD /* ISOfferwallAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOfferwallAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISOfferwallAdapterProtocol.h"; sourceTree = "<group>"; };
 		93FC2F9132781C6CA66AF7B2B25EE22D /* ISDemandOnlyRewardedVideoDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyRewardedVideoDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISDemandOnlyRewardedVideoDelegate.h"; sourceTree = "<group>"; };
 		950369F99F3779EAFF66752652F29456 /* ISOfferwallDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOfferwallDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISOfferwallDelegate.h"; sourceTree = "<group>"; };
 		9591CD867F62AD05E91D4D5ADD7BD1F4 /* SSEScreenContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEScreenContext.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/SSEScreenContext.h"; sourceTree = "<group>"; };
 		95D929D94E12BC142A0D99DD1A0EA7AE /* ISBaseAdAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseAdAdapter.h"; sourceTree = "<group>"; };
 		9614DF7A0BE1B1A49D50410F2E66211E /* ISGlobalDataWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISGlobalDataWriter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISGlobalDataWriter.h"; sourceTree = "<group>"; };
-		97076B9E4DCB2717268E84A478942EF7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		9773AEB1AB46CEB775894937C076CF6D /* ISNLightCacheManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNLightCacheManager.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNLightCacheManager.h"; sourceTree = "<group>"; };
 		977851605E49FDCB027069681BA1AB36 /* ISInitProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInitProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISInitProvider.h"; sourceTree = "<group>"; };
 		99956FFCB321FD6856D594E721EF6997 /* ISAdapterConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterConfig.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterConfig.h"; sourceTree = "<group>"; };
@@ -292,7 +285,6 @@
 		9CAC27AACA049CFB5F20DCCCC17437C1 /* SSEScreenContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEScreenContext.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSEScreenContext.h"; sourceTree = "<group>"; };
 		9D71962481C81D76F08CC92DF101DBE9 /* ISBiddingDataDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBiddingDataDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBiddingDataDelegate.h"; sourceTree = "<group>"; };
 		9D763D2C83E8DD77280ED92F7095F477 /* ISAdapterAdFullscreenProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdFullscreenProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterAdFullscreenProtocol.h"; sourceTree = "<group>"; };
-		9D7B1ED13CB63E9FDEE1F2AC9507A45F /* ISNeftaCustomBanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomBanner.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomBanner.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DCBDA428A8F3478CC55621FDC714259 /* ISConfigurations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConfigurations.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISConfigurations.h"; sourceTree = "<group>"; };
 		9E3612EBD911896691FF758D255EF0F7 /* ISNSoundSamplerRingerChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNSoundSamplerRingerChecker.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNSoundSamplerRingerChecker.h"; sourceTree = "<group>"; };
@@ -301,7 +293,7 @@
 		9F06E4A0916F17FD6826D801C271468C /* ISBaseAdInteractionAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdInteractionAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBaseAdInteractionAdapter.h"; sourceTree = "<group>"; };
 		A140A5052EE26154DC0FB013952D509A /* ISAdOptionsPosition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdOptionsPosition.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdOptionsPosition.h"; sourceTree = "<group>"; };
 		A1EC08CD209B952A5E1CB1453C857357 /* ISInterstitialAdapterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInterstitialAdapterDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISInterstitialAdapterDelegate.h"; sourceTree = "<group>"; };
-		A295818324C417176A2AE8E551DD5903 /* Pods-IronSourceSwiftDemoApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-IronSourceSwiftDemoApp"; path = Pods_IronSourceSwiftDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A295818324C417176A2AE8E551DD5903 /* Pods-IronSourceSwiftDemoApp */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "Pods-IronSourceSwiftDemoApp"; path = "libPods-IronSourceSwiftDemoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3613627F65BED2EC15F4B7C8A89E710 /* ISAdapterBaseProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterBaseProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterBaseProtocol.h"; sourceTree = "<group>"; };
 		A3618946BBCE6B8D4609D8BC5CB38F89 /* IronSource.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = IronSource.xcframework; path = IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		A373B0482CE56CBF06AF6CB156134062 /* ISNativeAdDataProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdDataProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdDataProtocol.h"; sourceTree = "<group>"; };
@@ -310,15 +302,16 @@
 		A683075E9E7144EB86691A1FA49AB915 /* ISNEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNEvent.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNEvent.h"; sourceTree = "<group>"; };
 		A698155E0681B78BF385FC32DDC12943 /* ISTokenProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISTokenProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISTokenProvider.h"; sourceTree = "<group>"; };
 		A6E39A0F020D6DB8F6CD6652FE5CAD36 /* ISAuctionProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAuctionProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAuctionProvider.h"; sourceTree = "<group>"; };
+		A7B19B1BB2BA437036E922CC43262337 /* Pods-IronSourceSwiftDemoApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-IronSourceSwiftDemoApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A7D67DEEBA2C4A33720C48DC40BD68C5 /* ISRewardedVideoDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISRewardedVideoDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISRewardedVideoDelegate.h"; sourceTree = "<group>"; };
 		A7DB8800EE942F08AE9A4442C66C3D68 /* LevelPlayInterstitialDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayInterstitialDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/LevelPlayInterstitialDelegate.h"; sourceTree = "<group>"; };
 		A86535A044CC5A3F3FB3AA12E0115F3B /* ISDemandOnlyRewardedVideoDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyRewardedVideoDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISDemandOnlyRewardedVideoDelegate.h"; sourceTree = "<group>"; };
 		A98B96D29B295D6F9DCF173897D9EDE3 /* ISNControllerMessageListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNControllerMessageListener.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNControllerMessageListener.h"; sourceTree = "<group>"; };
 		A9F41EA5B405453F80C51B7595CDED97 /* ISDataKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDataKeys.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISDataKeys.h"; sourceTree = "<group>"; };
-		AA4877EC06BDFA5B1D6B2D803C47A13B /* NeftaISAdapter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NeftaISAdapter-dummy.m"; sourceTree = "<group>"; };
 		AC78E9D36A737BF32CEE2285B155CD19 /* ISInterstitialAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInterstitialAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISInterstitialAdapterProtocol.h"; sourceTree = "<group>"; };
 		AC8C9FB581BEB2985D7EB8687DBDC22B /* ISLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLog.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISLog.h"; sourceTree = "<group>"; };
 		AD6123BB4351E9B0C5581FD31D4EE260 /* ISNativeAdDataImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdDataImage.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdDataImage.h"; sourceTree = "<group>"; };
+		ADC1F1EE11D71B089AF49C323022CE89 /* NeftaIsAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NeftaIsAdapter.h; path = NeftaISAdapter/NeftaISAdapter/NeftaIsAdapter.h; sourceTree = "<group>"; };
 		AE4A0BF62132FFD5B0119BF6A8CCF19B /* ISDemandOnlyBannerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISDemandOnlyBannerDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISDemandOnlyBannerDelegate.h"; sourceTree = "<group>"; };
 		AE813070949EDC0FC6B6BB743F14ACFC /* ISBaseAdapter+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ISBaseAdapter+Internal.h"; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseAdapter+Internal.h"; sourceTree = "<group>"; };
 		AEB8353AEC7B061F7F7328688CF36936 /* ISBannerAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBannerAdapterProtocol.h"; sourceTree = "<group>"; };
@@ -341,17 +334,20 @@
 		BC47A98D53BC47EEE574BB359D8439AF /* ISMetaDataConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISMetaDataConstants.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISMetaDataConstants.h"; sourceTree = "<group>"; };
 		BC597E7E514524BD8CE2698420979DD9 /* NeftaSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NeftaSDK.debug.xcconfig; sourceTree = "<group>"; };
 		BC681E1F67289308D2BFE48BA2A7843D /* ISSupersonicAdsConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSupersonicAdsConfiguration.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISSupersonicAdsConfiguration.h"; sourceTree = "<group>"; };
+		BF02D7C3A2094CEDD5F7B7E97EE96283 /* ISNeftaCustomBanner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomBanner.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomBanner.h; sourceTree = "<group>"; };
 		BF5E6C8AD37F954DD66E35BD54191586 /* ISOfferwallDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOfferwallDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISOfferwallDelegate.h"; sourceTree = "<group>"; };
-		BFB80196D9640E2F23BE251C32232916 /* Pods-IronSourceSwiftDemoApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IronSourceSwiftDemoApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		C036656878C6168BFB34BEC10F24AC0C /* ISNativeAdLoadDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdLoadDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdLoadDelegate.h"; sourceTree = "<group>"; };
 		C170166E3761A592495F36C5E08D058B /* ISAdUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdUnit.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdUnit.h"; sourceTree = "<group>"; };
+		C288509F7933E6517B3EB6200829DC68 /* ISNeftaCustomInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomInterstitial.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.h; sourceTree = "<group>"; };
 		C303304E9A9F1EB11D75D6F1CB20F020 /* ISAdapterAdViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdViewDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterAdViewDelegate.h"; sourceTree = "<group>"; };
 		C4B922563A388296252C8583A5664C4C /* ISNativeAdAdapterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdAdapterDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdAdapterDelegate.h"; sourceTree = "<group>"; };
 		C57B24DC95695A2571C0CB91FA1EC2E3 /* ISLoadWhileShowSupportState.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLoadWhileShowSupportState.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISLoadWhileShowSupportState.h"; sourceTree = "<group>"; };
 		C583105AC3F67B7648AEA7CEE8CA3FEC /* ISLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLog.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISLog.h"; sourceTree = "<group>"; };
 		C58517D0C9195C5D3F0DAB12FAAA5980 /* TokenConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TokenConstants.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/TokenConstants.h"; sourceTree = "<group>"; };
+		C59B7EDA8FC702499B3F6F4DE39DBDD3 /* NeftaISAdapter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NeftaISAdapter-prefix.pch"; sourceTree = "<group>"; };
 		C5EEEF048D8285D8BA04E6054A2FA7D8 /* LevelPlayRewardedVideoDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayRewardedVideoDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/LevelPlayRewardedVideoDelegate.h"; sourceTree = "<group>"; };
 		C6AA5DAC7B477757233605D5C7B0C8BF /* ISIronSourceAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISIronSourceAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISIronSourceAdapter.h"; sourceTree = "<group>"; };
+		C6F2DEF1EC7FFBE5CAB1FF2416C02961 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		C777E636BAFBD43841D58FEEA188E578 /* ISBiddingDataAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBiddingDataAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBiddingDataAdapterProtocol.h"; sourceTree = "<group>"; };
 		C784BE139045B7408BA220C694D34F1B /* ISSegment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSegment.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISSegment.h"; sourceTree = "<group>"; };
 		C7BDC3F3D68ECFE71DAC964EF5439419 /* ISNLightCacheManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNLightCacheManager.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNLightCacheManager.h"; sourceTree = "<group>"; };
@@ -361,20 +357,20 @@
 		CA17B173BF1457E0AC684681AA06C7C3 /* ISIronSourceAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISIronSourceAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISIronSourceAdapter.h"; sourceTree = "<group>"; };
 		CA234A098E816F9FA74E82EFA5AFBD84 /* ISAdapterErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterErrors.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterErrors.h"; sourceTree = "<group>"; };
 		CA990542987E6FBAF0AA48B82CEC5C44 /* LevelPlayMediaView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayMediaView.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/LevelPlayMediaView.h"; sourceTree = "<group>"; };
-		CBEB2689750BDBEB254D521AFDBFD98E /* ISNeftaCustomRewardedVideo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomRewardedVideo.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.m; sourceTree = "<group>"; };
+		CC322437CD48CE94C26354DFB8600BBB /* ISNeftaCustomBanner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomBanner.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomBanner.m; sourceTree = "<group>"; };
 		CC33FEE27B4B6756F97220A6687813E2 /* ISAdapterAdDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterAdDelegate.h"; sourceTree = "<group>"; };
 		CD7DABC81F0F67CB570DA53913F9E5AB /* ISAdapterErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterErrors.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterErrors.h"; sourceTree = "<group>"; };
 		CF8B4BD8F26E4348E7EA62A83B6111FF /* ISRewardedVideoAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISRewardedVideoAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISRewardedVideoAdapterProtocol.h"; sourceTree = "<group>"; };
 		D1A6D276BD66092FF37E2FEE00560D5D /* ISBannerAdapterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerAdapterDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBannerAdapterDelegate.h"; sourceTree = "<group>"; };
+		D36E419F79DBE7CE6F044809D06F9460 /* Pods-IronSourceSwiftDemoApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-IronSourceSwiftDemoApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		D393294AE4124D54657FCD4B949748BC /* SSEDeviceContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEDeviceContext.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSEDeviceContext.h"; sourceTree = "<group>"; };
 		D3D6CE59627D3CB4888A9D26A2F9B6C8 /* ISAdapterAdFullscreenProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdFullscreenProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterAdFullscreenProtocol.h"; sourceTree = "<group>"; };
 		D3DB28E181B462EB8387F9E8A4417F26 /* LevelPlayNativeAd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayNativeAd.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/LevelPlayNativeAd.h"; sourceTree = "<group>"; };
 		D45DE58C6FF33EC32EAA8DC716028EF1 /* ISAdapterSettingsProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterSettingsProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterSettingsProtocol.h"; sourceTree = "<group>"; };
-		D4799F6C5B97E65230BBBD018FDDD132 /* ISNeftaCustomBanner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomBanner.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomBanner.m; sourceTree = "<group>"; };
 		D62A95318EBBDE88277711D739B822A8 /* ISNativeAdInteractionDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdInteractionDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdInteractionDelegate.h"; sourceTree = "<group>"; };
-		D64910AC3FAABD994EA386434EF3857F /* ISNeftaCustomAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomAdapter.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomAdapter.m; sourceTree = "<group>"; };
 		D8DD8EEB3BB79ADBE0BA23BCDA6B98D1 /* ISInterstitialAdapterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISInterstitialAdapterDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISInterstitialAdapterDelegate.h"; sourceTree = "<group>"; };
 		DADC978FACDBDC961E9B93EFBC6747CD /* ISBaseAdUnitAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdUnitAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseAdUnitAdapter.h"; sourceTree = "<group>"; };
+		DBC3502F2F156BC59F3D1C13205B20AE /* Pods-IronSourceSwiftDemoApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IronSourceSwiftDemoApp-dummy.m"; sourceTree = "<group>"; };
 		DBF52DD6CF9BE3A72535EE2FA3054926 /* ISConfigurations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISConfigurations.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISConfigurations.h"; sourceTree = "<group>"; };
 		DCE3983DEF8D9D60D0760907BB104B18 /* SSEUrlHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEUrlHandler.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/SSEUrlHandler.h"; sourceTree = "<group>"; };
 		DCE604902954737C55833F5522470062 /* ISNativeAdAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNativeAdAdapterProtocol.h"; sourceTree = "<group>"; };
@@ -385,31 +381,27 @@
 		DF221A50A30FAD0AB07BBE25EE9A3F6C /* ISNativeAdView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNativeAdView.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISNativeAdView.h"; sourceTree = "<group>"; };
 		E049D750F2D81368275F6391E9437980 /* SSEOrientationContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEOrientationContext.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSEOrientationContext.h"; sourceTree = "<group>"; };
 		E2A631D6E97DAEB97EC3C44AD7120C1C /* ISNetworkInitializationDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNetworkInitializationDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNetworkInitializationDelegate.h"; sourceTree = "<group>"; };
-		E3028207C7AB123E67E0D86F33DE20E6 /* NeftaISAdapter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = NeftaISAdapter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E37A84DC6C44E70D949F9828EA8CF542 /* LevelPlayMediaView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayMediaView.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/LevelPlayMediaView.h"; sourceTree = "<group>"; };
+		E4025B7E5DF09A55ED063A1507E1BFA5 /* NeftaISAdapter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NeftaISAdapter.release.xcconfig; sourceTree = "<group>"; };
 		E4DDD624D45C687814E6E46C4ADD6E1D /* ISReleaseMemoryAdapterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISReleaseMemoryAdapterProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISReleaseMemoryAdapterProtocol.h"; sourceTree = "<group>"; };
 		E53802BF27BD4D1C2F76028715A75F86 /* ISLoggersSettings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISLoggersSettings.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISLoggersSettings.h"; sourceTree = "<group>"; };
 		E576B0C6DF27784E02AABEBF9189F0A2 /* SSESKAdNetworkServiceProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSESKAdNetworkServiceProvider.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/SSESKAdNetworkServiceProvider.h"; sourceTree = "<group>"; };
 		E65635E051BE33490A9D9A250E931522 /* NSMeasurement+ISMeasurement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMeasurement+ISMeasurement.h"; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/NSMeasurement+ISMeasurement.h"; sourceTree = "<group>"; };
-		E6D11564DA087979DBBFCCE003EE1C1E /* NeftaISAdapter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NeftaISAdapter-umbrella.h"; sourceTree = "<group>"; };
 		E712295D4E5FFF943139B87E990C8E21 /* ISOrientationData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISOrientationData.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISOrientationData.h"; sourceTree = "<group>"; };
 		E784AC2175E230B3B00FA828E52DD1AD /* ISPlacementInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISPlacementInfo.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISPlacementInfo.h"; sourceTree = "<group>"; };
 		E7FB4C213DCFB07605B5DE795256A93F /* ISBaseAdInteractionAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBaseAdInteractionAdapter.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISBaseAdInteractionAdapter.h"; sourceTree = "<group>"; };
 		E82AFA11E3A8BE3CA0EAF35937F8F69F /* ISUncaughtExceptionHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISUncaughtExceptionHandler.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISUncaughtExceptionHandler.h"; sourceTree = "<group>"; };
+		E913B52E8A250A2CF440678AC9DB452A /* ISNeftaCustomAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomAdapter.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomAdapter.m; sourceTree = "<group>"; };
 		E9E9BA18EF898935A3E487F8B4CE53B4 /* SSESKAdNetworkServiceEditor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSESKAdNetworkServiceEditor.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSESKAdNetworkServiceEditor.h"; sourceTree = "<group>"; };
 		EB2D6924EF81B188E47A1B3DD1EC0164 /* ISMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISMetaData.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISMetaData.h"; sourceTree = "<group>"; };
 		ED0A5F60707339E732FDFF55265505BC /* ISAdapterBannerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterBannerProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterBannerProtocol.h"; sourceTree = "<group>"; };
 		EDFE5CF6093D854C476906BC1EB848E6 /* ISAdapterBannerProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterBannerProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdapterBannerProtocol.h"; sourceTree = "<group>"; };
 		EE70E4024B92E047BE1E1F26941D5E52 /* ISSegmentDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSegmentDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISSegmentDelegate.h"; sourceTree = "<group>"; };
 		EE72D85B956E3C9093C51784A85ED206 /* ISSetAPSDataProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISSetAPSDataProtocol.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISSetAPSDataProtocol.h"; sourceTree = "<group>"; };
-		EED4C8D575C35C953AD782C1D92CF99E /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IronSourceSwiftDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EEE10CBFD771D991B44AB6D76D691EF4 /* NeftaSDK-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "NeftaSDK-xcframeworks.sh"; sourceTree = "<group>"; };
-		EF68C4A58079096BA862F5B58B622E68 /* ISNeftaCustomInterstitial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNeftaCustomInterstitial.h; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.h; sourceTree = "<group>"; };
 		EFEA54323743E47339D9CEEAA91BF1EE /* ISBannerSize.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISBannerSize.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISBannerSize.h"; sourceTree = "<group>"; };
 		F1B6600FF4E4EF654B0ACFCE30FBF7C3 /* SSEUrlHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SSEUrlHandler.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/SSEUrlHandler.h"; sourceTree = "<group>"; };
-		F21B4AAB184C2EC87FA3BC38DE5DCE02 /* ISNeftaCustomInterstitial.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISNeftaCustomInterstitial.m; path = NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.m; sourceTree = "<group>"; };
 		F2709A7097FB6FCF02B95CB532571BA1 /* LevelPlayBannerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LevelPlayBannerDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/LevelPlayBannerDelegate.h"; sourceTree = "<group>"; };
-		F6BB34F68C437E342B1FE8D548679A4B /* Pods-IronSourceSwiftDemoApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-IronSourceSwiftDemoApp-dummy.m"; sourceTree = "<group>"; };
 		FA1A4D20CED1FE57E05B0B524B4C5DCB /* ISAdapterAdViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdapterAdViewDelegate.h; path = "IronSource/IronSource.xcframework/ios-arm64_x86_64-simulator/IronSource.framework/Headers/ISAdapterAdViewDelegate.h"; sourceTree = "<group>"; };
 		FC7F11ABAF2DDBF80821B619C101906F /* ISAdInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISAdInfo.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISAdInfo.h"; sourceTree = "<group>"; };
 		FDE0D01E4C50B30CC23E771959C08131 /* ISNEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISNEvent.h; path = "IronSource/IronSource.xcframework/ios-arm64/IronSource.framework/Headers/ISNEvent.h"; sourceTree = "<group>"; };
@@ -417,26 +409,40 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		474F69FB4E80BDA97F370DF0A4E54C5B /* Frameworks */ = {
+		613CA0BE1F7A567F9F1AA3958FA3897F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78EEB464DD2234323C0D7E766533D2FA /* Foundation.framework in Frameworks */,
-				46EB2E00001950 /* IronSource.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CC188E0ED0C59DA5F65E4A61215DA86 /* Frameworks */ = {
+		C2123D70F625A6D4640400FDD862E3E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D18499D20A97199898D15E8B691AAAB /* Foundation.framework in Frameworks */,
+				46EB2E000018A0 /* IronSource.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FDC9C0039E00F21BFDA03E067BCDFF3 /* Pods-IronSourceSwiftDemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				0739AF23DD26B07AA102C429E0975189 /* Pods-IronSourceSwiftDemoApp.modulemap */,
+				A7B19B1BB2BA437036E922CC43262337 /* Pods-IronSourceSwiftDemoApp-acknowledgements.markdown */,
+				D36E419F79DBE7CE6F044809D06F9460 /* Pods-IronSourceSwiftDemoApp-acknowledgements.plist */,
+				DBC3502F2F156BC59F3D1C13205B20AE /* Pods-IronSourceSwiftDemoApp-dummy.m */,
+				66DF3F2BFB0DCF278E7FB4084AC22437 /* Pods-IronSourceSwiftDemoApp-frameworks.sh */,
+				2F63084F254CCFA4071E33D0620A06E3 /* Pods-IronSourceSwiftDemoApp-umbrella.h */,
+				321965E7C6B486BEBADF319A8ED0DFD8 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */,
+				75143FBE2191FAE3626DC8F4B33FB9AF /* Pods-IronSourceSwiftDemoApp.release.xcconfig */,
+			);
+			name = "Pods-IronSourceSwiftDemoApp";
+			path = "Target Support Files/Pods-IronSourceSwiftDemoApp";
+			sourceTree = "<group>";
+		};
 		243FA4D312F704F139A979C11BB41361 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,22 +454,23 @@
 			path = "../Target Support Files/NeftaSDK";
 			sourceTree = "<group>";
 		};
-		2D043B9B3124708569383B6D334D8C23 /* Pod */ = {
+		3FBF34FBBE805BB93706688B3EFB7C07 /* NeftaISAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				97076B9E4DCB2717268E84A478942EF7 /* LICENSE */,
-				E3028207C7AB123E67E0D86F33DE20E6 /* NeftaISAdapter.podspec */,
-				4901F9897FFE7423B22CB7C146E14194 /* README.md */,
+				77B42A4DA7CE860916360C6F9FFCEFD9 /* ISNeftaCustomAdapter.h */,
+				E913B52E8A250A2CF440678AC9DB452A /* ISNeftaCustomAdapter.m */,
+				BF02D7C3A2094CEDD5F7B7E97EE96283 /* ISNeftaCustomBanner.h */,
+				CC322437CD48CE94C26354DFB8600BBB /* ISNeftaCustomBanner.m */,
+				C288509F7933E6517B3EB6200829DC68 /* ISNeftaCustomInterstitial.h */,
+				0A9844DF919097A565B549ED59C42DD6 /* ISNeftaCustomInterstitial.m */,
+				58E05BC13C4C9F76BECE739987B8E100 /* ISNeftaCustomRewardedVideo.h */,
+				4974661A93FF9267149E7344DCA4C561 /* ISNeftaCustomRewardedVideo.m */,
+				ADC1F1EE11D71B089AF49C323022CE89 /* NeftaIsAdapter.h */,
+				D0B628AC9E1E418065473C3C64AD0258 /* Pod */,
+				5A61D2F59558A2B196847521E9D19785 /* Support Files */,
 			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		3CA2056CEF9362514142197CA0A98E44 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				56AE1D3C1546038F43C55777073F7609 /* Pods-IronSourceSwiftDemoApp */,
-			);
-			name = "Targets Support Files";
+			name = NeftaISAdapter;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4B540DC1A50B75929C3DE6BF4023A4D5 /* Pods */ = {
@@ -485,29 +492,24 @@
 			path = NeftaSDK;
 			sourceTree = "<group>";
 		};
-		56AE1D3C1546038F43C55777073F7609 /* Pods-IronSourceSwiftDemoApp */ = {
+		5A61D2F59558A2B196847521E9D19785 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				57FC6618EB6DD97335A201C386694C69 /* Pods-IronSourceSwiftDemoApp.modulemap */,
-				028B4EEEDDC786519B9A07DBD7EDDCD3 /* Pods-IronSourceSwiftDemoApp-acknowledgements.markdown */,
-				BFB80196D9640E2F23BE251C32232916 /* Pods-IronSourceSwiftDemoApp-acknowledgements.plist */,
-				F6BB34F68C437E342B1FE8D548679A4B /* Pods-IronSourceSwiftDemoApp-dummy.m */,
-				27800177DA05A9A1364874A0BE1C2987 /* Pods-IronSourceSwiftDemoApp-frameworks.sh */,
-				3D3154BC8FE0BE5FBEDF78406256B802 /* Pods-IronSourceSwiftDemoApp-Info.plist */,
-				89D48ACECEBB11C3BA3AA4048A0319CD /* Pods-IronSourceSwiftDemoApp-umbrella.h */,
-				EED4C8D575C35C953AD782C1D92CF99E /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */,
-				81EECC23376C5C9D0070CFA226F6011C /* Pods-IronSourceSwiftDemoApp.release.xcconfig */,
+				77EB3652F977A48E078CED489548B898 /* NeftaISAdapter-dummy.m */,
+				C59B7EDA8FC702499B3F6F4DE39DBDD3 /* NeftaISAdapter-prefix.pch */,
+				04C51EE095A44C3F17A8197A24B1A08B /* NeftaISAdapter.debug.xcconfig */,
+				E4025B7E5DF09A55ED063A1507E1BFA5 /* NeftaISAdapter.release.xcconfig */,
 			);
-			name = "Pods-IronSourceSwiftDemoApp";
-			path = "Target Support Files/Pods-IronSourceSwiftDemoApp";
+			name = "Support Files";
+			path = "Pods/Target Support Files/NeftaISAdapter";
 			sourceTree = "<group>";
 		};
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+		5FA2349C7F6B02743457E5D26E89E0D8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				0FDC9C0039E00F21BFDA03E067BCDFF3 /* Pods-IronSourceSwiftDemoApp */,
 			);
-			name = iOS;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		7A62D187554534FE7883CCAF9A7F00D8 /* IronSourceSDK */ = {
@@ -817,7 +819,7 @@
 		856C10479FAB9FF6B17B696D7080ED76 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A5702A6FEC86E2959C46D6E3564EDA57 /* NeftaISAdapter */,
+				3FBF34FBBE805BB93706688B3EFB7C07 /* NeftaISAdapter */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -828,25 +830,6 @@
 				57CFB2AE7CFBE31D93FADFDFB8A68192 /* NeftaSDK.xcframework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A5702A6FEC86E2959C46D6E3564EDA57 /* NeftaISAdapter */ = {
-			isa = PBXGroup;
-			children = (
-				7061FA74647FC11551F67D4E26626197 /* ISNeftaCustomAdapter.h */,
-				D64910AC3FAABD994EA386434EF3857F /* ISNeftaCustomAdapter.m */,
-				9D7B1ED13CB63E9FDEE1F2AC9507A45F /* ISNeftaCustomBanner.h */,
-				D4799F6C5B97E65230BBBD018FDDD132 /* ISNeftaCustomBanner.m */,
-				EF68C4A58079096BA862F5B58B622E68 /* ISNeftaCustomInterstitial.h */,
-				F21B4AAB184C2EC87FA3BC38DE5DCE02 /* ISNeftaCustomInterstitial.m */,
-				2742F7DAA82D1BD508F7AF37B40C585E /* ISNeftaCustomRewardedVideo.h */,
-				CBEB2689750BDBEB254D521AFDBFD98E /* ISNeftaCustomRewardedVideo.m */,
-				3B2DAC8137F6C107F215B9A031A6C91D /* NeftaIsAdapter.h */,
-				2D043B9B3124708569383B6D334D8C23 /* Pod */,
-				AE5CB6F08EFBD3DF91F76B531D8CD989 /* Support Files */,
-			);
-			name = NeftaISAdapter;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		AA790CC7DB1B77BAA6CB3C8F68B71DB5 /* Support Files */ = {
@@ -860,22 +843,7 @@
 			path = "../Target Support Files/IronSourceSDK";
 			sourceTree = "<group>";
 		};
-		AE5CB6F08EFBD3DF91F76B531D8CD989 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3ACD03792F0D2E5775378D71588EA111 /* NeftaISAdapter.modulemap */,
-				AA4877EC06BDFA5B1D6B2D803C47A13B /* NeftaISAdapter-dummy.m */,
-				600987267447F9F3AE98AA818B5C0DFD /* NeftaISAdapter-Info.plist */,
-				3A4BEE0EA720F37A6655E6C3CD7A9915 /* NeftaISAdapter-prefix.pch */,
-				E6D11564DA087979DBBFCCE003EE1C1E /* NeftaISAdapter-umbrella.h */,
-				935B3F10A1312129091CB0F6DF25AFAF /* NeftaISAdapter.debug.xcconfig */,
-				8AFD5BA467D84DFDF11C690898FBDB00 /* NeftaISAdapter.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "Pods/Target Support Files/NeftaISAdapter";
-			sourceTree = "<group>";
-		};
-		CE340D1D43E227DD917F4F01FD79FF56 /* Products */ = {
+		B233BAB181ED85AD106AA8C160BC6104 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				43350E2AE73BD6E781C8987D77B3B62A /* NeftaISAdapter */,
@@ -889,17 +857,26 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				856C10479FAB9FF6B17B696D7080ED76 /* Development Pods */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				4B540DC1A50B75929C3DE6BF4023A4D5 /* Pods */,
-				CE340D1D43E227DD917F4F01FD79FF56 /* Products */,
-				3CA2056CEF9362514142197CA0A98E44 /* Targets Support Files */,
+				B233BAB181ED85AD106AA8C160BC6104 /* Products */,
+				5FA2349C7F6B02743457E5D26E89E0D8 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		D0B628AC9E1E418065473C3C64AD0258 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				C6F2DEF1EC7FFBE5CAB1FF2416C02961 /* LICENSE */,
+				4EA5329876050C581EC8BF506F65B544 /* NeftaISAdapter.podspec */,
+				868071139B524F7217F45DADD2ED68E2 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -915,24 +892,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		19535144FAAB3E80FA18A3E716360FBF /* Headers */ = {
+		AB841C95F2DA02DA44E1353176858CC7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70DAA92C1281D1CFCA5780B7904E4D7E /* Pods-IronSourceSwiftDemoApp-umbrella.h in Headers */,
+				C4041E66EECCC9DB3FDBF18EF3B0E501 /* ISNeftaCustomAdapter.h in Headers */,
+				5A3004A4B9D91DDEF28CC109188A2413 /* ISNeftaCustomBanner.h in Headers */,
+				36D7BD7EC038601101333FC3BF0A4429 /* ISNeftaCustomInterstitial.h in Headers */,
+				AE56AD753E6C9A09717F8F7FC88C25D1 /* ISNeftaCustomRewardedVideo.h in Headers */,
+				1500E2C296DCF43099A8095E6B81FDCF /* NeftaIsAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1C64CA59A206AB0F8C5854705E75CE3 /* Headers */ = {
+		F3E636F4DBD7CE35C9037560505B5333 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5F6F4DFBFF995F5DC1C5DB16869C12E /* ISNeftaCustomAdapter.h in Headers */,
-				04EB9FFE233D26D9429F1C1EB74E3D39 /* ISNeftaCustomBanner.h in Headers */,
-				F193B0F8C91B9BF89CC3F00E63339B57 /* ISNeftaCustomInterstitial.h in Headers */,
-				01D79DE4764FA52C62A37DD74CDAF3A7 /* ISNeftaCustomRewardedVideo.h in Headers */,
-				841780BE47C2E50350C71ADE0004D1D9 /* NeftaIsAdapter.h in Headers */,
-				F6A45D3E42DF739635EE3192D9B79150 /* NeftaISAdapter-umbrella.h in Headers */,
+				BBD414B3F8C561DBF8BC97FA9079F678 /* Pods-IronSourceSwiftDemoApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,43 +917,41 @@
 /* Begin PBXNativeTarget section */
 		2616A3A548E22E52728613AF8AF92FE5 /* Pods-IronSourceSwiftDemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27F94DA271B160122638F53F3B548934 /* Build configuration list for PBXNativeTarget "Pods-IronSourceSwiftDemoApp" */;
+			buildConfigurationList = 29BBE2FF5568E4A6062E965B212EB2F7 /* Build configuration list for PBXNativeTarget "Pods-IronSourceSwiftDemoApp" */;
 			buildPhases = (
-				19535144FAAB3E80FA18A3E716360FBF /* Headers */,
-				E96E6C4BBC4010964C5A9347692A0373 /* Sources */,
-				8CC188E0ED0C59DA5F65E4A61215DA86 /* Frameworks */,
-				0B4636997CB9F1CAD8DF7192CFA6A8EC /* Resources */,
+				F3E636F4DBD7CE35C9037560505B5333 /* Headers */,
+				5E638E0A32DAEF6B664D78EEAE84F10A /* Sources */,
+				613CA0BE1F7A567F9F1AA3958FA3897F /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5B77028157936E05BAC0B8EAEE524510 /* PBXTargetDependency */,
-				CBEC36B985840AE0AFCE795F82E1E06A /* PBXTargetDependency */,
-				274811D4FC84287E61EBC4F963F06B74 /* PBXTargetDependency */,
+				704B250137CAFD4BD4370A6CAEBDDF74 /* PBXTargetDependency */,
+				D8F6E30D58BFAC6514655E35232E82EF /* PBXTargetDependency */,
+				375724BE9D2CB6F1D0B7CD3041A7796C /* PBXTargetDependency */,
 			);
 			name = "Pods-IronSourceSwiftDemoApp";
-			productName = Pods_IronSourceSwiftDemoApp;
+			productName = "Pods-IronSourceSwiftDemoApp";
 			productReference = A295818324C417176A2AE8E551DD5903 /* Pods-IronSourceSwiftDemoApp */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.library.static";
 		};
 		A854AF9C1B2ADEC74C2C4F33A030FD14 /* NeftaISAdapter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 997DA0D5DE1543C8C212EEEA539D9078 /* Build configuration list for PBXNativeTarget "NeftaISAdapter" */;
+			buildConfigurationList = 73E72ECE47A58104DD6CFA9D6F0F21FF /* Build configuration list for PBXNativeTarget "NeftaISAdapter" */;
 			buildPhases = (
-				C1C64CA59A206AB0F8C5854705E75CE3 /* Headers */,
-				469385C06EDE2DDB0204E977E29CE401 /* Sources */,
-				474F69FB4E80BDA97F370DF0A4E54C5B /* Frameworks */,
-				6C3BD08DC0EA4671139B4CA89BCDEE39 /* Resources */,
+				AB841C95F2DA02DA44E1353176858CC7 /* Headers */,
+				2DECF19579B78E3681F4EB5142030810 /* Sources */,
+				C2123D70F625A6D4640400FDD862E3E2 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F610DD194DB3A8221175C8622FC4D66F /* PBXTargetDependency */,
+				FDAEB597EB64BA23D48002B45D2A6385 /* PBXTargetDependency */,
 			);
 			name = NeftaISAdapter;
 			productName = NeftaISAdapter;
 			productReference = 43350E2AE73BD6E781C8987D77B3B62A /* NeftaISAdapter */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -997,7 +971,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = CE340D1D43E227DD917F4F01FD79FF56 /* Products */;
+			productRefGroup = B233BAB181ED85AD106AA8C160BC6104 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1009,24 +983,25 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		0B4636997CB9F1CAD8DF7192CFA6A8EC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6C3BD08DC0EA4671139B4CA89BCDEE39 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXShellScriptBuildPhase section */
+		5B97EE890D6AF632E293729C59DB913A /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/NeftaSDK/NeftaSDK-xcframeworks.sh",
+				"${PODS_ROOT}/NeftaSDK/NeftaSDK.xcframework",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputPaths = (
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NeftaSDK/NeftaSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/NeftaSDK/NeftaSDK-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		77A16B24B5DC438FD3A786739588BEEC /* [CP] Copy XCFrameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1045,111 +1020,84 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/IronSourceSDK/IronSourceSDK-xcframeworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AEA88B8BBF88AE4FEE98114DC1716FED /* [CP] Copy XCFrameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/NeftaSDK/NeftaSDK-xcframeworks.sh",
-				"${PODS_ROOT}/NeftaSDK/NeftaSDK.xcframework",
-			);
-			name = "[CP] Copy XCFrameworks";
-			outputPaths = (
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NeftaSDK/NeftaSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/NeftaSDK/NeftaSDK-xcframeworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		469385C06EDE2DDB0204E977E29CE401 /* Sources */ = {
+		2DECF19579B78E3681F4EB5142030810 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E46D0563B92221D5663B62D90E48DC9D /* ISNeftaCustomAdapter.m in Sources */,
-				D82887E0DCD34C52BA14110E3FD4EBC7 /* ISNeftaCustomBanner.m in Sources */,
-				8AC1E15528AC052C7E8EF81E2C7B0BC5 /* ISNeftaCustomInterstitial.m in Sources */,
-				43848891C6576155857D0B0904B848B6 /* ISNeftaCustomRewardedVideo.m in Sources */,
-				17D4B7B1EF8F4A75269C1A859A5C68D6 /* NeftaISAdapter-dummy.m in Sources */,
+				D52EE6D0D3339AA3329C7211D7976C01 /* ISNeftaCustomAdapter.m in Sources */,
+				FBCA3664CC06A80A90748BD645DD1932 /* ISNeftaCustomBanner.m in Sources */,
+				08512C66BF0799ED6524B935D759782B /* ISNeftaCustomInterstitial.m in Sources */,
+				3C6F01575A5DE8E86C575D9E98FBFD84 /* ISNeftaCustomRewardedVideo.m in Sources */,
+				F8A24CF44E55122F841610743234AC0C /* NeftaISAdapter-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E96E6C4BBC4010964C5A9347692A0373 /* Sources */ = {
+		5E638E0A32DAEF6B664D78EEAE84F10A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761ABE00F7FB6EB14BEF0A2C5FDCCDAB /* Pods-IronSourceSwiftDemoApp-dummy.m in Sources */,
+				D2078AF95E8A8F9F72979B3C44EEF6A7 /* Pods-IronSourceSwiftDemoApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		274811D4FC84287E61EBC4F963F06B74 /* PBXTargetDependency */ = {
+		375724BE9D2CB6F1D0B7CD3041A7796C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NeftaSDK;
 			target = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF /* NeftaSDK */;
-			targetProxy = 2C4C91289B7F2279D89660D13FB2F58D /* PBXContainerItemProxy */;
+			targetProxy = E9435F5FAF6D43F6331E17FA76B063A3 /* PBXContainerItemProxy */;
 		};
-		5B77028157936E05BAC0B8EAEE524510 /* PBXTargetDependency */ = {
+		704B250137CAFD4BD4370A6CAEBDDF74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = IronSourceSDK;
 			target = 205EFBEF86DA6E7E3D5B9BABED8872EE /* IronSourceSDK */;
-			targetProxy = 80D45EB88A18DBC420256757524C21E5 /* PBXContainerItemProxy */;
+			targetProxy = 25813A5EB20EEB6A79CEDB8AA6415213 /* PBXContainerItemProxy */;
 		};
-		CBEC36B985840AE0AFCE795F82E1E06A /* PBXTargetDependency */ = {
+		D8F6E30D58BFAC6514655E35232E82EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NeftaISAdapter;
 			target = A854AF9C1B2ADEC74C2C4F33A030FD14 /* NeftaISAdapter */;
-			targetProxy = CEEE929302410262725488E983B95A9F /* PBXContainerItemProxy */;
+			targetProxy = 6289FFCD917BEF473526014614FF975D /* PBXContainerItemProxy */;
 		};
-		F610DD194DB3A8221175C8622FC4D66F /* PBXTargetDependency */ = {
+		FDAEB597EB64BA23D48002B45D2A6385 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NeftaSDK;
 			target = 1990F8EC7C57CD4EDD6B5A2A0DA72FFF /* NeftaSDK */;
-			targetProxy = AB32516804CA6ACB0A702318C2BA787A /* PBXContainerItemProxy */;
+			targetProxy = 78BF3BEE0B791AE798E933B1D7C65A5D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3E213457D8F5AC01D27BAC6EE938096D /* Release */ = {
+		18FEAC2B244CDB449C24A092AB14798F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AFD5BA467D84DFDF11C690898FBDB00 /* NeftaISAdapter.release.xcconfig */;
+			baseConfigurationReference = 75143FBE2191FAE3626DC8F4B33FB9AF /* Pods-IronSourceSwiftDemoApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/NeftaISAdapter/NeftaISAdapter-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/NeftaISAdapter/NeftaISAdapter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/NeftaISAdapter/NeftaISAdapter.modulemap";
-				PRODUCT_MODULE_NAME = NeftaISAdapter;
-				PRODUCT_NAME = NeftaISAdapter;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		42162A296DDF37EDC5823ED0346FEF01 /* Release */ = {
+		5B81786A41F7F8E9A56C5049ADB26549 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D7CAAA441409D4723DED6B55C03FBC5 /* NeftaSDK.release.xcconfig */;
 			buildSettings = {
@@ -1164,55 +1112,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		4536BDD05DCF3151C29698640DDE6C3D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EED4C8D575C35C953AD782C1D92CF99E /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		4DB35C235D1119F49D9F03A7B4AE0F2F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC597E7E514524BD8CE2698420979DD9 /* NeftaSDK.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
 		};
 		63CDC2A5267B44BDF476337B2D5BC0A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1307,9 +1206,9 @@
 			};
 			name = Release;
 		};
-		A0CF23B7943E8111FE072EBF3051A617 /* Release */ = {
+		93C45F3E1860A0FA53EC52B71751D60C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81EECC23376C5C9D0070CFA226F6011C /* Pods-IronSourceSwiftDemoApp.release.xcconfig */;
+			baseConfigurationReference = 321965E7C6B486BEBADF319A8ED0DFD8 /* Pods-IronSourceSwiftDemoApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -1317,30 +1216,18 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-IronSourceSwiftDemoApp/Pods-IronSourceSwiftDemoApp.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1408,55 +1295,80 @@
 			};
 			name = Debug;
 		};
-		CB5AFEFD6D4AFFBAB03533EDF34BE85E /* Debug */ = {
+		D16717D503BC15B645285032E5B1089A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 935B3F10A1312129091CB0F6DF25AFAF /* NeftaISAdapter.debug.xcconfig */;
+			baseConfigurationReference = 04C51EE095A44C3F17A8197A24B1A08B /* NeftaISAdapter.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/NeftaISAdapter/NeftaISAdapter-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/NeftaISAdapter/NeftaISAdapter-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/NeftaISAdapter/NeftaISAdapter.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_MODULE_NAME = NeftaISAdapter;
 				PRODUCT_NAME = NeftaISAdapter;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E0D243D6B750389712CD15A781BEF7FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4025B7E5DF09A55ED063A1507E1BFA5 /* NeftaISAdapter.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/NeftaISAdapter/NeftaISAdapter-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = NeftaISAdapter;
+				PRODUCT_NAME = NeftaISAdapter;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FB2AEE1C761BB09978D4A072274D7F24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC597E7E514524BD8CE2698420979DD9 /* NeftaSDK.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0E25ED59E1CACFA3DF68EF9B89229444 /* Build configuration list for PBXAggregateTarget "NeftaSDK" */ = {
+		29BBE2FF5568E4A6062E965B212EB2F7 /* Build configuration list for PBXNativeTarget "Pods-IronSourceSwiftDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DB35C235D1119F49D9F03A7B4AE0F2F /* Debug */,
-				42162A296DDF37EDC5823ED0346FEF01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		27F94DA271B160122638F53F3B548934 /* Build configuration list for PBXNativeTarget "Pods-IronSourceSwiftDemoApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4536BDD05DCF3151C29698640DDE6C3D /* Debug */,
-				A0CF23B7943E8111FE072EBF3051A617 /* Release */,
+				93C45F3E1860A0FA53EC52B71751D60C /* Debug */,
+				18FEAC2B244CDB449C24A092AB14798F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1470,11 +1382,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		997DA0D5DE1543C8C212EEEA539D9078 /* Build configuration list for PBXNativeTarget "NeftaISAdapter" */ = {
+		73E72ECE47A58104DD6CFA9D6F0F21FF /* Build configuration list for PBXNativeTarget "NeftaISAdapter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CB5AFEFD6D4AFFBAB03533EDF34BE85E /* Debug */,
-				3E213457D8F5AC01D27BAC6EE938096D /* Release */,
+				D16717D503BC15B645285032E5B1089A /* Debug */,
+				E0D243D6B750389712CD15A781BEF7FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1484,6 +1396,15 @@
 			buildConfigurations = (
 				63CDC2A5267B44BDF476337B2D5BC0A7 /* Debug */,
 				6C7AA0DB04C514B25BA0788D921E092F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAB7CE1C7E9B7504485092633ED4613B /* Build configuration list for PBXAggregateTarget "NeftaSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB2AEE1C761BB09978D4A072274D7F24 /* Debug */,
+				5B81786A41F7F8E9A56C5049ADB26549 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

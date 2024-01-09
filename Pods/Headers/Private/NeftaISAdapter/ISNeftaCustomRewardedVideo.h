@@ -1,0 +1,1 @@
+../../../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomRewardedVideo.h

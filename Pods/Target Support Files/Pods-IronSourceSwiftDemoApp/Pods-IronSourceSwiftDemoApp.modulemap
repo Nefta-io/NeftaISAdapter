@@ -1,4 +1,4 @@
-framework module Pods_IronSourceSwiftDemoApp {
+module Pods_IronSourceSwiftDemoApp {
   umbrella header "Pods-IronSourceSwiftDemoApp-umbrella.h"
 
   export *

@@ -5,7 +5,6 @@ workspace 'NeftaISAdapter.xcodeworkspace.xcworkspace'
 
 target 'IronSourceSwiftDemoApp' do
   project 'IronSourceSwiftDemoApp/IronSourceSwiftDemoApp.xcodeproj'
-  use_frameworks!
 
   pod 'IronSourceSDK'
   pod 'NeftaISAdapter', :path => '.'
