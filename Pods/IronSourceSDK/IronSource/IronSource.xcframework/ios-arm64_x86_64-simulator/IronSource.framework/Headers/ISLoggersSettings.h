@@ -10,9 +10,9 @@
 
 @interface ISLoggersSettings : NSObject
 
-@property (nonatomic, readonly) NSInteger server;
-@property (nonatomic, readonly) NSInteger publisher;
-@property (nonatomic, readonly) NSInteger console;
+@property(nonatomic, readonly) NSInteger server;
+@property(nonatomic, readonly) NSInteger publisher;
+@property(nonatomic, readonly) NSInteger console;
 
 - (instancetype)initWithServer:(NSInteger)server
                      publisher:(NSInteger)publisher

@@ -10,19 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 @interface ISForegroundTimeCalculator : NSObject
 
-
-
-- (instancetype)initWithTarget:(id)target
-                            selector:(SEL)selector;
-
+- (instancetype)initWithTarget:(id)target selector:(SEL)selector;
 
 - (void)startNow;
 
-
 @end
-
 
 NS_ASSUME_NONNULL_END

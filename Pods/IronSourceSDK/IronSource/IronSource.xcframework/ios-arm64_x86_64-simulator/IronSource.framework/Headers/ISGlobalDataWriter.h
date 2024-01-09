@@ -15,20 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setInitialData;
 
-- (void)setData:(id)value
-         forKey:(NSString *)key;
+- (void)setData:(id)value forKey:(NSString *)key;
 
 - (void)setData:(NSDictionary *)data;
 
-- (void)extendData:(NSDictionary *)data
-            forKey:(NSString *)objToExtend;
+- (void)extendData:(NSDictionary *)data forKey:(NSString *)objToExtend;
 
-- (void)setData:(id)value
-         forKey:(NSString *)key
-      andAdUnit:(ISGlobalDataAdUnit)adUnit;
+- (void)setData:(id)value forKey:(NSString *)key andAdUnit:(ISGlobalDataAdUnit)adUnit;
 
-- (void)removeDataForKey:(NSString *)key
-               andAdUnit:(ISGlobalDataAdUnit)adUnit;
+- (void)removeDataForKey:(NSString *)key andAdUnit:(ISGlobalDataAdUnit)adUnit;
 @end
 
 NS_ASSUME_NONNULL_END

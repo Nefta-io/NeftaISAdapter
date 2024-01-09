@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString * const kAppTransparencyTrackingManagerClass = @"ATTrackingManager";
-static NSString * const kSKAdNetworkUserTrackingDescrpitionPlistKey = @"NSUserTrackingUsageDescription";
-static NSString * const kAppTransparencyFrameworkPathPhysicalDevice = @"/System/Library/Frameworks/AppTrackingTransparency.framework/AppTrackingTransparency";
-static NSString * const kAppTransparencyTrackingManagerAuthorizationStatusMethod = @"trackingAuthorizationStatus";
+static NSString* const kAppTransparencyTrackingManagerClass = @"ATTrackingManager";
+static NSString* const kSKAdNetworkUserTrackingDescrpitionPlistKey =
+    @"NSUserTrackingUsageDescription";
+static NSString* const kAppTransparencyFrameworkPathPhysicalDevice =
+    @"/System/Library/Frameworks/AppTrackingTransparency.framework/AppTrackingTransparency";
+static NSString* const kAppTransparencyTrackingManagerAuthorizationStatusMethod =
+    @"trackingAuthorizationStatus";
 
 @interface ISNTrackingAuthorizationService : NSObject
 
@@ -19,7 +22,8 @@ static NSString * const kAppTransparencyTrackingManagerAuthorizationStatusMethod
 
 /**
  * @abstract Gathers the authorization status of the user for being tracked (uses reflection)
- * @return A NSNumber object - in case of using this API in OS versions lower than 14, the API will return a NIL object
+ * @return A NSNumber object - in case of using this API in OS versions lower than 14, the API will
+ * return a NIL object
  */
 
 - (NSNumber*)getAuthorizationStatus;

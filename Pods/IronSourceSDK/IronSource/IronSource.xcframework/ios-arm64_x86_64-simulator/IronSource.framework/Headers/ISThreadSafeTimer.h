@@ -13,13 +13,13 @@
 
 @protocol ISSafeTimerDelegate
 
--(void)onSafeTimerTick;
+- (void)onSafeTimerTick;
 
 @end
 
-
 /*
- a thread safe timer for start/stop the timer from different threads. once the timer fires, the onSafeTimerTick is invoked for the delegate.
+ a thread safe timer for start/stop the timer from different threads. once the timer fires, the
+ onSafeTimerTick is invoked for the delegate.
  */
 @interface ISThreadSafeTimer : NSObject
 
@@ -30,6 +30,5 @@
 - (void)stop;
 
 @end
-
 
 #endif /* ISThreadSafeTimer_h */

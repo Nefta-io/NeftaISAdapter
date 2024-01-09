@@ -10,11 +10,11 @@
 
 @interface SSEDeviceContext : NSObject
 
-+ (SSEDeviceContext*) defaultDeviceContext;
++ (SSEDeviceContext*)defaultDeviceContext;
 
-@property (nonatomic, strong) NSString*     deviceOSName;
-@property (nonatomic, strong) NSString*     deviceOSVersion;
-@property (nonatomic, strong) NSString*     deviceModel;
-@property (nonatomic, strong) NSString*     deviceOEM;
+@property(nonatomic, strong) NSString* deviceOSName;
+@property(nonatomic, strong) NSString* deviceOSVersion;
+@property(nonatomic, strong) NSString* deviceModel;
+@property(nonatomic, strong) NSString* deviceOEM;
 
 @end

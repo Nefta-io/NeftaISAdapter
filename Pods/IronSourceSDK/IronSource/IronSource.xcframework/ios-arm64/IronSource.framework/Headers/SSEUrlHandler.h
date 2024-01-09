@@ -11,6 +11,7 @@
 
 @interface SSEUrlHandler : NSObject
 
-+(void)openURL:(NSString *_Nonnull)url completionHandler:(void (^ __nullable)(BOOL success))completion;
++ (void)openURL:(NSString *_Nonnull)url
+    completionHandler:(void (^__nullable)(BOOL success))completion;
 
 @end

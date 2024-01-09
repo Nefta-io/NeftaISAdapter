@@ -10,13 +10,13 @@
 
 @interface ISNLightCacheManager : NSObject
 
-@property (nonatomic, strong) NSString *rootDirectoryPath;
+@property(nonatomic, strong) NSString *rootDirectoryPath;
 
-+ (ISNLightCacheManager*)sharedInstance;
-- (void)saveDataOnRootDirectory:(NSData*)data
-                       fileName:(NSString*)fileName
++ (ISNLightCacheManager *)sharedInstance;
+- (void)saveDataOnRootDirectory:(NSData *)data
+                       fileName:(NSString *)fileName
                           error:(NSError **)error;
 
-- (NSURL*)fileUrlForFileNameOnRootDirectory:(NSString*)fileName;
+- (NSURL *)fileUrlForFileNameOnRootDirectory:(NSString *)fileName;
 
 @end

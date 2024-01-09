@@ -1,24 +1,16 @@
-//
-//  SSESKAdNetworkService.h
-//  Environment
-//
-//  Created by Guy Lis on 23/07/2020.
-//  Copyright © 2020 ironSource. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#import "SSESKAdNetworkServiceEditor.h"
+#import "SSESKAdNetworkServiceProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString * const kSKAdNetworkItemsPlistKey = @"SKAdNetworkItems";
-static NSString * const kSKAdNetworkIdPlistKey = @"SKAdNetworkIdentifier";
+static NSString* const kSKAdNetworkItemsPlistKey = @"SKAdNetworkItems";
+static NSString* const kSKAdNetworkIdPlistKey = @"SKAdNetworkIdentifier";
 
-@interface SSESKAdNetworkService : NSObject
+@interface SSESKAdNetworkService
+    : NSObject <SSESKAdNetworkServiceEditor, SSESKAdNetworkServiceProvider>
 
-// property for determining whether to use idfv in the mediation/network by default true
-@property (nonatomic, assign) BOOL shouldUseIdfv;
-
-+ (SSESKAdNetworkService*)sharedService;
+@property(nonatomic, assign) BOOL shouldUseIdfv;
 
 + (NSSet*)collectNetworkIdsFromPlist;
 

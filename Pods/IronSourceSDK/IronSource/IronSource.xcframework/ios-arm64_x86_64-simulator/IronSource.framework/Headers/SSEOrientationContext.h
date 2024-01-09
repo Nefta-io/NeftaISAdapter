@@ -15,7 +15,7 @@
 + (NSInteger)orientationLockedState;
 
 /* returns UIInterfaceOrientationMask of the viewController, otherwise returns -1 */
-+ (UIInterfaceOrientationMask)supportedOrientationForViewController:(UIViewController*)viewController;
++ (UIInterfaceOrientationMask)supportedOrientationForViewController:
+    (UIViewController*)viewController;
 + (UIInterfaceOrientationMask)windowOrientation;
 @end
-

@@ -8,11 +8,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//needs to be retained
+// needs to be retained
 @interface ISTimer : NSObject
 
-typedef void(^ISTimerBlock)(ISTimer * _Nullable timer);
-typedef void(^ISTimerCancelBlock)(void);
+typedef void (^ISTimerBlock)(ISTimer *_Nullable timer);
+typedef void (^ISTimerCancelBlock)(void);
 
 - (instancetype)initWithTimeMeasurement:(NSMeasurement *)timeMeasurement
                                   queue:(nullable dispatch_queue_t)queue
@@ -29,8 +29,6 @@ typedef void(^ISTimerCancelBlock)(void);
                                           repeats:(BOOL)repeats
                                             block:(ISTimerBlock)block
                                       cancelBlock:(nullable ISTimerCancelBlock)cancelBlock;
-
-
 
 - (void)activate;
 - (BOOL)canceled;

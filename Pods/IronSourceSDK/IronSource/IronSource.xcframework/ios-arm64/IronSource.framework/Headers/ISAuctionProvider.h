@@ -12,8 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 // This class is a wrapper between the mediation and global data as held in the global data manager.
-// The purpose is to recieve all the data that is related to the auction request from the global data manager,
-// in the related format (such as meta data)
+// The purpose is to recieve all the data that is related to the auction request from the global
+// data manager, in the related format (such as meta data)
 @interface ISAuctionProvider : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;

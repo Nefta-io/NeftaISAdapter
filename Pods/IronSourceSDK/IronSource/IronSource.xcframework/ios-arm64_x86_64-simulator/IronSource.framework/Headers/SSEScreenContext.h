@@ -11,6 +11,6 @@
 
 @interface SSEScreenContext : NSObject
 
-+ (CGFloat) scale;
++ (CGFloat)scale;
 
 @end

@@ -10,19 +10,19 @@
 
 @interface ISEventsSettings : NSObject
 
-@property (nonatomic, assign, readonly) BOOL        sendUltraEvents;
-@property (nonatomic, assign, readonly) BOOL        sendEventsToggle;
-@property (nonatomic, assign, readonly) BOOL        eventsCompression;
-@property (nonatomic, assign, readonly) NSInteger   eventsCompressionLevel;
-@property (nonatomic, strong, readonly) NSURL       *serverEventsURL;
-@property (nonatomic, assign, readonly) NSUInteger  backupThreshold;
-@property (nonatomic, assign, readonly) NSUInteger 	maxNumberOfEvents;
-@property (nonatomic, copy,   readonly) NSString    *serverEventsType;
-@property (nonatomic, strong, readonly) NSArray     *optOut;
-@property (nonatomic, strong, readonly) NSArray     *optIn;
-@property (nonatomic, strong, readonly) NSArray     *triggerEvents;
-@property (nonatomic, strong, readonly) NSArray     *nonConnectivityEvents;
-@property (nonatomic, assign)           NSUInteger  maxEventsPerBatch;
+@property(nonatomic, assign, readonly) BOOL sendUltraEvents;
+@property(nonatomic, assign, readonly) BOOL sendEventsToggle;
+@property(nonatomic, assign, readonly) BOOL eventsCompression;
+@property(nonatomic, assign, readonly) NSInteger eventsCompressionLevel;
+@property(nonatomic, strong, readonly) NSURL *serverEventsURL;
+@property(nonatomic, assign, readonly) NSUInteger backupThreshold;
+@property(nonatomic, assign, readonly) NSUInteger maxNumberOfEvents;
+@property(nonatomic, copy, readonly) NSString *serverEventsType;
+@property(nonatomic, strong, readonly) NSArray *optOut;
+@property(nonatomic, strong, readonly) NSArray *optIn;
+@property(nonatomic, strong, readonly) NSArray *triggerEvents;
+@property(nonatomic, strong, readonly) NSArray *nonConnectivityEvents;
+@property(nonatomic, assign) NSUInteger maxEventsPerBatch;
 
 - (instancetype)initWithSendUltraEvents:(BOOL)sendEvents
                        sendEventsToggle:(BOOL)eventsToggle

@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^ISNRingerCheckerStatusChangedHandler)(BOOL silent);
+typedef void (^ISNRingerCheckerStatusChangedHandler)(BOOL silent);
 
 @interface ISNSoundSamplerRingerChecker : NSObject
 
-@property (nonatomic, readonly, getter=isDetecting) BOOL detecting;
-@property (nonatomic, readonly, getter=isActive) BOOL activated;
-@property (nonatomic, readonly, getter=isSilentOn) BOOL silentOn;
-@property (atomic, copy) ISNRingerCheckerStatusChangedHandler statusHandler;
+@property(nonatomic, readonly, getter=isDetecting) BOOL detecting;
+@property(nonatomic, readonly, getter=isActive) BOOL activated;
+@property(nonatomic, readonly, getter=isSilentOn) BOOL silentOn;
+@property(atomic, copy) ISNRingerCheckerStatusChangedHandler statusHandler;
 
-+(ISNSoundSamplerRingerChecker*)shared;
++ (ISNSoundSamplerRingerChecker*)shared;
 
 - (void)startDetecting;
 - (void)stopDetecting;

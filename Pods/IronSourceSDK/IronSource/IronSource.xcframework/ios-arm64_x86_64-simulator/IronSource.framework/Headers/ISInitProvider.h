@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 // This class is a wrapper between the mediation and global data as held in the global data manager.
-// The purpose is to recieve all the data that is related to the init request from the global data manager
+// The purpose is to recieve all the data that is related to the init request from the global data
+// manager
 @interface ISInitProvider : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
@@ -21,4 +22,3 @@
 - (NSDictionary *)getInitData;
 
 @end
-

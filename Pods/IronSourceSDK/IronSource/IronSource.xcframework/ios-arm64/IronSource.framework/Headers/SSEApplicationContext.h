@@ -11,17 +11,17 @@
 
 @interface SSEApplicationContext : NSObject
 
-+ (SSEApplicationContext*) defaultApplicationContext;
++ (SSEApplicationContext*)defaultApplicationContext;
 
-+ (NSDictionary *)dictionaryForAppTransportSecurityFlag;
++ (NSDictionary*)dictionaryForAppTransportSecurityFlag;
 
-+ (NSObject*) getAllowsArbitraryLoadsFlagInATS;
++ (NSObject*)getAllowsArbitraryLoadsFlagInATS;
 
-+ (NSObject*) getAllowsArbitraryLoadsInWebContentFlagInATS;
++ (NSObject*)getAllowsArbitraryLoadsInWebContentFlagInATS;
 
-+ (NSString*) getAppVersion;
++ (NSString*)getAppVersion;
 
-+(BOOL)isUIViewControllerBasedStatusBarAppearanceFlagSetToNo;
++ (BOOL)isUIViewControllerBasedStatusBarAppearanceFlagSetToNo;
 
 @property NSString* applicationBundleId;
 @property NSString* filePathCacheDirectory;

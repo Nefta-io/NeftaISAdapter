@@ -8,6 +8,6 @@
 
 @interface NSUnitDuration (ISTimeUnit)
 
-@property (class, readonly, copy) NSUnitDuration *ms;
+@property(class, readonly, copy) NSUnitDuration *ms;
 
 @end
