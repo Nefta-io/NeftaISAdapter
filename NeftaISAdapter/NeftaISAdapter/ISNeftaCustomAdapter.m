@@ -50,10 +50,10 @@ static dispatch_semaphore_t _semaphore;
             _plugin.OnLoad = ^(Placement *placement) {
                 id<ISAdapterAdDelegate> listener = _listeners[placement._id];
                 if (placement._type == TypesBanner) {
-                    WebPlacement *webPlacement = (WebPlacement *)placement;
-                    UIView *view = webPlacement._bufferWebController;
-                    [((id<ISBannerAdDelegate>)listener) adDidLoadWithView: view];
-                    [_plugin ShowWithId: placement._id];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_plugin ShowWithId: placement._id];
+                        [((id<ISBannerAdDelegate>)listener) adDidLoadWithView: [_plugin GetViewForPlacement: placement]];
+                    });
                 } else {
                     [listener adDidLoad];
                 }
@@ -109,7 +109,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.1.12";
+    return @"1.2.0";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {

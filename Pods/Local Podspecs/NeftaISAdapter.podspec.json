@@ -1,6 +1,6 @@
 {
   "name": "NeftaISAdapter",
-  "version": "1.1.12",
+  "version": "1.2.0",
   "summary": "Custom mediation adapter for IronSource SDK.",
   "homepage": "https://docs-adnetwork.nefta.io/docs/ironsource-ios",
   "license": {
@@ -12,14 +12,14 @@
   },
   "source": {
     "git": "https://github.com/Nefta-io/NeftaISAdapter.git",
-    "tag": "1.1.12"
+    "tag": "1.2.0"
   },
   "platforms": {
     "ios": "11.0"
   },
   "dependencies": {
     "NeftaSDK": [
-      "~> 3.1.16"
+      "~> 3.2.0"
     ]
   },
   "source_files": "NeftaISAdapter/NeftaISAdapter/*.{h,m}"

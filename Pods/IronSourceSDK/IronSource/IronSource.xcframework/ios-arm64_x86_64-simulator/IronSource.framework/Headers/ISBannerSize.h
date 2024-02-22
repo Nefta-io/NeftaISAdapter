@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ISContainerParams.h"
 
 static NSString* const kSizeBanner = @"BANNER";
 static NSString* const kSizeLarge = @"LARGE";
@@ -33,9 +34,21 @@ static NSString* const kSizeCustom = @"CUSTOM";
                              height:(NSInteger)height;
 - (BOOL)isSmart;
 
+/**
+ Calculates and returns the maximum height of an adaptive banner for a given width.
+
+ If there are no adaptive banner supporting networks, the return value will be -1.
+
+ @param width The specified width for which the maximum height is calculated.
+ @return The maximal height of an adaptive banner, or -1 if no supporting networks are found.
+ */
++ (CGFloat)getMaximalAdaptiveHeightWithWidth:(CGFloat)width;
+
 @property(readonly) NSString* sizeDescription;
 @property(readonly) NSInteger width;
 @property(readonly) NSInteger height;
 @property(readwrite, getter=isAdaptive) BOOL adaptive;
+
+@property(nonatomic, readwrite) ISContainerParams* containerParams;
 
 @end
