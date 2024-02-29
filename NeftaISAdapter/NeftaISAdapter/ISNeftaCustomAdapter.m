@@ -45,6 +45,7 @@ static dispatch_semaphore_t _semaphore;
             _plugin.OnLoadFail = ^(Placement *placement, NSString *error) {
                 id<ISAdapterAdDelegate> listener = _listeners[placement._id];
                 [listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:2 errorMessage:error];
+                [_listeners removeObjectForKey: placement._id];
             };
             
             _plugin.OnLoad = ^(Placement *placement) {
@@ -94,6 +95,7 @@ static dispatch_semaphore_t _semaphore;
                     [interactionListener adDidEnd];
                     [interactionListener adDidClose];
                 }
+                [_listeners removeObjectForKey: placement._id];
             };
             
             [_plugin EnableAds: true];
@@ -109,14 +111,14 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.2.1";
+    return @"1.2.2";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
     [_plugin PrepareRendererWithViewController: viewController];
 }
 
-- (void) Load:(NSString *)pId delgate:(id<ISAdapterAdDelegate>)delegate {
+- (void)Load:(NSString *)pId delgate:(id<ISAdapterAdDelegate>)delegate {
     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
     _listeners[pId] = delegate;
     [_plugin LoadWithId: pId];
