@@ -111,7 +111,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.2.2";
+    return @"1.2.3";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
