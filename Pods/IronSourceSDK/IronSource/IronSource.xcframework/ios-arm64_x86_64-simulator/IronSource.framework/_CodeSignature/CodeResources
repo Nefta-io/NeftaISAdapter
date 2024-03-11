@@ -142,7 +142,7 @@
 		</data>
 		<key>Headers/ISBaseBanner.h</key>
 		<data>
-		7Zuv/M1wQrFZItMu3vXRdA0IDf0=
+		dynUePAsKhT62L+1cYb8s8GZylc=
 		</data>
 		<key>Headers/ISBaseBannerAdapter.h</key>
 		<data>
@@ -286,7 +286,7 @@
 		</data>
 		<key>Headers/ISMetaDataConstants.h</key>
 		<data>
-		sq8+VTl3u8GFI70Qzq+zf3SQZk4=
+		d9r0nmOmvrZtVF0q3hP+kK7Bpcs=
 		</data>
 		<key>Headers/ISMetaDataUtils.h</key>
 		<data>
@@ -434,7 +434,7 @@
 		</data>
 		<key>Headers/IronSource.h</key>
 		<data>
-		KLOuVQSILsqcSrMuIXClwM7USLk=
+		x5MPZcVYRmFvXy/jj03mc5p7q/4=
 		</data>
 		<key>Headers/IronSourceNetworkSwiftBridge.h</key>
 		<data>
@@ -486,11 +486,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		GE6IPqA60gXTQWVpRZzpYQ8AvlI=
+		Qz5DQockPjCzrklt1TvP+5EywQc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		kzGgmpCJFpUdi/nT2cuKAZIcEmo=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		fer8wTse3EJ6GaOJueUnzTDn60g=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -873,11 +877,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7Zuv/M1wQrFZItMu3vXRdA0IDf0=
+			dynUePAsKhT62L+1cYb8s8GZylc=
 			</data>
 			<key>hash2</key>
 			<data>
-			jd9AbBIA2AJCWHuDQH+jBvf30ejWTilWPPpdFiq1Xac=
+			pinX8y1pJZt97AxNoueLVdX5Mzo5q7Q3V/e1dfof9/0=
 			</data>
 		</dict>
 		<key>Headers/ISBaseBannerAdapter.h</key>
@@ -1269,11 +1273,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sq8+VTl3u8GFI70Qzq+zf3SQZk4=
+			d9r0nmOmvrZtVF0q3hP+kK7Bpcs=
 			</data>
 			<key>hash2</key>
 			<data>
-			TqaK65Bdlz9k4hyT1SLMxvFMma9Uem4hRg4TBP7PHM8=
+			ob1csvcbRSSdkR+qPMYG1gIBTUdRlkgazBOHMDiCtUU=
 			</data>
 		</dict>
 		<key>Headers/ISMetaDataUtils.h</key>
@@ -1676,11 +1680,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			KLOuVQSILsqcSrMuIXClwM7USLk=
+			x5MPZcVYRmFvXy/jj03mc5p7q/4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Iiwij1thB04THDfjLHwDH5fMTyeC9qlruXY/WQkEAsk=
+			B2A+qKCPuHoJqiFq3sw5S5qZxX/Tm8QeF6mtVSmVTZU=
 			</data>
 		</dict>
 		<key>Headers/IronSourceNetworkSwiftBridge.h</key>
@@ -1824,6 +1828,17 @@
 			<key>hash2</key>
 			<data>
 			nRi1YddSYStSxiPAcByQG6YOxwWEF5eJUj1rnMrrSKU=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fer8wTse3EJ6GaOJueUnzTDn60g=
+			</data>
+			<key>hash2</key>
+			<data>
+			g+mjdjzH9xr0quCLExn0kz62wBB+rStfws5Y1cEEz/M=
 			</data>
 		</dict>
 	</dict>

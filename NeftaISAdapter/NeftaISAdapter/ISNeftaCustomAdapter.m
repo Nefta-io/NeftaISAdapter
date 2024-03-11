@@ -52,7 +52,7 @@ static dispatch_semaphore_t _semaphore;
                 id<ISAdapterAdDelegate> listener = _listeners[placement._id];
                 if (placement._type == TypesBanner) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [_plugin ShowWithId: placement._id];
+                        [_plugin ShowMainWithId: placement._id];
                         [((id<ISBannerAdDelegate>)listener) adDidLoadWithView: [_plugin GetViewForPlacement: placement]];
                     });
                 } else {
@@ -111,7 +111,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.2.3";
+    return @"1.2.4";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
