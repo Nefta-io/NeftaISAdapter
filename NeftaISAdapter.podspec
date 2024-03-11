@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '11.0'
 
-  s.dependency 'NeftaSDK', '~> 3.2.3'
+  s.dependency 'NeftaSDK', '~> 3.2.4'
   s.source_files = 'NeftaISAdapter/NeftaISAdapter/*.{h,m}'
 end
