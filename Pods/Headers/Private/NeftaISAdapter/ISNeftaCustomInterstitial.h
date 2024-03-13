@@ -1,1 +1,0 @@
-../../../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomInterstitial.h

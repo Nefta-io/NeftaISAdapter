@@ -1,1 +1,0 @@
-../../../../NeftaISAdapter/NeftaISAdapter/ISNeftaCustomBanner.h

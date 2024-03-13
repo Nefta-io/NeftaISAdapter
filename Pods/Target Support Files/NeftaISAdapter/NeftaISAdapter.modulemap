@@ -1,6 +1,0 @@
-framework module NeftaISAdapter {
-  umbrella header "NeftaISAdapter-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,4 +1,5 @@
 # NeftaISAdapter
-Custom mediation adapter for IronSource SDK.
 
-Complete integration guide: https://docs-adnetwork.nefta.io/docs/ironsource-ios
+Nefta Custom adapter for IronSource SDK.
+
+Complete integration guide: https://docs.nefta.io/docs/ironsource-ios
