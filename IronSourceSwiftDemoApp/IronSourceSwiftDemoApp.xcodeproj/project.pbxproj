@@ -48,7 +48,6 @@
 		9027EA7D2BCF90D4005477C5 /* ISNeftaCustomAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomAdapter.m; sourceTree = "<group>"; };
 		9027EA7E2BCF90D4005477C5 /* ISNeftaCustomInterstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomInterstitial.m; sourceTree = "<group>"; };
 		9027EA7F2BCF90D4005477C5 /* ISNeftaCustomRewardedVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISNeftaCustomRewardedVideo.h; sourceTree = "<group>"; };
-		9027EA802BCF90D4005477C5 /* IsAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsAdapter.h; sourceTree = "<group>"; };
 		9027EA812BCF90D4005477C5 /* ISNeftaCustomBanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomBanner.m; sourceTree = "<group>"; };
 		9027EA822BCF90D4005477C5 /* ISNeftaCustomAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISNeftaCustomAdapter.h; sourceTree = "<group>"; };
 		9027EA832BCF90D4005477C5 /* ISNeftaCustomRewardedVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNeftaCustomRewardedVideo.m; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 				9027EA7D2BCF90D4005477C5 /* ISNeftaCustomAdapter.m */,
 				9027EA7E2BCF90D4005477C5 /* ISNeftaCustomInterstitial.m */,
 				9027EA7F2BCF90D4005477C5 /* ISNeftaCustomRewardedVideo.h */,
-				9027EA802BCF90D4005477C5 /* IsAdapter.h */,
 				9027EA812BCF90D4005477C5 /* ISNeftaCustomBanner.m */,
 				9027EA822BCF90D4005477C5 /* ISNeftaCustomAdapter.h */,
 				9027EA832BCF90D4005477C5 /* ISNeftaCustomRewardedVideo.m */,

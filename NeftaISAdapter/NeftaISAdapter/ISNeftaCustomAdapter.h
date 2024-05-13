@@ -16,6 +16,10 @@
 
 @interface ISNeftaCustomAdapter : ISBaseNetworkAdapter
 
+@property(nonatomic, strong) NSString* placementId;
+@property(nonatomic) int state;
+@property(nonatomic, strong) id<ISAdapterAdDelegate> listener;
+
 + (void)ApplyRenderer:(UIViewController *)viewController;
 - (void)Load:(NSString *)pId delgate:(id<ISAdapterAdDelegate>)delegate;
 - (BOOL)IsReady:(NSString *)pId;

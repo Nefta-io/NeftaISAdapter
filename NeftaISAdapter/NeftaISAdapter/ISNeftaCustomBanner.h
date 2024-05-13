@@ -12,6 +12,10 @@
 
 @interface ISNeftaCustomBanner : ISBaseBanner
 
+@property (nonatomic, strong) NSString* placementId;
+@property (nonatomic) int state;
+@property (nonatomic, strong) id<ISAdapterAdDelegate> listener;
+
 @property ISNeftaCustomAdapter *adapter;
 
 @end

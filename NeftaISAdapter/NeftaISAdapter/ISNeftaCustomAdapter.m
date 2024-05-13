@@ -8,32 +8,14 @@
 #import "ISNeftaCustomAdapter.h"
 
 
-@interface MListener : NSObject
-@property (nonatomic, strong) NSString* placementId;
-@property (nonatomic) int state;
-@property (nonatomic, strong) id<ISAdapterAdDelegate> listener;
--(instancetype)initWithId:(NSString *)placementId listener:(id<ISAdapterAdDelegate>)listener;
-@end
-@implementation MListener
--(instancetype)initWithId:(NSString *)placementId listener:(id<ISAdapterAdDelegate>)listener {
-    self = [super init];
-    if (self) {
-        _placementId = placementId;
-        _state = 0;
-        _listener = listener;
-    }
-    return self;
-}
-@end
-
 @implementation ISNeftaCustomAdapter
 
 static NeftaPlugin_iOS *_plugin;
-static NSMutableArray *_listeners;
+static NSMutableArray *_adapters;
 static dispatch_semaphore_t _semaphore;
 
 - (void)setAdapterDebug:(BOOL)adapterDebug {
-    [NeftaPlugin_iOS EnableLogging: adapterDebug];
+
 }
 
 - (void)init:(ISAdData *)adData delegate:(id<ISNetworkInitializationDelegate>)delegate {
@@ -43,7 +25,7 @@ static dispatch_semaphore_t _semaphore;
         }
         
         dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
-        if (_listeners != nil) {
+        if (_adapters != nil) {
             dispatch_semaphore_signal(_semaphore);
             [delegate onInitDidSucceed];
             return;
@@ -59,32 +41,32 @@ static dispatch_semaphore_t _semaphore;
         dispatch_async(dispatch_get_main_queue(), ^{
             _plugin = [NeftaPlugin_iOS InitWithAppId: appId];
             
-            _listeners = [NSMutableArray array];
+            _adapters = [NSMutableArray array];
             
             _plugin.OnLoadFail = ^(Placement *placement, NSString *error) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 0) {
-                        [ml.listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:2 errorMessage:error];
-                        [_listeners removeObject: ml];
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 0) {
+                        [a.listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:2 errorMessage:error];
+                        [_adapters removeObject: a];
                         return;
                     }
                 }
             };
             
             _plugin.OnLoad = ^(Placement *placement) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 0) {
-                        ml.state = 1;
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 0) {
+                        a.state = 1;
                         if (placement._type == TypesBanner) {
                             placement._isManualPosition = true;
                             [_plugin ShowMainWithId: placement._id];
                             UIView* v = [_plugin GetViewForPlacement: placement show: false];
                             v.frame = CGRectMake(0, 0, placement._width, placement._height);
-                            [((id<ISBannerAdDelegate>)ml.listener) adDidLoadWithView: v];
+                            [((id<ISBannerAdDelegate>)a.listener) adDidLoadWithView: v];
                         } else {
-                            [ml.listener adDidLoad];
+                            [a.listener adDidLoad];
                         }
                         return;
                     }
@@ -92,16 +74,16 @@ static dispatch_semaphore_t _semaphore;
             };
             
             _plugin.OnShow = ^(Placement *placement, NSInteger width, NSInteger height) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 1) {
-                        ml.state = 2;
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 1) {
+                        a.state = 2;
                         if (placement._type == TypesBanner) {
-                            id<ISBannerAdDelegate> bannerListener = (id<ISBannerAdDelegate>) ml.listener;
+                            id<ISBannerAdDelegate> bannerListener = (id<ISBannerAdDelegate>) a.listener;
                             [bannerListener adDidOpen];
                             [bannerListener adWillPresentScreen];
                         } else {
-                            id<ISAdapterAdInteractionDelegate> interactionListener = (id<ISAdapterAdInteractionDelegate>) ml.listener;
+                            id<ISAdapterAdInteractionDelegate> interactionListener = (id<ISAdapterAdInteractionDelegate>) a.listener;
                             [interactionListener adDidOpen];
                             [interactionListener adDidShowSucceed];
                             [interactionListener adDidBecomeVisible];
@@ -112,10 +94,10 @@ static dispatch_semaphore_t _semaphore;
             };
             
             _plugin.OnClick = ^(Placement *placement) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 2) {
-                        id<ISAdapterAdDelegate> listener = ml.listener;
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 2) {
+                        id<ISAdapterAdDelegate> listener = a.listener;
                         [listener adDidClick];
                         return;
                     }
@@ -123,11 +105,11 @@ static dispatch_semaphore_t _semaphore;
             };
             
             _plugin.OnReward = ^(Placement *placement) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 2) {
-                        MListener *ml = _listeners[i];
-                        id<ISRewardedVideoAdDelegate> listener = (id<ISRewardedVideoAdDelegate>) ml.listener;
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 2) {
+                        ISNeftaCustomAdapter *a = _adapters[i];
+                        id<ISRewardedVideoAdDelegate> listener = (id<ISRewardedVideoAdDelegate>) a.listener;
                         [listener adRewarded];
                         return;
                     }
@@ -135,17 +117,17 @@ static dispatch_semaphore_t _semaphore;
             };
             
             _plugin.OnClose = ^(Placement *placement) {
-                for (int i = 0; i < _listeners.count; i++) {
-                    MListener *ml = _listeners[i];
-                    if ([ml.placementId isEqualToString: placement._id] && ml.state == 2) {
+                for (int i = 0; i < _adapters.count; i++) {
+                    ISNeftaCustomAdapter *a = _adapters[i];
+                    if ([a.placementId isEqualToString: placement._id] && a.state == 2) {
                         if (placement._type == TypesBanner) {
-                            [((id<ISBannerAdDelegate>)ml.listener) adDidDismissScreen];
+                            [((id<ISBannerAdDelegate>)a.listener) adDidDismissScreen];
                         } else {
-                            id<ISAdapterAdInteractionDelegate> interactionListener = (id<ISAdapterAdInteractionDelegate>) ml.listener;
+                            id<ISAdapterAdInteractionDelegate> interactionListener = (id<ISAdapterAdInteractionDelegate>) a.listener;
                             [interactionListener adDidEnd];
                             [interactionListener adDidClose];
                         }
-                        [_listeners removeObject: ml];
+                        [_adapters removeObject: a];
                         return;
                     }
                 }
@@ -164,7 +146,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.2.9";
+    return @"1.3.0";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
@@ -174,8 +156,10 @@ static dispatch_semaphore_t _semaphore;
 - (void)Load:(NSString *)pId delgate:(id<ISAdapterAdDelegate>)delegate {
     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
     
-    MListener *listener = [[MListener alloc] initWithId: pId listener: delegate];
-    [_listeners addObject: listener];
+    _placementId = pId;
+    _state = 0;
+    _listener = delegate;
+    [_adapters addObject: self];
     [_plugin LoadWithId: pId];
     dispatch_semaphore_signal(_semaphore);
 }
