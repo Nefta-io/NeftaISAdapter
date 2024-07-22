@@ -54,7 +54,7 @@ static dispatch_semaphore_t _semaphore;
                 }
             };
             
-            _plugin.OnLoad = ^(Placement *placement) {
+            _plugin.OnLoad = ^(Placement *placement, NSInteger width, NSInteger height) {
                 for (int i = 0; i < _adapters.count; i++) {
                     ISNeftaCustomAdapter *a = _adapters[i];
                     if ([a.placementId isEqualToString: placement._id] && a.state == 0) {
@@ -73,7 +73,7 @@ static dispatch_semaphore_t _semaphore;
                 }
             };
             
-            _plugin.OnShow = ^(Placement *placement, NSInteger width, NSInteger height) {
+            _plugin.OnShow = ^(Placement *placement) {
                 for (int i = 0; i < _adapters.count; i++) {
                     ISNeftaCustomAdapter *a = _adapters[i];
                     if ([a.placementId isEqualToString: placement._id] && a.state == 1) {
@@ -146,7 +146,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.3.0";
+    return @"1.3.1";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
