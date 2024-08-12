@@ -7,10 +7,9 @@
 
 #import "ISNeftaCustomAdapter.h"
 
-
 @implementation ISNeftaCustomAdapter
 
-static NeftaPlugin_iOS *_plugin;
+static NeftaPlugin *_plugin;
 static NSMutableArray *_adapters;
 static dispatch_semaphore_t _semaphore;
 
@@ -19,7 +18,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (void)init:(ISAdData *)adData delegate:(id<ISNetworkInitializationDelegate>)delegate {
-    @synchronized (NeftaPlugin_iOS.Version) {
+    @synchronized (NeftaPlugin.Version) {
         if (_semaphore == nil) {
             _semaphore = dispatch_semaphore_create(1);
         }
@@ -39,7 +38,7 @@ static dispatch_semaphore_t _semaphore;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            _plugin = [NeftaPlugin_iOS InitWithAppId: appId];
+            _plugin = [NeftaPlugin InitWithAppId: appId];
             
             _adapters = [NSMutableArray array];
             
@@ -142,11 +141,11 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) networkSDKVersion {
-    return NeftaPlugin_iOS.Version;
+    return NeftaPlugin.Version;
 }
 
 - (NSString *) adapterVersion {
-    return @"1.3.1";
+    return @"1.3.2";
 }
 
 + (void)ApplyRenderer:(UIViewController *)viewController {
