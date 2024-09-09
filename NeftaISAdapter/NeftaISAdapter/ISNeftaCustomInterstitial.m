@@ -22,7 +22,7 @@
 
 - (BOOL)isAdAvailableWithAdData:(nonnull ISAdData *)adData {
     [self trySetAdapter];
-    return [_adapter IsReady: [adData getString: @"placementId"]];
+    return [_adapter IsReady: [adData getString: @"placementId"]] == NeftaPlugin.PlacementReady;
 }
 
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
