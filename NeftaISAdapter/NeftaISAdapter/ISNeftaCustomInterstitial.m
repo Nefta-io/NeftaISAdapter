@@ -12,33 +12,40 @@
 @implementation ISNeftaCustomInterstitial
 
 - (void)loadAdWithAdData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
-    [self trySetAdapter];
-    
     NSString *placementId = [adData getString: @"placementId"];
-    if (placementId != nil && placementId.length > 0) {
-        [_adapter Load:placementId delgate:delegate];
-    }
+    _interstitial = [[NInterstitial alloc] initWithId: placementId];
+    _interstitial._listener = self;
+    _listener = delegate;
 }
 
 - (BOOL)isAdAvailableWithAdData:(nonnull ISAdData *)adData {
-    [self trySetAdapter];
-    return [_adapter IsReady: [adData getString: @"placementId"]] == NeftaPlugin.PlacementReady;
+    return [_interstitial CanShow] == NAd.Ready;
 }
 
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
-    [self trySetAdapter];
-    [ISNeftaCustomAdapter ApplyRenderer: viewController];
+    [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
     
-    NSString *placementId = [adData getString: @"placementId"];
-    if (placementId != nil && placementId.length > 0) {
-        [_adapter Show: placementId];
-    }
+    [_interstitial Show];
 }
 
-- (void)trySetAdapter {
-    if (_adapter == nil) {
-        _adapter = (ISNeftaCustomAdapter *)[self getNetworkAdapter];
-    }
+- (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
+    [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
 }
+- (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
+    [_listener adDidLoad];
+}
+- (void)OnShowFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
 
+}
+- (void)OnShowWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidShowSucceed];
+    [_listener adDidBecomeVisible];
+}
+- (void)OnClickWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidClick];
+}
+- (void)OnCloseWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidEnd];
+    [_listener adDidClose];
+}
 @end

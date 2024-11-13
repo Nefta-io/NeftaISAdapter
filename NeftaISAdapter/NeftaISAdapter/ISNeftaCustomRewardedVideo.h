@@ -10,10 +10,9 @@
 
 #import "ISNeftaCustomAdapter.h"
 
-@interface ISNeftaCustomRewardedVideo : ISBaseRewardedVideo
-
-@property ISNeftaCustomAdapter *adapter;
-
+@interface ISNeftaCustomRewardedVideo : ISBaseRewardedVideo<NRewardedListener>
+@property NRewarded * _Nonnull rewarded;
+@property (nonatomic, weak) id<ISRewardedVideoAdDelegate> listener;
 @end
 
 #endif /* ISNeftaCustomRewardedVideo_h */

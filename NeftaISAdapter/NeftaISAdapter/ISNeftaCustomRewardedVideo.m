@@ -12,33 +12,46 @@
 @implementation ISNeftaCustomRewardedVideo
 
 - (void)loadAdWithAdData:(nonnull ISAdData *)adData delegate:(nonnull id<ISRewardedVideoAdDelegate>)delegate {
-    [self trySetAdapter];
-    
     NSString *placementId = [adData getString: @"placementId"];
-    if (placementId != nil && placementId.length > 0) {
-        [_adapter Load: placementId delgate: delegate];
-    }
+    _rewarded = [[NRewarded alloc] initWithId: placementId];
+    _rewarded._listener = self;
+    _listener = delegate;
+    
+    [_rewarded Load];
 }
 
 - (BOOL)isAdAvailableWithAdData:(nonnull ISAdData *)adData {
-    [self trySetAdapter];
-    return [_adapter IsReady: [adData getString: @"placementId"]] == NeftaPlugin.PlacementReady;
+    return [_rewarded CanShow] == NAd.Ready;
 }
 
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISRewardedVideoAdDelegate>)delegate {
-    [self trySetAdapter];
-    [ISNeftaCustomAdapter ApplyRenderer: viewController];
+    [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
     
-    NSString *placementId = [adData getString: @"placementId"];
-    if (placementId != nil && placementId.length > 0) {
-        [_adapter Show: placementId];
-    }
+    [_rewarded Show];
 }
 
-- (void)trySetAdapter {
-    if (_adapter == nil) {
-        _adapter = (ISNeftaCustomAdapter *)[self getNetworkAdapter];
-    }
+- (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
+    [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
+}
+- (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
+    [_listener adDidLoad];
+}
+- (void)OnShowFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
+
+}
+- (void)OnShowWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidShowSucceed];
+    [_listener adDidBecomeVisible];
+}
+- (void)OnClickWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidClick];
+}
+- (void)OnRewardWithAd:(NAd * _Nonnull)ad {
+    [_listener adRewarded];
+}
+- (void)OnCloseWithAd:(NAd * _Nonnull)ad {
+    [_listener adDidEnd];
+    [_listener adDidClose];
 }
 
 @end

@@ -9,15 +9,11 @@
 #define ISNeftaCustomBanner_h
 
 #import "ISNeftaCustomAdapter.h"
+#import <NeftaSDK/NeftaSDK-Swift.h>
 
-@interface ISNeftaCustomBanner : ISBaseBanner
-
-@property (nonatomic, strong) NSString* placementId;
-@property (nonatomic) int state;
-@property (nonatomic, strong) id<ISAdapterAdDelegate> listener;
-
-@property ISNeftaCustomAdapter *adapter;
-
+@interface ISNeftaCustomBanner : ISBaseBanner<NBannerListener>
+@property NBanner * _Nonnull banner;
+@property (nonatomic, weak) id<ISBannerAdDelegate> listener;
 @end
 
 #endif /* ISNeftaCustomBanner_h */
