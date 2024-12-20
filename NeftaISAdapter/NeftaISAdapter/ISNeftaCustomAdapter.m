@@ -38,7 +38,6 @@ static dispatch_semaphore_t _semaphore;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             _plugin = [NeftaPlugin InitWithAppId: appId];
-            
 
             [_plugin EnableAds: true];
             
@@ -53,6 +52,6 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.0.0";
+    return @"2.0.1";
 }
 @end

@@ -29,8 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)adDataWithAdapterConfiguration:(ISAdapterConfig *)config
                                         adUnit:(ISAdUnit *)adUnit
-                                        userId:(NSString *)userId
-                                    bannerSize:(ISBannerSize *)bannerSize;
+                                        userId:(NSString *_Nullable)userId
+                                    bannerSize:(ISBannerSize *_Nullable)bannerSize;
 
 - (instancetype)initWithServerData:(nullable NSString *)serverData
                      configuration:(NSDictionary *)configuration

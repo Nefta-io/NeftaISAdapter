@@ -16,6 +16,7 @@
     _interstitial = [[NInterstitial alloc] initWithId: placementId];
     _interstitial._listener = self;
     _listener = delegate;
+    [_interstitial Load];
 }
 
 - (BOOL)isAdAvailableWithAdData:(nonnull ISAdData *)adData {
@@ -25,7 +26,7 @@
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
     [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
     
-    [_interstitial Show];
+    [_interstitial ShowThreaded];
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
@@ -35,11 +36,12 @@
     [_listener adDidLoad];
 }
 - (void)OnShowFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-
+    [_listener adDidFailToShowWithErrorCode:ISAdapterErrorInternal errorMessage: error._message];
 }
 - (void)OnShowWithAd:(NAd * _Nonnull)ad {
-    [_listener adDidShowSucceed];
+    [_listener adDidOpen];
     [_listener adDidBecomeVisible];
+    [_listener adDidShowSucceed];
 }
 - (void)OnClickWithAd:(NAd * _Nonnull)ad {
     [_listener adDidClick];

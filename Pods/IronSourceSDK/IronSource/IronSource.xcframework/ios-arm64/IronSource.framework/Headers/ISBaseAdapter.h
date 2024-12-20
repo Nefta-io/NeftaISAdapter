@@ -7,28 +7,26 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ISBannerAdapterProtocol.h"
-#import "ISBiddingDataAdapterProtocol.h"
-#import "ISInterstitialAdapterProtocol.h"
-#import "ISNativeAdAdapterProtocol.h"
-#import "ISOfferwallAdapterProtocol.h"
-#import "ISRewardedVideoAdapterProtocol.h"
-
 #import "ISAdapterConfig.h"
+#import "ISAdapterNetworkDataProtocol.h"
+#import "ISBannerAdapterProtocol.h"
 #import "ISConcurrentMutableDictionary.h"
+#import "ISInterstitialAdapterProtocol.h"
 #import "ISLoadWhileShowSupportState.h"
+#import "ISNativeAdAdapterProtocol.h"
+#import "ISRewardedVideoAdapterProtocol.h"
 
 @interface ISBaseAdapter : NSObject <ISInterstitialAdapterProtocol,
                                      ISRewardedVideoAdapterProtocol,
                                      ISBannerAdapterProtocol,
-                                     ISOfferwallAdapterProtocol,
-                                     ISBiddingDataAdapterProtocol,
+                                     ISAdapterNetworkDataProtocol,
                                      ISNativeAdAdapterProtocol> {
  @protected
   ISLoadWhileShowSupportState LWSState;
 }
 
 @property(nonatomic, strong) NSString *adapterName;
+@property(nonatomic, strong) NSString *providerNetworkKey;
 @property(strong, nonatomic) NSString *pluginType;
 @property(strong, nonatomic) NSString *userId;
 @property(strong, nonatomic) ISConcurrentMutableDictionary *adUnitAdapters;
@@ -42,6 +40,8 @@
 
 // to be used by adapters that implement each ad unit separately
 - (ISLoadWhileShowSupportState)getLWSSupportState:(ISAdapterConfig *)adapterConfig;
+
+- (void)setNetworkData:(id<ISAdapterNetworkData>)networkData;
 
 - (void)setRewardedVideoAdapter:(id<ISRewardedVideoAdapterProtocol>)rewardedVideoAdapter;
 - (void)setInterstitialAdapter:(id<ISInterstitialAdapterProtocol>)interstitialAdapter;

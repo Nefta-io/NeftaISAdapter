@@ -27,7 +27,7 @@
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISRewardedVideoAdDelegate>)delegate {
     [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
     
-    [_rewarded Show];
+    [_rewarded ShowThreaded];
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
@@ -37,11 +37,12 @@
     [_listener adDidLoad];
 }
 - (void)OnShowFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-
+    [_listener adDidFailToShowWithErrorCode: error._code errorMessage: error._message];
 }
 - (void)OnShowWithAd:(NAd * _Nonnull)ad {
-    [_listener adDidShowSucceed];
+    [_listener adDidOpen];
     [_listener adDidBecomeVisible];
+    [_listener adDidShowSucceed];
 }
 - (void)OnClickWithAd:(NAd * _Nonnull)ad {
     [_listener adDidClick];

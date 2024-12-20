@@ -18,24 +18,24 @@
     _banner = [[NBanner alloc] initWithId: placementId position: PositionNone];
     _banner._listener = self;
     _listener = delegate;
+    [_banner Load];
 }
 
 - (void) destroyAdWithAdData:(nonnull ISAdData *)adData {
-    [_banner Close];
+    [_banner CloseThreaded];
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
     [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
 }
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
-    //_banner._isManualPosition = true;
     [_banner Show];
     UIView *v = [_banner GetView];
     v.frame = CGRectMake(0, 0, _banner._placement._width, _banner._placement._height);
     [_listener adDidLoadWithView: v];
 }
 - (void)OnShowFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-
+    [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
 }
 - (void)OnShowWithAd:(NAd * _Nonnull)ad {
     [_listener adDidOpen];

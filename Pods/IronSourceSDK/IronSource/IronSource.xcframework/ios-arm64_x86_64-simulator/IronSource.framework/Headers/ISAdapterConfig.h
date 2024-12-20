@@ -43,6 +43,8 @@
 @property(strong, nonatomic, readonly) NSString
     *providerDefaultInstance; /* Name of Adapter class to load (fallback to reflectionName) */
 @property(strong, nonatomic, readonly)
+    NSString *providerNetworkKey; /* Name to be used in the public API (e.g. setNetworkData) */
+@property(strong, nonatomic, readonly)
     NSString *customNetwork; /* name of the custom network is exists */
 @property(assign, nonatomic, readonly)
     BOOL isCustomNetwork; /* whether the configuration is for a custom network*/
