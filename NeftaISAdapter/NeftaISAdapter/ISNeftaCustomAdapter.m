@@ -10,10 +10,22 @@
 @implementation ISNeftaCustomAdapter
 
 static NeftaPlugin *_plugin;
+static ISNeftaImpressionCollector *_impressionCollector;
 static dispatch_semaphore_t _semaphore;
 
-- (void)setAdapterDebug:(BOOL)adapterDebug {
++ (NeftaPlugin*)initWithAppId:(NSString *)appId {
+    return [ISNeftaCustomAdapter initWithAppId: appId sendImpressions: TRUE];
+}
 
++ (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL) sendImpressions {
+    _plugin = [NeftaPlugin InitWithAppId: appId];
+    _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
+    [IronSource addImpressionDataDelegate: _impressionCollector];
+    return _plugin;
+}
+
+- (void)setAdapterDebug:(BOOL)adapterDebug {
+    //[NeftaPlugin EnableLogging: adapterDebug];
 }
 
 - (void)init:(ISAdData *)adData delegate:(id<ISNetworkInitializationDelegate>)delegate {
@@ -38,8 +50,6 @@ static dispatch_semaphore_t _semaphore;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             _plugin = [NeftaPlugin InitWithAppId: appId];
-
-            [_plugin EnableAds: true];
             
             dispatch_semaphore_signal(_semaphore);
             [delegate onInitDidSucceed];
@@ -52,6 +62,17 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.0.1";
+    return @"2.1.0";
+}
+@end
+
+@implementation ISNeftaImpressionCollector
+- (void)impressionDataDidSucceed:(ISImpressionData *)impressionData {
+    if (impressionData.all_data == nil) {
+        return;
+    }
+    NSMutableDictionary *data = impressionData.all_data.mutableCopy;
+    [data setObject: @"ironsource_levelplay" forKey: @"mediation_provider"];
+    [NeftaPlugin OnExternalAdShown: @"is" data: data];
 }
 @end

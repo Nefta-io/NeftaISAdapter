@@ -13,7 +13,12 @@
 #import <NeftaSDK/NeftaSDK-Swift.h>
 
 @interface ISNeftaCustomAdapter : ISBaseNetworkAdapter
++ (NeftaPlugin*)initWithAppId:(NSString *)appId;
++ (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL)sendImpressions;
+@end
 
+@interface ISNeftaImpressionCollector : NSObject <ISImpressionDataDelegate>
+- (void)impressionDataDidSucceed:(ISImpressionData *)impressionData;
 @end
 
 #endif /* ISNeftaCustomAdapter_h */
