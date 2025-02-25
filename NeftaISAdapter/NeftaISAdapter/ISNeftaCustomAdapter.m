@@ -9,6 +9,22 @@
 
 @implementation ISNeftaCustomAdapter
 
++(void) OnExternalAdLoad:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice {
+    [NeftaPlugin OnExternalAdLoad: @"is" adType: adType unitFloorPrice: -1 calculatedFloorPrice: calculatedFloorPrice status: 1];
+}
+
++(void) OnExternalAdFail:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice error:(NSError *)error {
+    int status = 0;
+    if (error.code == ERROR_CODE_NO_ADS_TO_SHOW ||
+        error.code == ERROR_BN_LOAD_NO_FILL ||
+        error.code == ERROR_IS_LOAD_NO_FILL ||
+        error.code == ERROR_NT_LOAD_NO_FILL ||
+        error.code == ERROR_RV_LOAD_NO_FILL) {
+        status = 2;
+    }
+    [NeftaPlugin OnExternalAdLoad: @"is" adType: adType unitFloorPrice: -1 calculatedFloorPrice: calculatedFloorPrice status: status];
+}
+
 static NeftaPlugin *_plugin;
 static ISNeftaImpressionCollector *_impressionCollector;
 static dispatch_semaphore_t _semaphore;
@@ -62,7 +78,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.1.0";
+    return @"2.1.1";
 }
 @end
 
