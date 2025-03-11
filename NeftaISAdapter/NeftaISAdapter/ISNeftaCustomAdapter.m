@@ -78,7 +78,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.1.1";
+    return @"2.1.2";
 }
 @end
 
