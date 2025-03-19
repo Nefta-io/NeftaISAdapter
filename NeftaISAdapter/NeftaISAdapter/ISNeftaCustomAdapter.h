@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, AdType) {
     AdTypeInterstitial = 2,
     AdTypeRewarded = 3
 };
-+ (void)OnExternalAdLoad:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice;
-+ (void)OnExternalAdFail:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice error:(NSError * _Nonnull)error;
++ (void)OnExternalMediationRequestLoad:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice ad:(LPMAdInfo * _Nonnull)ad;
++ (void)OnExternalMediationRequestFail:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adUnitId:(NSString * _Nonnull)adUnitId error:(NSError * _Nonnull)error;
 + (NeftaPlugin*_Nonnull)initWithAppId:(NSString *_Nonnull)appId;
 + (NeftaPlugin*_Nonnull)initWithAppId:(NSString *_Nonnull)appId sendImpressions:(BOOL)sendImpressions;
 @end

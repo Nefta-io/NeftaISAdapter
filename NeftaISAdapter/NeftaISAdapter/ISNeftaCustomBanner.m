@@ -12,8 +12,6 @@
 @implementation ISNeftaCustomBanner
 
 - (void) loadAdWithAdData:(nonnull ISAdData *)adData viewController:(UIViewController *)viewController size:(ISBannerSize *)size delegate:(nonnull id<ISBannerAdDelegate>)delegate {
-    [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
-    
     NSString *placementId = [adData getString: @"placementId"];
     _banner = [[NBanner alloc] initWithId: placementId position: PositionNone];
     _banner._listener = self;
@@ -29,7 +27,7 @@
     [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
 }
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
-    [_banner Show];
+    [_banner Show: nil];
     UIView *v = [_banner GetView];
     v.frame = CGRectMake(0, 0, _banner._placement._width, _banner._placement._height);
     [_listener adDidLoadWithView: v];

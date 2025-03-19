@@ -9,11 +9,11 @@
 
 @implementation ISNeftaCustomAdapter
 
-+(void) OnExternalAdLoad:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice {
-    [NeftaPlugin OnExternalAdLoad: @"is" adType: adType unitFloorPrice: -1 calculatedFloorPrice: calculatedFloorPrice status: 1];
++(void) OnExternalMediationRequestLoad:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice ad:(LPMAdInfo *)ad {
+    [NeftaPlugin OnExternalMediationRequest: @"is" adType: adType requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: ad.adUnitId revenue: ad.revenue.doubleValue precision: ad.precision status: 1];
 }
 
-+(void) OnExternalAdFail:(AdType)adType calculatedFloorPrice:(double)calculatedFloorPrice error:(NSError *)error {
++(void) OnExternalMediationRequestFail:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adUnitId:(NSString *)adUnitId error:(NSError *)error {
     int status = 0;
     if (error.code == ERROR_CODE_NO_ADS_TO_SHOW ||
         error.code == ERROR_BN_LOAD_NO_FILL ||
@@ -22,7 +22,7 @@
         error.code == ERROR_RV_LOAD_NO_FILL) {
         status = 2;
     }
-    [NeftaPlugin OnExternalAdLoad: @"is" adType: adType unitFloorPrice: -1 calculatedFloorPrice: calculatedFloorPrice status: status];
+    [NeftaPlugin OnExternalMediationRequest: @"is" adType: adType requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status];
 }
 
 static NeftaPlugin *_plugin;
@@ -78,7 +78,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.1.2";
+    return @"2.2.0";
 }
 @end
 
@@ -89,6 +89,6 @@ static dispatch_semaphore_t _semaphore;
     }
     NSMutableDictionary *data = impressionData.all_data.mutableCopy;
     [data setObject: @"ironsource_levelplay" forKey: @"mediation_provider"];
-    [NeftaPlugin OnExternalAdShown: @"is" data: data];
+    [NeftaPlugin OnExternalMediationImpression: @"is" data: data];
 }
 @end

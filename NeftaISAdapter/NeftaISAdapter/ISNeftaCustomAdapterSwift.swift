@@ -16,11 +16,11 @@ class ISNeftaCustomAdapterSwift {
         case Rewarded = 3
     }
     
-    static func OnExternalAdLoad(_ adType: AdTypeSwift, calculatedFloorPrice: Float64) {
-        NeftaPlugin.OnExternalAdLoad("is", adType: adType.rawValue, unitFloorPrice: -1, calculatedFloorPrice: calculatedFloorPrice, status: 1)
+    static func OnExternalMediationRequestLoad(_ adType: AdTypeSwift, requestedFloorPrice: Float64, calculatedFloorPrice: Float64, adInfo: LPMAdInfo) {
+        NeftaPlugin.OnExternalMediationRequest("is", adType: adType.rawValue, requestedFloorPrice: requestedFloorPrice, calculatedFloorPrice: calculatedFloorPrice, adUnitId: adInfo.adUnitId, revenue: adInfo.revenue.doubleValue, precision: adInfo.precision, status: 1)
     }
     
-    static func OnExternalAdFail(_ adType: AdTypeSwift, calculatedFloorPrice: Float64, error: NSError?) {
+    static func OnExternalMediationRequestFail(_ adType: AdTypeSwift, requestedFloorPrice: Float64, calculatedFloorPrice: Float64, adUnitId: String, error: NSError?) {
         var status = 0
         if let e = error, e.code == ISErrorCode.ERROR_CODE_NO_ADS_TO_SHOW.rawValue ||
             e.code == ISErrorCode.ERROR_BN_LOAD_NO_FILL.rawValue ||
@@ -29,6 +29,6 @@ class ISNeftaCustomAdapterSwift {
             e.code == ISErrorCode.ERROR_RV_LOAD_NO_FILL.rawValue {
             status = 2
         }
-        NeftaPlugin.OnExternalAdLoad("is", adType: adType.rawValue, unitFloorPrice: -1, calculatedFloorPrice: calculatedFloorPrice, status: status)
+        NeftaPlugin.OnExternalMediationRequest("is", adType: adType.rawValue, requestedFloorPrice: requestedFloorPrice, calculatedFloorPrice: calculatedFloorPrice, adUnitId: adUnitId, revenue: -1, precision: nil, status: status)
     }
 }

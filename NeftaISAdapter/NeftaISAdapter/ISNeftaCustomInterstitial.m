@@ -24,9 +24,7 @@
 }
 
 - (void)showAdWithViewController:(nonnull UIViewController *)viewController adData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
-    [NeftaPlugin._instance PrepareRendererWithViewController: viewController];
-    
-    [_interstitial ShowThreaded];
+    [_interstitial ShowThreaded: viewController];
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
