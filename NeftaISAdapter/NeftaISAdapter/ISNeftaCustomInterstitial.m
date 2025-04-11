@@ -9,6 +9,9 @@
 
 #import "ISNeftaCustomInterstitial.h"
 
+static NSString* _lastCreativeId;
+static NSString* _lastAuctionId;
+
 @implementation ISNeftaCustomInterstitial
 
 - (void)loadAdWithAdData:(nonnull ISAdData *)adData delegate:(nonnull id<ISInterstitialAdDelegate>)delegate {
@@ -28,7 +31,8 @@
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-    [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
+    ISAdapterErrorType errorType = [ISNeftaCustomAdapter NLoadToAdapterError: error];
+    [_listener adDidFailToLoadWithErrorType: errorType errorCode: error._code errorMessage: error._message];
 }
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
     [_listener adDidLoad];
@@ -37,9 +41,12 @@
     [_listener adDidFailToShowWithErrorCode:ISAdapterErrorInternal errorMessage: error._message];
 }
 - (void)OnShowWithAd:(NAd * _Nonnull)ad {
+    _lastAuctionId = ad._bid._auctionId;
+    _lastCreativeId = ad._bid._creativeId;
+    [_listener adDidShowSucceed];
     [_listener adDidOpen];
     [_listener adDidBecomeVisible];
-    [_listener adDidShowSucceed];
+    [_listener adDidStart];
 }
 - (void)OnClickWithAd:(NAd * _Nonnull)ad {
     [_listener adDidClick];
@@ -47,5 +54,12 @@
 - (void)OnCloseWithAd:(NAd * _Nonnull)ad {
     [_listener adDidEnd];
     [_listener adDidClose];
+}
+
++ (NSString*) GetLastAuctionId {
+    return _lastAuctionId;
+}
++ (NSString*) GetLastCreativeId {
+    return _lastCreativeId;
 }
 @end

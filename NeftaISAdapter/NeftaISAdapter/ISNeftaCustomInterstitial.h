@@ -14,6 +14,8 @@
 @interface ISNeftaCustomInterstitial : ISBaseInterstitial<NInterstitialListener>
 @property NInterstitial * _Nonnull interstitial;
 @property (nonatomic, weak) id<ISInterstitialAdDelegate> listener;
++ (NSString * _Nullable) GetLastAuctionId;
++ (NSString * _Nullable) GetLastCreativeId;
 @end
 
 #endif /* ISNeftaCustomInterstitial_h */

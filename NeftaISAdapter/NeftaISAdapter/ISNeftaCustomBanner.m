@@ -9,6 +9,9 @@
 
 #import "ISNeftaCustomBanner.h"
 
+static NSString* _lastCreativeId;
+static NSString* _lastAuctionId;
+
 @implementation ISNeftaCustomBanner
 
 - (void) loadAdWithAdData:(nonnull ISAdData *)adData viewController:(UIViewController *)viewController size:(ISBannerSize *)size delegate:(nonnull id<ISBannerAdDelegate>)delegate {
@@ -24,7 +27,8 @@
 }
 
 - (void)OnLoadFailWithAd:(NAd * _Nonnull)ad error:(NError * _Nonnull)error {
-    [_listener adDidFailToLoadWithErrorType:ISAdapterErrorTypeInternal errorCode:error._code errorMessage:error._message];
+    ISAdapterErrorType errorType = [ISNeftaCustomAdapter NLoadToAdapterError: error];
+    [_listener adDidFailToLoadWithErrorType: errorType errorCode: error._code errorMessage: error._message];
 }
 - (void)OnLoadWithAd:(NAd * _Nonnull)ad width:(NSInteger)width height:(NSInteger)height {
     [_banner Show: nil];
@@ -44,5 +48,12 @@
 }
 - (void)OnCloseWithAd:(NAd * _Nonnull)ad {
     [_listener adDidDismissScreen];
+}
+
++ (NSString*) GetLastAuctionId {
+    return _lastAuctionId;
+}
++ (NSString*) GetLastCreativeId {
+    return _lastCreativeId;
 }
 @end

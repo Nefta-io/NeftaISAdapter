@@ -14,6 +14,8 @@
 @interface ISNeftaCustomBanner : ISBaseBanner<NBannerListener>
 @property NBanner * _Nonnull banner;
 @property (nonatomic, weak) id<ISBannerAdDelegate> listener;
++ (NSString * _Nullable) GetLastAuctionId;
++ (NSString * _Nullable) GetLastCreativeId;
 @end
 
 #endif /* ISNeftaCustomBanner_h */
