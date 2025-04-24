@@ -10,10 +10,12 @@
 #import "ISNeftaCustomInterstitial.h"
 #import "ISNeftaCustomRewardedVideo.h"
 
+NSString * const _mediationProvider = @"ironsource-levelplay";
+
 @implementation ISNeftaCustomAdapter
 
 +(void) OnExternalMediationRequestLoad:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adInfo:(LPMAdInfo *)adInfo {
-    [NeftaPlugin OnExternalMediationRequest: @"is" adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adInfo.adUnitId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adInfo.adUnitId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1];
 }
 
 +(void) OnExternalMediationRequestFail:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adUnitId:(NSString *)adUnitId error:(NSError *)error {
@@ -25,7 +27,7 @@
         error.code == ERROR_RV_LOAD_NO_FILL) {
         status = 2;
     }
-    [NeftaPlugin OnExternalMediationRequest: @"is" adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status];
 }
 
 static NeftaPlugin *_plugin;
@@ -81,7 +83,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.2.1";
+    return @"2.2.2";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
@@ -101,7 +103,7 @@ static dispatch_semaphore_t _semaphore;
         return;
     }
     NSMutableDictionary *data = impressionData.all_data.mutableCopy;
-    [data setObject: @"ironsource_levelplay" forKey: @"mediation_provider"];
+    [data setObject: _mediationProvider forKey: @"mediation_provider"];
     if ([impressionData.ad_network isEqualToString: @"nefta"]) {
         NSString* auctionId;
         NSString* creativeId;
@@ -122,6 +124,6 @@ static dispatch_semaphore_t _semaphore;
             [data setObject: creativeId forKey: @"creative_id"];
         }
     }
-    [NeftaPlugin OnExternalMediationImpression: @"is" data: data];
+    [NeftaPlugin OnExternalMediationImpression: _mediationProvider data: data];
 }
 @end
