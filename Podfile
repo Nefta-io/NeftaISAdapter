@@ -1,10 +1,8 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '12.0'
+platform :ios, '13.0'
 
-workspace 'NeftaISAdapter.xcodeworkspace'
-
-target 'IronSourceSwiftDemoApp' do
-  project 'IronSourceSwiftDemoApp/IronSourceSwiftDemoApp.xcodeproj'
+target 'ISIntegration' do
+  project 'ISIntegration.xcodeproj'
 
   pod 'IronSourceSDK'
 end

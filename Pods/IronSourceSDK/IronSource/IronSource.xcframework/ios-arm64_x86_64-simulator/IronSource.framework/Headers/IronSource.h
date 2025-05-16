@@ -5,6 +5,7 @@
 #ifndef IRONSOURCE_H
 #define IRONSOURCE_H
 
+
 // import core classes
 #import <AVFoundation/AVFoundation.h>
 #import <AdSupport/AdSupport.h>
@@ -56,6 +57,7 @@
 #import "ISWaterfallConfiguration.h"
 #import "IronSourceAds.h"
 #import "LPMConfigServiceEventSender.h"
+#import "LPMDispatcherProtocol.h"
 
 // imports used for custom adapters infra
 #import "ISAdapterErrors.h"
@@ -101,8 +103,8 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"8.5.1";
-static NSString *GitHash = @"013c5c0";
+static NSString *const MEDIATION_SDK_VERSION = @"8.8.0";
+static NSString *GitHash = @"f988075";
 
 /*
     This constant is for sending an external impression data from mopub

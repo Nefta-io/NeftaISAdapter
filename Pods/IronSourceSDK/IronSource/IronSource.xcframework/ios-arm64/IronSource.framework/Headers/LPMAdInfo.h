@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LPMAdInfo : NSObject
 
+@property(readonly, copy, nonnull) NSString *adId;
 @property(readonly, copy) NSString *adUnitId;
 @property(readonly, copy) NSString *adUnitName;
 @property(readonly, copy, nullable) NSString *placementName;
@@ -44,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
     "This parameter will be removed in version 9.0.0. Please use conversionValue parameter "
     "instead.");
 @property(readonly, copy) NSNumber *conversionValue;
+@property(readonly, copy) NSString *creativeId;
 
 @end
 

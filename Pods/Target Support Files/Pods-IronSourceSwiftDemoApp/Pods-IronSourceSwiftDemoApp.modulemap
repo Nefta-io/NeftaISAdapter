@@ -1,6 +1,0 @@
-module Pods_IronSourceSwiftDemoApp {
-  umbrella header "Pods-IronSourceSwiftDemoApp-umbrella.h"
-
-  export *
-  module * { export * }
-}

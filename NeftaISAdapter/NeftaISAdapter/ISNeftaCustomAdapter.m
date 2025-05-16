@@ -83,7 +83,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.2.2";
+    return @"2.2.3";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
@@ -107,21 +107,25 @@ static dispatch_semaphore_t _semaphore;
     if ([impressionData.ad_network isEqualToString: @"nefta"]) {
         NSString* auctionId;
         NSString* creativeId;
-        if ([impressionData.ad_format isEqualToString: IS_BANNER]) {
-            auctionId = ISNeftaCustomBanner.GetLastAuctionId;
-            creativeId = ISNeftaCustomBanner.GetLastCreativeId;
-        } else if ([impressionData.ad_format isEqualToString: IS_INTERSTITIAL]) {
-            auctionId = ISNeftaCustomInterstitial.GetLastAuctionId;
-            creativeId = ISNeftaCustomInterstitial.GetLastCreativeId;
-        } else if ([impressionData.ad_format isEqualToString: IS_REWARDED_VIDEO]) {
-            auctionId = ISNeftaCustomRewardedVideo.GetLastAuctionId;
-            creativeId = ISNeftaCustomRewardedVideo.GetLastCreativeId;
-        }
-        if (auctionId != nil) {
-            [data setObject: auctionId forKey: @"ad_opportunity_id"];
-        }
-        if (creativeId != nil) {
-            [data setObject: creativeId forKey: @"creative_id"];
+        NSString* format = impressionData.ad_format;
+        if (format != nil) {
+            NSString* lowerFormat = [format lowercaseString];
+            if ([lowerFormat isEqualToString: @"banner"]) {
+                auctionId = ISNeftaCustomBanner.GetLastAuctionId;
+                creativeId = ISNeftaCustomBanner.GetLastCreativeId;
+            } else if ([lowerFormat rangeOfString: @"inter"].location != NSNotFound) {
+                auctionId = ISNeftaCustomInterstitial.GetLastAuctionId;
+                creativeId = ISNeftaCustomInterstitial.GetLastCreativeId;
+            } else if ([lowerFormat rangeOfString: @"rewarded"].location != NSNotFound) {
+                auctionId = ISNeftaCustomRewardedVideo.GetLastAuctionId;
+                creativeId = ISNeftaCustomRewardedVideo.GetLastCreativeId;
+            }
+            if (auctionId != nil) {
+                [data setObject: auctionId forKey: @"ad_opportunity_id"];
+            }
+            if (creativeId != nil) {
+                [data setObject: creativeId forKey: @"creative_id"];
+            }
         }
     }
     [NeftaPlugin OnExternalMediationImpression: _mediationProvider data: data];
