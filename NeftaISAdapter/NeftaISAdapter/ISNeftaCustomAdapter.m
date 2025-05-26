@@ -15,7 +15,7 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
 @implementation ISNeftaCustomAdapter
 
 +(void) OnExternalMediationRequestLoad:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adInfo:(LPMAdInfo *)adInfo {
-    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adInfo.adUnitId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adInfo.adUnitId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil];
 }
 
 +(void) OnExternalMediationRequestFail:(AdType)adType requestedFloorPrice:(double)requestedFloorPrice calculatedFloorPrice:(double)calculatedFloorPrice adUnitId:(NSString *)adUnitId error:(NSError *)error {
@@ -27,7 +27,8 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
         error.code == ERROR_RV_LOAD_NO_FILL) {
         status = 2;
     }
-    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status];
+    NSString *originalStatus = [NSString stringWithFormat:@"%ld", error.code];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status providerStatus: nil networkStatus: nil];
 }
 
 static NeftaPlugin *_plugin;
@@ -83,7 +84,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.2.3";
+    return @"2.2.4";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
