@@ -12,7 +12,7 @@ import IronSource
 class Banner: NSObject, LPMBannerAdViewDelegate {
     private let FloorPriceInsightName = "calculated_user_floor_price_banner"
     
-    private var _bidFloor: Double = 0.0
+    private var _requestedBidFloor: Double = 0.0
     private var _calculatedBidFloor: Double = 0.0
     private var _isLoadRequested = false
     
@@ -55,17 +55,17 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
         _isLoadRequested = false
         
         if _calculatedBidFloor <= 0 {
-            _bidFloor = 0
+            _requestedBidFloor = 0
             IronSource.setWaterfallConfiguration(ISWaterfallConfiguration.clear(), for: ISAdUnit.is_AD_UNIT_BANNER())
         } else {
-            _bidFloor = _calculatedBidFloor
+            _requestedBidFloor = _calculatedBidFloor
             let configuration = ISWaterfallConfiguration.builder()
-                .setFloor(NSNumber(value: _bidFloor))
+                .setFloor(NSNumber(value: _requestedBidFloor))
                 .build()
             IronSource.setWaterfallConfiguration(configuration, for: ISAdUnit.is_AD_UNIT_BANNER())
         }
         
-        SetInfo("Loading Banner with floor: \(_bidFloor)")
+        SetInfo("Loading Banner with floor: \(_requestedBidFloor)")
     
         _bannerAd = LPMBannerAdView(adUnitId: "4gyff1ux8ch1qz7y")
         _bannerAd.setAdSize(LPMAdSize.banner())
@@ -75,16 +75,20 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
     }
     
     func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(.banner, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
+        ISNeftaCustomAdapter.onExternalMediationRequestFail(.banner, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
         
         SetInfo("didFailToLoadAd \(error.localizedDescription)")
         
         _loadAndShowButton.isEnabled = true
         _closeButton.isEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.GetInsightsAndLoad()
+        }
     }
     
     func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.banner, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
+        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.banner, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
  
         SetInfo("didLoad \(adInfo.adNetwork)")
   

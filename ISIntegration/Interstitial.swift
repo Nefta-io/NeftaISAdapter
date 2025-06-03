@@ -13,7 +13,7 @@ class Interstitial : NSObject, LPMInterstitialAdDelegate {
     
     private let FloorPriceInsightName = "calculated_user_floor_price_interstitial"
     
-    private var _bidFloor: Double = 0.0
+    private var _requestedBidFloor: Double = 0.0
     private var _calculatedBidFloor: Double = 0.0
     private var _isLoadRequested: Bool = false
     
@@ -54,17 +54,17 @@ class Interstitial : NSObject, LPMInterstitialAdDelegate {
         _isLoadRequested = false
         
         if _calculatedBidFloor == 0 {
-            _bidFloor = 0
+            _requestedBidFloor = 0
             IronSource.setWaterfallConfiguration(ISWaterfallConfiguration.clear(), for: ISAdUnit.is_AD_UNIT_INTERSTITIAL())
         } else {
-            _bidFloor = _calculatedBidFloor
+            _requestedBidFloor = _calculatedBidFloor
             let configuration = ISWaterfallConfiguration.builder()
-                .setFloor(NSNumber(value: _bidFloor))
+                .setFloor(NSNumber(value: _requestedBidFloor))
                 .build()
             IronSource.setWaterfallConfiguration(configuration, for: ISAdUnit.is_AD_UNIT_INTERSTITIAL())
         }
         
-        SetInfo("Loading Interstitial with floor: \(_bidFloor)")
+        SetInfo("Loading Interstitial with floor: \(_requestedBidFloor)")
         
         _interstitialAd = LPMInterstitialAd(adUnitId: "q0z1act0tdckh4mg")
         _interstitialAd.setDelegate(self)
@@ -72,18 +72,17 @@ class Interstitial : NSObject, LPMInterstitialAdDelegate {
     }
     
     func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(.interstitial, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
+        ISNeftaCustomAdapter.onExternalMediationRequestFail(.interstitial, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
         
         SetInfo("didFailToLoadAd \(adUnitId): \(error.localizedDescription)")
         
-        // or automatically retry with a delay
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-        //    self.GetInsightsAndLoad();
-        //}
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.GetInsightsAndLoad();
+        }
     }
     
     func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.interstitial, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
+        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.interstitial, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
         
         SetInfo("didLoadAd \(adInfo.adNetwork)")
         

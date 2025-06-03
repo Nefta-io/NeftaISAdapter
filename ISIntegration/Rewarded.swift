@@ -13,7 +13,7 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     
     private let FloorPriceInsightName = "calculated_user_floor_price_rewarded"
     
-    private var _bidFloor: Double = 0.0
+    private var _requestedBidFloor: Double = 0.0
     private var _calculatedBidFloor: Double = 0.0
     private var _isLoadRequested: Bool = false
 
@@ -54,17 +54,17 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
         _isLoadRequested = false
         
         if _calculatedBidFloor == 0 {
-            _bidFloor = 0
+            _requestedBidFloor = 0
             IronSource.setWaterfallConfiguration(ISWaterfallConfiguration.clear(), for: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO())
         } else {
-            _bidFloor = _calculatedBidFloor
+            _requestedBidFloor = _calculatedBidFloor
             let configuration = ISWaterfallConfiguration.builder()
-                .setFloor(NSNumber(value: _bidFloor))
+                .setFloor(NSNumber(value: _requestedBidFloor))
                 .build()
             IronSource.setWaterfallConfiguration(configuration, for: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO())
         }
         
-        SetInfo("Loading Rewarded with floor: \(_bidFloor)")
+        SetInfo("Loading Rewarded with floor: \(_requestedBidFloor)")
         
         _rewarded = LPMRewardedAd(adUnitId: "doucurq8qtlnuz7p")
         _rewarded.setDelegate(self)
@@ -72,18 +72,17 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     }
     
     func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(.rewarded, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
+        ISNeftaCustomAdapter.onExternalMediationRequestFail(.rewarded, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
         
         SetInfo("didFailToLoadAd \(adUnitId): \(error.localizedDescription)")
         
-        // or automatically retry with a delay
-        // DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-        //     self.GetInsightsAndLoad()
-        // }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.GetInsightsAndLoad()
+        }
     }
     
     func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.rewarded, requestedFloorPrice: _bidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
+        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.rewarded, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
         
         SetInfo("didLoadAd \(adInfo)")
         
@@ -101,7 +100,12 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
         _loadButton.addTarget(self, action: #selector(OnLoadClick), for: .touchUpInside)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
         
+        _loadButton.isEnabled = false
         _showButton.isEnabled = false
+    }
+    
+    func Create() {
+        _loadButton.isEnabled = true
     }
     
     @objc func OnLoadClick() {
@@ -130,11 +134,11 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     }
     
     func didClickAd(with adInfo: LPMAdInfo) {
-        SetInfo("didClick \(String(describing: adInfo))")
+        SetInfo("didClickAd \(String(describing: adInfo))")
     }
     
     func didCloseAd(with adInfo: LPMAdInfo) {
-        SetInfo("didOpen \(String(describing: adInfo))")
+        SetInfo("didCloseAd \(String(describing: adInfo))")
     }
     
     private func SetInfo(_ info: String) {

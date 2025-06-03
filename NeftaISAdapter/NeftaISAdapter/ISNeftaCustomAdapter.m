@@ -27,8 +27,8 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
         error.code == ERROR_RV_LOAD_NO_FILL) {
         status = 2;
     }
-    NSString *originalStatus = [NSString stringWithFormat:@"%ld", error.code];
-    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status providerStatus: nil networkStatus: nil];
+    NSString *providerStatus = [NSString stringWithFormat:@"%ld", error.code];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status providerStatus: providerStatus networkStatus: nil];
 }
 
 static NeftaPlugin *_plugin;
@@ -84,7 +84,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"2.2.4";
+    return @"2.2.5";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
@@ -105,30 +105,39 @@ static dispatch_semaphore_t _semaphore;
     }
     NSMutableDictionary *data = impressionData.all_data.mutableCopy;
     [data setObject: _mediationProvider forKey: @"mediation_provider"];
-    if ([impressionData.ad_network isEqualToString: @"nefta"]) {
-        NSString* auctionId;
-        NSString* creativeId;
-        NSString* format = impressionData.ad_format;
-        if (format != nil) {
-            NSString* lowerFormat = [format lowercaseString];
-            if ([lowerFormat isEqualToString: @"banner"]) {
+    int adType = 0;
+    BOOL isNeftaNetwork = [impressionData.ad_network isEqualToString: @"nefta"];
+    NSString* auctionId;
+    NSString* creativeId;
+    NSString* format = impressionData.ad_format;
+    if (format != nil) {
+        NSString* lowerFormat = [format lowercaseString];
+        if ([lowerFormat isEqualToString: @"banner"]) {
+            adType = 1;
+            if (isNeftaNetwork) {
                 auctionId = ISNeftaCustomBanner.GetLastAuctionId;
                 creativeId = ISNeftaCustomBanner.GetLastCreativeId;
-            } else if ([lowerFormat rangeOfString: @"inter"].location != NSNotFound) {
+            }
+        } else if ([lowerFormat rangeOfString: @"inter"].location != NSNotFound) {
+            adType = 2;
+            if (isNeftaNetwork) {
                 auctionId = ISNeftaCustomInterstitial.GetLastAuctionId;
                 creativeId = ISNeftaCustomInterstitial.GetLastCreativeId;
-            } else if ([lowerFormat rangeOfString: @"rewarded"].location != NSNotFound) {
+            }
+        } else if ([lowerFormat rangeOfString: @"rewarded"].location != NSNotFound) {
+            adType = 3;
+            if (isNeftaNetwork) {
                 auctionId = ISNeftaCustomRewardedVideo.GetLastAuctionId;
                 creativeId = ISNeftaCustomRewardedVideo.GetLastCreativeId;
             }
-            if (auctionId != nil) {
-                [data setObject: auctionId forKey: @"ad_opportunity_id"];
-            }
-            if (creativeId != nil) {
-                [data setObject: creativeId forKey: @"creative_id"];
-            }
+        }
+        if (auctionId != nil) {
+            [data setObject: auctionId forKey: @"ad_opportunity_id"];
+        }
+        if (creativeId != nil) {
+            [data setObject: creativeId forKey: @"creative_id"];
         }
     }
-    [NeftaPlugin OnExternalMediationImpression: _mediationProvider data: data];
+    [NeftaPlugin OnExternalMediationImpression: _mediationProvider data: data adType: adType revenue: [impressionData.revenue doubleValue] precision: impressionData.precision];
 }
 @end

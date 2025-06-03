@@ -65,6 +65,7 @@ class ViewController: UIViewController {
             
             self._banner.Create()
             self._interstitial.Create()
+            self._rewardedVideo.Create()
         }
         
         _demandControl.addTarget(self, action: #selector(onDemandChanged(_:)), for: .valueChanged)
