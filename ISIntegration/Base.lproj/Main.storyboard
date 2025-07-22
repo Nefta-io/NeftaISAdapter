@@ -41,17 +41,17 @@
                                         <rect key="frame" x="10" y="0.0" width="320" height="300"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="cq7-08-CtD">
-                                                <rect key="frame" x="0.0" y="0.0" width="264.33333333333331" height="48.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="48.333333333333336"/>
                                                 <subviews>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-fM-GOs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="49.333333333333336"/>
+                                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-fM-GOs">
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49.333333333333336"/>
                                                         <segments>
                                                             <segment title="Nefta"/>
                                                             <segment title="IS"/>
                                                         </segments>
                                                     </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-gB-wqp">
-                                                        <rect key="frame" x="167" y="0.0" width="97.333333333333314" height="48.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="48.333333333333336"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Test suite"/>
                                                     </button>

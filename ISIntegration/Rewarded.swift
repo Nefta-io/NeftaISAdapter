@@ -10,82 +10,58 @@ import Foundation
 import IronSource
 
 class Rewarded : NSObject, LPMRewardedAdDelegate {
-    
-    private let FloorPriceInsightName = "calculated_user_floor_price_rewarded"
-    
-    private var _requestedBidFloor: Double = 0.0
-    private var _calculatedBidFloor: Double = 0.0
-    private var _isLoadRequested: Bool = false
 
-    let _loadButton: UIButton
-    let _showButton: UIButton
-    let _status: UILabel
-    let _viewController: UIViewController
+    private let _loadButton: UIButton
+    private let _showButton: UIButton
+    private let _status: UILabel
+    private let _viewController: UIViewController
+    private var _isLoading = false
     
-    var _rewarded: LPMRewardedAd!
+    private var _rewarded: LPMRewardedAd!
+    private var _usedInsight: AdInsight?
+    private var _requestedFloorPrice: Double = 0
     
     private func GetInsightsAndLoad() {
-        _isLoadRequested = true
-        
-        NeftaPlugin._instance.GetBehaviourInsight([FloorPriceInsightName], callback: OnBehaviourInsight)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            if self._isLoadRequested {
-                self._calculatedBidFloor = 0
-                self.Load()
-            }
-        }
+        NeftaPlugin._instance.GetInsights(Insights.Rewarded, callback: Load, timeout: 5)
     }
     
-    func OnBehaviourInsight(insights: [String: Insight]) {
-        _calculatedBidFloor = 0
-        if let bidFloorInsight = insights[FloorPriceInsightName] {
-            _calculatedBidFloor = bidFloorInsight._float
+    private func Load(insights: Insights) {
+        _requestedFloorPrice = 0
+        _usedInsight = insights._rewarded
+        if let usedInsight = _usedInsight {
+            _requestedFloorPrice = usedInsight._floorPrice
         }
         
-        print("OnBehaviourInsight for Rewarded calculated bid floor: \(_calculatedBidFloor)")
+        SetInfo("Loading Rewarded with floor: \(_requestedFloorPrice)")
         
-        if _isLoadRequested {
-            Load()
-        }
-    }
-    
-    func Load() {
-        _isLoadRequested = false
+        let config = LPMRewardedAdConfigBuilder()
+            .set(bidFloor: _requestedFloorPrice as NSNumber)
+            .build()
         
-        if _calculatedBidFloor == 0 {
-            _requestedBidFloor = 0
-            IronSource.setWaterfallConfiguration(ISWaterfallConfiguration.clear(), for: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO())
-        } else {
-            _requestedBidFloor = _calculatedBidFloor
-            let configuration = ISWaterfallConfiguration.builder()
-                .setFloor(NSNumber(value: _requestedBidFloor))
-                .build()
-            IronSource.setWaterfallConfiguration(configuration, for: ISAdUnit.is_AD_UNIT_REWARDED_VIDEO())
-        }
-        
-        SetInfo("Loading Rewarded with floor: \(_requestedBidFloor)")
-        
-        _rewarded = LPMRewardedAd(adUnitId: "doucurq8qtlnuz7p")
+        _rewarded = LPMRewardedAd(adUnitId: "doucurq8qtlnuz7p", config: config)
         _rewarded.setDelegate(self)
         _rewarded.loadAd()
     }
     
     func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(.rewarded, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adUnitId: adUnitId, error: error as NSError)
+        ISNeftaCustomAdapter.onExternalMediationRequestFail(.rewarded, usedInsight: _usedInsight, requestedFloorPrice: _requestedFloorPrice, adUnitId: adUnitId, error: error as NSError)
         
         SetInfo("didFailToLoadAd \(adUnitId): \(error.localizedDescription)")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.GetInsightsAndLoad()
+            if self._isLoading {
+                self.GetInsightsAndLoad()
+            }
         }
     }
     
     func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.rewarded, requestedFloorPrice: _requestedBidFloor, calculatedFloorPrice: _calculatedBidFloor, adInfo: adInfo)
+        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.rewarded, usedInsight: _usedInsight, requestedFloorPrice: _requestedFloorPrice, adInfo: adInfo)
         
         SetInfo("didLoadAd \(adInfo)")
         
+        SetLoadingButton(isLoading: false)
+        _loadButton.isEnabled = false
         _showButton.isEnabled = true
     }
     
@@ -109,20 +85,24 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     }
     
     @objc func OnLoadClick() {
-        GetInsightsAndLoad()
+        if _isLoading {
+            SetLoadingButton(isLoading: false)
+        } else {
+            SetInfo("GetInsightsAndLoad...")
+            GetInsightsAndLoad()
+            SetLoadingButton(isLoading: true)
+        }
     }
     
     @objc func OnShowClick() {
-        _showButton.isEnabled = false
         _rewarded.showAd(viewController: _viewController, placementName: nil)
+        
+        _loadButton.isEnabled = true
+        _showButton.isEnabled = false
     }
     
     func didRewardAd(with adInfo: LPMAdInfo, reward: LPMReward) {
         SetInfo("didRewardAd \(adInfo)")
-    }
-    
-    func didReceiveReward(forPlacement placementInfo: ISPlacementInfo!, with adInfo: ISAdInfo!) {
-        SetInfo("didReceiveReward \(adInfo.ad_network)")
     }
     
     func didFailToShowWithError(_ error: (any Error)!, andAdInfo adInfo: ISAdInfo!) {
@@ -139,10 +119,21 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     
     func didCloseAd(with adInfo: LPMAdInfo) {
         SetInfo("didCloseAd \(String(describing: adInfo))")
+        _loadButton.isEnabled = true
     }
     
     private func SetInfo(_ info: String) {
         print(info)
         _status.text = info
+    }
+    
+    private func SetLoadingButton(isLoading: Bool) {
+        if isLoading {
+            _loadButton.setTitle("Cancel", for: .normal)
+            _isLoading = true
+        } else {
+            _loadButton.setTitle("Load Interstitial", for: .normal)
+            _isLoading = false
+        }
     }
 }

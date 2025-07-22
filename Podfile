@@ -5,4 +5,5 @@ target 'ISIntegration' do
   project 'ISIntegration.xcodeproj'
 
   pod 'IronSourceSDK'
+  pod 'NeftaISAdapter', :path => '.'
 end

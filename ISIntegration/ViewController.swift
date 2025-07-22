@@ -45,13 +45,13 @@ class ViewController: UIViewController {
         
         let plugin = ISNeftaCustomAdapter.initWithAppId("5661184053215232")
         
-        _title.text = "Nefta Adapter for\n IronSource \(IronSource.sdkVersion())"
+        _title.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
         
         _banner = Banner(loadAndShowButton: _showBanner, closeButton: _hideBanner, status: _bannerStatus, viewController: self, bannerPlaceholder: _bannerPlaceholder)
         _interstitial = Interstitial(loadButton: _loadInterstitial, showButton: _showInterstitial, status: _interstitialStatus, viewController: self)
         _rewardedVideo = Rewarded(loadButton: _loadRewarded, showButton: _showRewarded, status: _rewardedStatus, viewController: self)
         
-        IronSource.setMetaDataWithKey("is_test_suite", value: "enable")
+        LevelPlay.setMetaDataWithKey("is_test_suite", value: "enable")
         
         let requestBuilder = LPMInitRequestBuilder(appKey: kAPPKEY)
         let initRequest = requestBuilder.build()
@@ -71,11 +71,11 @@ class ViewController: UIViewController {
         _demandControl.addTarget(self, action: #selector(onDemandChanged(_:)), for: .valueChanged)
         _testSuite.addTarget(self, action: #selector(onTestSuite), for: .touchUpInside)
         
-        SetSegment(isIs: false)
+        SetSegment(isIs: true)
     }
     
     @objc func onTestSuite() {
-        IronSource.launchTestSuite(self)
+        LevelPlay.launchTestSuite(self)
     }
     
     @IBAction func onDemandChanged(_ sender: UISegmentedControl) {
@@ -87,13 +87,13 @@ class ViewController: UIViewController {
     }
     
     private func SetSegment(isIs: Bool) {
-        let demandSegment = ISSegment()
+        let demandSegment = LPMSegment()
         if isIs {
             demandSegment.segmentName = "is"
         } else {
             demandSegment.segmentName = "nefta"
         }
-        IronSource.setSegment(demandSegment)
+        LevelPlay.setSegment(demandSegment)
     }
 }
 
