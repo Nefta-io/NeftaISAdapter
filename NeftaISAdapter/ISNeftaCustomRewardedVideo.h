@@ -6,7 +6,7 @@
 //
 
 #ifndef ISNeftaCustomRewardedVideo_h
-#define ISNeftaCustomRewarded_h
+#define ISNeftaCustomRewardedVideo_h
 
 #import "ISNeftaCustomAdapter.h"
 

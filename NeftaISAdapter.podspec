@@ -10,9 +10,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
 
   s.swift_version = '5.0'
+  s.static_framework = true
 
   s.source_files     = 'NeftaISAdapter/**/IS*.{h,m}'
 
   s.dependency 'NeftaSDK', '= 4.3.0'
-  s.dependency 'IronSourceSDK', '>= 7.0.0'
+  s.dependency 'IronSourceSDK/Ads', '>= 7.0.0'
 end
