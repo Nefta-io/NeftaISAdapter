@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             NeftaPlugin.SetOverride(url: arguments[1])
         }
         
-        let plugin = ISNeftaCustomAdapter.initWithAppId("5661184053215232")
+        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400")
         
         _title.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
         

@@ -119,7 +119,6 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     
     func didCloseAd(with adInfo: LPMAdInfo) {
         SetInfo("didCloseAd \(String(describing: adInfo))")
-        _loadButton.isEnabled = true
     }
     
     private func SetInfo(_ info: String) {
@@ -128,12 +127,11 @@ class Rewarded : NSObject, LPMRewardedAdDelegate {
     }
     
     private func SetLoadingButton(isLoading: Bool) {
+        _isLoading = isLoading
         if isLoading {
             _loadButton.setTitle("Cancel", for: .normal)
-            _isLoading = true
         } else {
-            _loadButton.setTitle("Load Interstitial", for: .normal)
-            _isLoading = false
+            _loadButton.setTitle("Load Rewarded", for: .normal)
         }
     }
 }
