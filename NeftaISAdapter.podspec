@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'NeftaISAdapter/**/IS*.{h,m}'
 
-  s.dependency 'NeftaSDK', '= 4.3.0'
+  s.dependency 'NeftaSDK', '= 4.3.1'
   s.dependency 'IronSourceSDK/Ads', '>= 7.0.0'
 end
