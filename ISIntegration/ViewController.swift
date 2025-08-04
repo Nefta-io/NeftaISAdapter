@@ -88,11 +88,7 @@ class ViewController: UIViewController {
     
     private func SetSegment(isIs: Bool) {
         let demandSegment = LPMSegment()
-        if isIs {
-            demandSegment.segmentName = "is"
-        } else {
-            demandSegment.segmentName = "nefta"
-        }
+        demandSegment.segmentName = isIs ? "is" : "nefta"
         LevelPlay.setSegment(demandSegment)
     }
 }
