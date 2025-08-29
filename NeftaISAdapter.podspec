@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = 'NeftaISAdapter'
-  s.version      = '4.3.1'
+  s.version      = '4.3.2'
   s.summary      = 'Nefta Ad Network SDK for LevelPlay Mediation.'
   s.homepage     = 'https://docs.nefta.io/update/docs/ironsource-ios'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'Tomaz Treven' => 'treven@nefta.io' }
-  s.source       = { :git => 'https://github.com/Nefta-io/NeftaISAdapter.git', :tag => 'REL_4.3.1' }
+  s.source       = { :git => 'https://github.com/Nefta-io/NeftaISAdapter.git', :tag => 'REL_4.3.2' }
 
   s.ios.deployment_target = '12.0'
 
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'NeftaISAdapter/**/IS*.{h,m}'
 
-  s.dependency 'NeftaSDK', '= 4.3.1'
+  s.dependency 'NeftaSDK', '= 4.3.2'
   s.dependency 'IronSourceSDK/Ads', '>= 7.0.0'
 end
