@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var _hideBanner: UIButton!
     @IBOutlet weak var _loadInterstitial: UIButton!
     @IBOutlet weak var _showInterstitial: UIButton!
-    @IBOutlet weak var _loadRewarded: UIButton!
+    @IBOutlet weak var _loadRewarded: UISwitch!
     @IBOutlet weak var _showRewarded: UIButton!
     @IBOutlet weak var _title: UILabel!
     @IBOutlet weak var _bannerStatus: UILabel!
