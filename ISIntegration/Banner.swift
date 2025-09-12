@@ -11,6 +11,8 @@ import IronSource
 
 class Banner: NSObject, LPMBannerAdViewDelegate {
     
+    private let _adUnitId = "4gyff1ux8ch1qz7y"
+    
     private let _loadAndShowButton: UIButton
     private let _closeButton: UIButton
     private let _status: UILabel
@@ -20,34 +22,37 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
     private var _bannerView: LPMBannerAdView! = nil
     private var _bannerAd: LPMBannerAdView!
     private var _usedInsight: AdInsight?
-    private var _requestedFloorPrice: Double = 0
     
     private func GetInsightsAndLoad() {
-        NeftaPlugin._instance.GetInsights(Insights.Banner, callback: Load, timeout: 5)
+        NeftaPlugin._instance.GetInsights(Insights.Banner, previousInsight: _usedInsight, callback: Load, timeout: 5)
     }
     
     private func Load(insights: Insights) {
-        _requestedFloorPrice = 0
         _usedInsight = insights._banner
         if let usedInsight = _usedInsight {
-            _requestedFloorPrice = usedInsight._floorPrice
+            let config = LPMBannerAdViewConfigBuilder()
+                .set(adSize: LPMAdSize.banner())
+                .set(bidFloor: usedInsight._floorPrice as NSNumber)
+                .build()
+            _bannerAd = LPMBannerAdView(adUnitId: _adUnitId, config: config)
+            
+            SetInfo("Loading Banner with floor: \(usedInsight._floorPrice)")
+        } else {
+            let config = LPMBannerAdViewConfigBuilder()
+                .set(adSize: LPMAdSize.banner())
+                .build()
+            _bannerAd = LPMBannerAdView(adUnitId: _adUnitId, config: config)
+            
+            SetInfo("Loading Banner default")
         }
-    
-        SetInfo("Loading Banner with floor: \(_requestedFloorPrice)")
-    
-        let config = LPMBannerAdViewConfigBuilder()
-            .set(adSize: LPMAdSize.banner())
-            .set(bidFloor: _requestedFloorPrice as NSNumber)
-            .build()
-        
-        _bannerAd = LPMBannerAdView(adUnitId: "4gyff1ux8ch1qz7y", config: config)
         _bannerAd.setDelegate(self)
-        
         _bannerAd.loadAd(with: _viewController)
+        
+        ISNeftaCustomAdapter.onExternalMediationRequest(withBanner: _bannerAd, adUnitId: _adUnitId, insight: _usedInsight);
     }
     
     func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(.banner, usedInsight: _usedInsight, requestedFloorPrice: _requestedFloorPrice, adUnitId: adUnitId, error: error as NSError)
+        ISNeftaCustomAdapter.onExternalMediationRequestFail(error as NSError)
         
         SetInfo("didFailToLoadAd \(error.localizedDescription)")
         
@@ -60,12 +65,18 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
     }
     
     func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(.banner, usedInsight: _usedInsight, requestedFloorPrice: _requestedFloorPrice, adInfo: adInfo)
+        ISNeftaCustomAdapter.onExternalMediationRequestLoad(adInfo)
         
         SetInfo("didLoad \(adInfo.adNetwork)")
   
         _bannerAd.frame = CGRect(x: _bannerPlaceholder.frame.size.width * 0.5 - _bannerPlaceholder.frame.size.width * 0.5, y: _bannerPlaceholder.frame.size.height - _bannerPlaceholder.frame.size.height, width: _bannerPlaceholder.frame.size.width, height: _bannerPlaceholder.frame.size.height - _bannerPlaceholder.safeAreaInsets.bottom * 2.5)
         _bannerPlaceholder.addSubview(_bannerAd)
+    }
+    
+    func didClickAd(with adInfo: LPMAdInfo) {
+        SetInfo("didClickAd \(adInfo.adNetwork)")
+        
+        ISNeftaCustomAdapter.onExternalMediationClick(adInfo)
     }
     
     init(loadAndShowButton: UIButton, closeButton: UIButton, status: UILabel, viewController: UIViewController, bannerPlaceholder: UIView) {
@@ -120,10 +131,6 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
         SetInfo("didClick \(adInfo.adNetwork)")
     }
     
-    func didClickAd(with adInfo: LPMAdInfo) {
-        SetInfo("didClickAd \(adInfo.adNetwork)")
-    }
-    
     func didLeaveApp(with adInfo: LPMAdInfo) {
         SetInfo("didLeaveApp \(adInfo.adNetwork)")
     }
@@ -133,7 +140,7 @@ class Banner: NSObject, LPMBannerAdViewDelegate {
     }
     
     private func SetInfo(_ info: String) {
-        print(info)
+        print("NeftaPluginIS Banner \(info)")
         _status.text = info
     }
 }

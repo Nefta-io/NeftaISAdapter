@@ -16,11 +16,30 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
 
 @implementation ISNeftaCustomAdapter
 
-+(void) OnExternalMediationRequestLoad:(AdType)adType usedInsight:(AdInsight * _Nullable)usedInsight requestedFloorPrice:(double)requestedFloorPrice adInfo:(LPMAdInfo *)adInfo {
-    [ISNeftaCustomAdapter OnExternalMediationRequest: adType insight: usedInsight requestedFloorPrice: requestedFloorPrice adUnitId: adInfo.adUnitId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil];
++ (void)OnExternalMediationRequestWithBanner:(LPMBannerAdView * _Nonnull)banner adUnitId:(NSString *)adUnitId insight:(AdInsight * _Nullable)insight {
+    [ISNeftaCustomAdapter OnExternalMediationRequest: AdTypeBanner id: banner.adId requestedAdUnitId: adUnitId insight: insight];
+}
++ (void)OnExternalMediationRequestWithInterstitial:(LPMInterstitialAd * _Nonnull)interstitial adUnitId:(NSString *)adUnitId insight:(AdInsight * _Nullable)insight {
+    [ISNeftaCustomAdapter OnExternalMediationRequest: AdTypeInterstitial id: interstitial.adId requestedAdUnitId: adUnitId insight: insight];
+}
++ (void)OnExternalMediationRequestWithRewarded:(LPMRewardedAd * _Nonnull)rewarded adUnitId:(NSString *)adUnitId insight:(AdInsight * _Nullable)insight {
+    [ISNeftaCustomAdapter OnExternalMediationRequest: AdTypeRewarded id: rewarded.adId requestedAdUnitId: adUnitId insight: insight];
+}
++ (void)OnExternalMediationRequest:(AdType)adType id:(NSString * _Nonnull)id requestedAdUnitId:(NSString * _Nonnull)requestedAdUnitId insight:(AdInsight * _Nullable)insight {
+    int adOpportunityId = -1;
+    double requestedFloor = -1;
+    if (insight != nil) {
+        adOpportunityId = (int)insight._adOpportunityId;
+        requestedFloor = insight._floorPrice;
+    }
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: (int)adType id: id requestedAdUnitId: requestedAdUnitId requestedFloorPrice: requestedFloor adOpportunityId: adOpportunityId];
 }
 
-+(void) OnExternalMediationRequestFail:(AdType)adType usedInsight:(AdInsight * _Nullable)usedInsight requestedFloorPrice:(double)requestedFloorPrice adUnitId:(NSString * _Nonnull)adUnitId error:(NSError *)error {
++ (void) OnExternalMediationRequestLoad:(LPMAdInfo * _Nonnull)adInfo {
+    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adInfo.adId id2: adInfo.auctionId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil];
+}
+
++ (void) OnExternalMediationRequestFail:(NSError * _Nonnull)error {
     int status = 0;
     if (error.code == ERROR_CODE_NO_ADS_TO_SHOW ||
         error.code == ERROR_BN_LOAD_NO_FILL ||
@@ -30,19 +49,35 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
         status = 2;
     }
     NSString *providerStatus = [NSString stringWithFormat:@"%ld", error.code];
-    [ISNeftaCustomAdapter OnExternalMediationRequest: adType insight:usedInsight requestedFloorPrice: requestedFloorPrice adUnitId: adUnitId revenue: -1 precision: nil status: status providerStatus: providerStatus];
+    NSString *adId = error.userInfo != nil ? error.userInfo[@"adId"] : @"";
+    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adId id2: nil revenue: -1 precision: nil status: status providerStatus: providerStatus networkStatus: nil];
 }
 
-+(void)OnExternalMediationRequest:(AdType) adType insight:(AdInsight * _Nullable)insight requestedFloorPrice:(double)requestedFloorPrice adUnitId:(NSString * _Nonnull)adUnitId revenue:(double)revenue precision:(NSString * _Nullable)precision status:(int)status providerStatus:(NSString * _Nullable)providerStatus {
-    double calculatedFloorPrice = 0;
-    if (insight != nil) {
-        calculatedFloorPrice = insight._floorPrice;
-        
-        if ((int)adType != insight._type) {
-            NSLog(@"OnExternalMediationRequest reported adType: %ld doesn't match insight adType: %ld", adType, insight._type);
-        }
++ (void)OnExternalMediationImpression:(LPMImpressionData * _Nonnull)impressionData {
+    NSMutableDictionary *data = nil;
+    if (impressionData.allData != nil) {
+        data = impressionData.allData.mutableCopy;
     }
-    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: (int)adType recommendedAdUnitId: nil requestedFloorPrice: requestedFloorPrice calculatedFloorPrice: calculatedFloorPrice adUnitId: adUnitId revenue: revenue precision: precision status: status providerStatus: providerStatus networkStatus: nil];
+    NSString *id2 = impressionData.auctionId;
+    [NeftaPlugin OnExternalMediationImpression: false provider: _mediationProvider data: data id: nil id2: id2];
+}
+
++ (void)OnExternalMediationClick:(LPMAdInfo * _Nonnull)adInfo {
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+    if (adInfo.adFormat != nil) {
+        [data setObject: adInfo.adFormat forKey: @"adFormat"];
+    }
+    if (adInfo.revenue != nil) {
+        [data setObject: adInfo.revenue forKey: @"revenue"];
+    }
+    if (adInfo.precision != nil) {
+        [data setObject: adInfo.precision forKey: @"precision"];
+    }
+    if (adInfo.adUnitId != nil) {
+        [data setObject: adInfo.adUnitId forKey: @"mediationAdUnitId"];
+    }
+  
+    [NeftaPlugin OnExternalMediationImpression: true provider: _mediationProvider data: data id: adInfo.adId id2: nil];
 }
 
 static NeftaPlugin *_plugin;
@@ -56,7 +91,7 @@ static dispatch_semaphore_t _semaphore;
 + (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL) sendImpressions {
     _plugin = [NeftaPlugin InitWithAppId: appId];
     _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
-    [IronSource addImpressionDataDelegate: _impressionCollector];
+    [LevelPlay addImpressionDataDelegate: _impressionCollector];
     return _plugin;
 }
 
@@ -98,7 +133,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"4.3.2";
+    return @"4.4.0";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
@@ -113,44 +148,7 @@ static dispatch_semaphore_t _semaphore;
 @end
 
 @implementation ISNeftaImpressionCollector
-- (void)impressionDataDidSucceed:(ISImpressionData *)impressionData {
-    if (impressionData.all_data == nil) {
-        return;
-    }
-    NSMutableDictionary *data = impressionData.all_data.mutableCopy;
-    int adType = 0;
-    BOOL isNeftaNetwork = [impressionData.ad_network isEqualToString: @"nefta"];
-    NSString* auctionId;
-    NSString* creativeId;
-    NSString* format = impressionData.ad_format;
-    if (format != nil) {
-        NSString* lowerFormat = [format lowercaseString];
-        if ([lowerFormat isEqualToString: @"banner"]) {
-            adType = AdTypeBanner;
-            if (isNeftaNetwork) {
-                auctionId = ISNeftaCustomBanner.GetLastAuctionId;
-                creativeId = ISNeftaCustomBanner.GetLastCreativeId;
-            }
-        } else if ([lowerFormat rangeOfString: @"inter"].location != NSNotFound) {
-            adType = AdTypeInterstitial;
-            if (isNeftaNetwork) {
-                auctionId = ISNeftaCustomInterstitial.GetLastAuctionId;
-                creativeId = ISNeftaCustomInterstitial.GetLastCreativeId;
-            }
-        } else if ([lowerFormat rangeOfString: @"rewarded"].location != NSNotFound) {
-            adType = AdTypeRewarded;
-            if (isNeftaNetwork) {
-                auctionId = ISNeftaCustomRewardedVideo.GetLastAuctionId;
-                creativeId = ISNeftaCustomRewardedVideo.GetLastCreativeId;
-            }
-        }
-        if (auctionId != nil) {
-            [data setObject: auctionId forKey: @"ad_opportunity_id"];
-        }
-        if (creativeId != nil) {
-            [data setObject: creativeId forKey: @"creative_id"];
-        }
-    }
-    [NeftaPlugin OnExternalMediationImpression: _mediationProvider data: data adType: adType revenue: [impressionData.revenue doubleValue] precision: impressionData.precision];
+- (void)impressionDataDidSucceed:(LPMImpressionData *)impressionData {
+    [ISNeftaCustomAdapter OnExternalMediationImpression: impressionData];
 }
 @end

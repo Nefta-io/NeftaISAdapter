@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var _testSuite: UIButton!
     @IBOutlet weak var _showBanner: UIButton!
     @IBOutlet weak var _hideBanner: UIButton!
-    @IBOutlet weak var _loadInterstitial: UIButton!
+    @IBOutlet weak var _loadInterstitial: UISwitch!
     @IBOutlet weak var _showInterstitial: UIButton!
     @IBOutlet weak var _loadRewarded: UISwitch!
     @IBOutlet weak var _showRewarded: UIButton!
@@ -37,19 +37,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NeftaPlugin.EnableLogging(enable: true)
+        _ = DebugServer(viewController: self)
+        
         let arguments = ProcessInfo.processInfo.arguments
         if arguments.count > 1 {
             NeftaPlugin.SetOverride(url: arguments[1])
         }
         
+        NeftaPlugin.EnableLogging(enable: true)
+        NeftaPlugin.SetExtraParameter(key: NeftaPlugin.ExtParam_TestGroup, value: "split-is")
         let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400")
         
         _title.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
         
         _banner = Banner(loadAndShowButton: _showBanner, closeButton: _hideBanner, status: _bannerStatus, viewController: self, bannerPlaceholder: _bannerPlaceholder)
-        _interstitial = Interstitial(loadButton: _loadInterstitial, showButton: _showInterstitial, status: _interstitialStatus, viewController: self)
-        _rewardedVideo = Rewarded(loadButton: _loadRewarded, showButton: _showRewarded, status: _rewardedStatus, viewController: self)
+        _interstitial = Interstitial(loadSwitch: _loadInterstitial, showButton: _showInterstitial, status: _interstitialStatus, viewController: self)
+        _rewardedVideo = Rewarded(loadSwitch: _loadRewarded, showButton: _showRewarded, status: _rewardedStatus, viewController: self)
         
         LevelPlay.setMetaDataWithKey("is_test_suite", value: "enable")
         

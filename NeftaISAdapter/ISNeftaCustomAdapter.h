@@ -19,16 +19,25 @@ typedef NS_ENUM(NSInteger, AdType) {
     AdTypeInterstitial = 2,
     AdTypeRewarded = 3
 };
-+ (void)OnExternalMediationRequestLoad:(AdType)adType usedInsight:(AdInsight * _Nullable)usedInsight requestedFloorPrice:(double)requestedFloorPrice adInfo:(LPMAdInfo * _Nonnull)adInfo;
-+ (void)OnExternalMediationRequestFail:(AdType)adType usedInsight:(AdInsight * _Nullable)usedInsight requestedFloorPrice:(double)requestedFloorPrice adUnitId:(NSString * _Nonnull)adUnitId error:(NSError * _Nonnull)error;
-+ (NeftaPlugin*_Nonnull)initWithAppId:(NSString *_Nonnull)appId;
-+ (NeftaPlugin*_Nonnull)initWithAppId:(NSString *_Nonnull)appId sendImpressions:(BOOL)sendImpressions;
+
++ (void)OnExternalMediationRequestWithBanner:(LPMBannerAdView * _Nonnull)banner adUnitId:(NSString * _Nonnull)adUnitId insight:(AdInsight * _Nullable)adInsight;
++ (void)OnExternalMediationRequestWithInterstitial:(LPMInterstitialAd * _Nonnull)interstitial adUnitId:(NSString * _Nonnull)adUnitId insight:(AdInsight * _Nullable)adInsight;
++ (void)OnExternalMediationRequestWithRewarded:(LPMRewardedAd * _Nonnull)rewarded adUnitId:(NSString * _Nonnull)adUnitId insight:(AdInsight * _Nullable)adInsight;
+
++ (void)OnExternalMediationRequestLoad:(LPMAdInfo * _Nonnull)adInfo;
++ (void)OnExternalMediationRequestFail:(NSError * _Nonnull)error;
+
++ (void)OnExternalMediationImpression:(LPMImpressionData * _Nonnull)impressionData;
++ (void)OnExternalMediationClick:(LPMAdInfo * _Nonnull)adInfo;
+
++ (NeftaPlugin * _Nonnull)initWithAppId:(NSString *_Nonnull)appId;
++ (NeftaPlugin * _Nonnull)initWithAppId:(NSString *_Nonnull)appId sendImpressions:(BOOL)sendImpressions;
 
 + (ISAdapterErrorType)NLoadToAdapterError:(NError *_Nonnull)error;
 @end
 
-@interface ISNeftaImpressionCollector : NSObject <ISImpressionDataDelegate>
-- (void)impressionDataDidSucceed:(ISImpressionData *_Nonnull)impressionData;
+@interface ISNeftaImpressionCollector : NSObject <LPMImpressionDataDelegate>
+- (void)impressionDataDidSucceed:(LPMImpressionData *_Nonnull)impressionData;
 @end
 
 #endif /* ISNeftaCustomAdapter_h */
