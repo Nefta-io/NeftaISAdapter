@@ -15,7 +15,6 @@ let kAPPKEY = "1c0431145"
 
 class ViewController: UIViewController {
     
-    var _banner: Banner!
     var _interstitial: Interstitial!
     var _rewardedVideo: Rewarded!
     
@@ -46,27 +45,26 @@ class ViewController: UIViewController {
         
         NeftaPlugin.EnableLogging(enable: true)
         NeftaPlugin.SetExtraParameter(key: NeftaPlugin.ExtParam_TestGroup, value: "split-is")
-        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400")
+        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400", sendImpressions: false)
         
         _title.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
         
-        _banner = Banner(loadAndShowButton: _showBanner, closeButton: _hideBanner, status: _bannerStatus, viewController: self, bannerPlaceholder: _bannerPlaceholder)
         _interstitial = Interstitial(loadSwitch: _loadInterstitial, showButton: _showInterstitial, status: _interstitialStatus, viewController: self)
         _rewardedVideo = Rewarded(loadSwitch: _loadRewarded, showButton: _showRewarded, status: _rewardedStatus, viewController: self)
         
         LevelPlay.setMetaDataWithKey("is_test_suite", value: "enable")
+        LevelPlay.add(ISNeftaImpressionCollector())
         
         let requestBuilder = LPMInitRequestBuilder(appKey: kAPPKEY)
         let initRequest = requestBuilder.build()
         LevelPlay.initWith(initRequest)
         { config, error in
             guard error == nil else {
-                print("sdk initialization failed, error =\(error?.localizedDescription ?? "unknown error")")
+                print("NeftaPluginIS sdk initialization failed, error =\(error?.localizedDescription ?? "unknown error")")
                 return
             }
-            print("sdk initialization succeeded")
+            print("NeftaPluginIS sdk initialization succeeded")
             
-            self._banner.Create()
             self._interstitial.Create()
             self._rewardedVideo.Create()
         }

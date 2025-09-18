@@ -15,8 +15,8 @@
 		4EA9D5994DE81F277E42317B /* libPods-ISIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E5DF57F8B6CAC5743291B2 /* libPods-ISIntegration.a */; };
 		902D08A42D154DF30003DD10 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902D08A32D154DF30003DD10 /* IronSource.xcframework */; };
 		908CE6CB2C2322D2002DF7D6 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CE6CA2C2322D2002DF7D6 /* Rewarded.swift */; };
-		908CE6CF2C2322E3002DF7D6 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CE6CE2C2322E3002DF7D6 /* Banner.swift */; };
 		908CE6D12C2322EE002DF7D6 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CE6D02C2322EE002DF7D6 /* Interstitial.swift */; };
+		90A1693D2E74060600BB253D /* DebugServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1693C2E74060600BB253D /* DebugServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		902D08A32D154DF30003DD10 /* IronSource.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IronSource.xcframework; path = Pods/IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
 		903673502D5B882F00CCC3B9 /* ISIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
 		908CE6CA2C2322D2002DF7D6 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
-		908CE6CE2C2322E3002DF7D6 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		908CE6D02C2322EE002DF7D6 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
+		90A1693C2E74060600BB253D /* DebugServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugServer.swift; sourceTree = "<group>"; };
 		DEF834446A11AE91D2F0F56C /* Pods-ISIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISIntegration.release.xcconfig"; path = "Target Support Files/Pods-ISIntegration/Pods-ISIntegration.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +71,7 @@
 		471A2A3D1E66D27900217BE4 /* ISIntegration */ = {
 			isa = PBXGroup;
 			children = (
+				90A1693C2E74060600BB253D /* DebugServer.swift */,
 				903673502D5B882F00CCC3B9 /* ISIntegration-Bridging-Header.h */,
 				471A2A3E1E66D27900217BE4 /* AppDelegate.swift */,
 				471A2A401E66D27900217BE4 /* ViewController.swift */,
@@ -79,7 +80,6 @@
 				471A2A471E66D27A00217BE4 /* LaunchScreen.storyboard */,
 				471A2A4A1E66D27A00217BE4 /* Info.plist */,
 				908CE6CA2C2322D2002DF7D6 /* Rewarded.swift */,
-				908CE6CE2C2322E3002DF7D6 /* Banner.swift */,
 				908CE6D02C2322EE002DF7D6 /* Interstitial.swift */,
 			);
 			path = ISIntegration;
@@ -246,8 +246,8 @@
 			files = (
 				908CE6CB2C2322D2002DF7D6 /* Rewarded.swift in Sources */,
 				908CE6D12C2322EE002DF7D6 /* Interstitial.swift in Sources */,
+				90A1693D2E74060600BB253D /* DebugServer.swift in Sources */,
 				471A2A411E66D27900217BE4 /* ViewController.swift in Sources */,
-				908CE6CF2C2322E3002DF7D6 /* Banner.swift in Sources */,
 				471A2A3F1E66D27900217BE4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,39 +41,24 @@
                                         <rect key="frame" x="10" y="0.0" width="330.66666666666669" height="300"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="cq7-08-CtD">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="49.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="54"/>
                                                 <subviews>
                                                     <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BWP-fM-GOs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="50.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="55"/>
                                                         <segments>
                                                             <segment title="Nefta"/>
                                                             <segment title="IS"/>
                                                         </segments>
                                                     </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cd4-gB-wqp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="49.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="54"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Test suite"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vww-R1-cE0">
-                                                <rect key="frame" x="0.0" y="49.333333333333343" width="247.33333333333334" height="49.333333333333343"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-Y8-rQj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="49.333333333333336"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Show banner"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-NV-7yG" userLabel="Hide banner">
-                                                        <rect key="frame" x="123.66666666666666" y="0.0" width="123.66666666666666" height="49.333333333333336"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Hide Banner"/>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Banner status" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fw-PD-ho2" userLabel="BannerStatus">
-                                                <rect key="frame" x="0.0" y="98.666666666666657" width="320" height="28"/>
+                                                <rect key="frame" x="0.0" y="53.999999999999964" width="320" height="30.666666666666664"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="Hq7-is-wMa"/>
                                                 </constraints>
@@ -82,26 +67,26 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-48-gBC">
-                                                <rect key="frame" x="0.0" y="126.66666666666664" width="330.66666666666669" height="49.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="84.666666666666657" width="330.66666666666669" height="54"/>
                                                 <subviews>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0ap-Bm-HBB" userLabel="Load Interstitial">
-                                                        <rect key="frame" x="0.0" y="9" width="51" height="31"/>
+                                                        <rect key="frame" x="0.0" y="11.333333333333314" width="51" height="31"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Interstitial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZb-5a-VM8" userLabel="Load Interstitial">
-                                                        <rect key="frame" x="59.000000000000007" y="14.333333333333313" width="116.66666666666669" height="20.333333333333329"/>
+                                                        <rect key="frame" x="59.000000000000007" y="16.666666666666686" width="116.66666666666669" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkF-49-Vrt" userLabel="Show Interstitial">
-                                                        <rect key="frame" x="185.66666666666663" y="7.3333333333333144" width="145" height="34.333333333333336"/>
+                                                        <rect key="frame" x="185.66666666666663" y="9.6666666666666856" width="145" height="34.333333333333336"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Show Interstitial"/>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interstitial status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-CK-2ng" userLabel="InterstitialStatus">
-                                                <rect key="frame" x="0.0" y="175.99999999999997" width="320" height="27.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="138.66666666666666" width="320" height="30.666666666666657"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="tgB-5c-obw"/>
                                                 </constraints>
@@ -110,19 +95,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HqQ-jZ-yQu">
-                                                <rect key="frame" x="0.0" y="203.66666666666666" width="269" height="47.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="169.33333333333334" width="269" height="63.666666666666657"/>
                                                 <subviews>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CJJ-wi-Hka">
-                                                        <rect key="frame" x="0.0" y="8.3333333333333144" width="51" height="31"/>
+                                                        <rect key="frame" x="0.0" y="16.333333333333314" width="51" height="31"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Load Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veT-PZ-ogB">
-                                                        <rect key="frame" x="59.000000000000007" y="13.666666666666684" width="85.666666666666686" height="20.333333333333321"/>
+                                                        <rect key="frame" x="59.000000000000007" y="21.666666666666629" width="85.666666666666686" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="URP-hD-8K9" userLabel="Show Video">
-                                                        <rect key="frame" x="154.66666666666666" y="6.6666666666666572" width="114.33333333333334" height="34.333333333333336"/>
+                                                        <rect key="frame" x="154.66666666666666" y="14.666666666666657" width="114.33333333333334" height="34.333333333333336"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Show Video"/>
@@ -130,18 +115,9 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewarded status" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mc4-Zn-xah" userLabel="RewardedStatus">
-                                                <rect key="frame" x="0.0" y="251.33333333333334" width="320" height="48.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="233" width="320" height="67"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="320" id="Olz-NH-MXg"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wM-Dc-Vu3" userLabel="Impression status">
-                                                <rect key="frame" x="0.0" y="300" width="320" height="0.0"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="320" id="q7A-Zj-FTd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -180,13 +156,10 @@
                         <outlet property="_bannerPlaceholder" destination="u8a-Yk-iEH" id="bHi-LA-aIj"/>
                         <outlet property="_bannerStatus" destination="8Fw-PD-ho2" id="bcb-pl-exf"/>
                         <outlet property="_demandControl" destination="BWP-fM-GOs" id="sZ6-YY-3Yh"/>
-                        <outlet property="_hideBanner" destination="3qA-NV-7yG" id="QmC-yU-w0N"/>
-                        <outlet property="_impressionStatus" destination="2wM-Dc-Vu3" id="RvC-ve-s0p"/>
                         <outlet property="_interstitialStatus" destination="M0k-CK-2ng" id="kVO-mP-5zQ"/>
                         <outlet property="_loadInterstitial" destination="0ap-Bm-HBB" id="3eG-xi-Voa"/>
                         <outlet property="_loadRewarded" destination="CJJ-wi-Hka" id="GTK-FT-oPc"/>
                         <outlet property="_rewardedStatus" destination="Mc4-Zn-xah" id="ErT-ei-JMp"/>
-                        <outlet property="_showBanner" destination="Fhe-Y8-rQj" id="V6P-FA-ep2"/>
                         <outlet property="_showInterstitial" destination="hkF-49-Vrt" id="3yz-uz-FIr"/>
                         <outlet property="_showRewarded" destination="URP-hD-8K9" id="OrJ-dS-u43"/>
                         <outlet property="_testSuite" destination="cd4-gB-wqp" id="2Ae-Sh-DJV"/>
