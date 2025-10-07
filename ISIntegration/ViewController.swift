@@ -18,20 +18,15 @@ class ViewController: UIViewController {
     var _interstitial: Interstitial!
     var _rewardedVideo: Rewarded!
     
-    @IBOutlet weak var _bannerPlaceholder: UIView!
     @IBOutlet weak var _demandControl: UISegmentedControl!
     @IBOutlet weak var _testSuite: UIButton!
-    @IBOutlet weak var _showBanner: UIButton!
-    @IBOutlet weak var _hideBanner: UIButton!
     @IBOutlet weak var _loadInterstitial: UISwitch!
     @IBOutlet weak var _showInterstitial: UIButton!
     @IBOutlet weak var _loadRewarded: UISwitch!
     @IBOutlet weak var _showRewarded: UIButton!
     @IBOutlet weak var _title: UILabel!
-    @IBOutlet weak var _bannerStatus: UILabel!
     @IBOutlet weak var _interstitialStatus: UILabel!
     @IBOutlet weak var _rewardedStatus: UILabel!
-    @IBOutlet weak var _impressionStatus: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

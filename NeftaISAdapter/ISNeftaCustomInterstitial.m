@@ -43,7 +43,6 @@ static NSString* _lastAuctionId;
 - (void)OnShowWithAd:(NAd * _Nonnull)ad {
     _lastAuctionId = ad._bid._auctionId;
     _lastCreativeId = ad._bid._creativeId;
-    [_listener adDidShowSucceed];
     [_listener adDidOpen];
     [_listener adDidBecomeVisible];
     [_listener adDidStart];

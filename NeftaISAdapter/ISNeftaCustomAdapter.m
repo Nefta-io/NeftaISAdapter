@@ -90,8 +90,10 @@ static dispatch_semaphore_t _semaphore;
 
 + (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL) sendImpressions {
     _plugin = [NeftaPlugin InitWithAppId: appId];
-    _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
-    [LevelPlay addImpressionDataDelegate: _impressionCollector];
+    if (sendImpressions) {
+        _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
+        [LevelPlay addImpressionDataDelegate: _impressionCollector];
+    }
     return _plugin;
 }
 
@@ -133,7 +135,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"4.4.0";
+    return @"4.4.2";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
