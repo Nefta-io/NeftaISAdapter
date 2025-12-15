@@ -9,125 +9,166 @@
 import Foundation
 import IronSource
 
-class Interstitial : NSObject, LPMInterstitialAdDelegate {
-    private let _dynamicAdUnitId = "g7xalw41x4i1bj5t"
-    private let _defaultAdUnitId = "q0z1act0tdckh4mg"
+class Interstitial : UIView {
     
-    private var _dynamicInterstitial: LPMInterstitialAd?
-    private var _dynamicAdRevenue: Float64 = -1
-    private var _dynamicInsight: AdInsight?
-    private var _defaultInterstitial: LPMInterstitialAd?
-    private var _defaultAdRevenue: Float64 = -1
-    private var _presentingInterstitial: LPMInterstitialAd?
+    private let AdUnitA = "g7xalw41x4i1bj5t"
+    private let AdUnitB = "q0z1act0tdckh4mg"
+    private let TimeoutInSeconds = 5
     
-    private let _loadSwitch: UISwitch
-    private let _showButton: UIButton
-    private let _status: UILabel
-    private var _viewController: UIViewController
+    public enum State {
+        case Idle
+        case LoadingWithInsights
+        case Loading
+        case Ready
+    }
+    
+    public class AdRequest: NSObject, LPMInterstitialAdDelegate {
+        private let _controller: Interstitial
+        
+        public let _adUnitId: String
+        public var _interstitial: LPMInterstitialAd?
+        public var _state: State = State.Idle
+        public var _insight: AdInsight? = nil
+        public var _revenue: Float64 = -1
+        public var _consecutiveAdFails: Int = 0
+        
+        public init(controller: Interstitial, adUnitId: String) {
+            _adUnitId = adUnitId
+            _controller = controller
+        }
+        
+        func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
+            let lpError = error as NSError
+            ISNeftaCustomAdapter.onExternalMediationRequestFail(lpError)
+            
+            _controller.Log("Load failed \(adUnitId): \(error.localizedDescription)")
+            
+            _interstitial = nil
+            OnLoadFail()
+        }
+        
+        public func OnLoadFail() {
+            _consecutiveAdFails += 1
+            retryLoad()
+            
+            _controller.OnTrackLoad(false)
+        }
+        
+        func didLoadAd(with adInfo: LPMAdInfo) {
+            ISNeftaCustomAdapter.onExternalMediationRequestLoad(adInfo)
+            
+            _insight = nil
+            _consecutiveAdFails = 0
+            _revenue = adInfo.revenue.doubleValue
+            _state = State.Ready
+            
+            _controller.OnTrackLoad(true)
+        }
+        
+        func didClickAd(with adInfo: LPMAdInfo) {
+            _controller.Log("didClick \(adInfo.adNetwork)")
+            
+            ISNeftaCustomAdapter.onExternalMediationClick(adInfo)
+        }
+        
+        func didChangeAdInfo(_ adInfo: LPMAdInfo) {
+            _controller.Log("didChangeAdInfo \(adInfo.adNetwork)")
+        }
+        
+        func didFailToDisplayAd(withAdUnitId adUnitId: String, error: any Error) {
+            _controller.Log("didFailToDisplayAd \(adUnitId): \(error.localizedDescription)")
+        }
+        
+        func didDisplayAd(with adInfo: LPMAdInfo) {
+            _controller.Log("didOpen \(adInfo.adNetwork)")
+        }
+        
+        func didCloseAd(with adInfo: LPMAdInfo) {
+            _controller.Log("didCloseAd \(adInfo.adNetwork)")
+            
+            _controller.RetryLoading()
+        }
+        
+        func retryLoad() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                self._state = State.Idle
+                self._controller.RetryLoading()
+            }
+        }
+    }
+    
+    private var _adRequestA: AdRequest!
+    private var _adRequestB: AdRequest!
+    private var _isFirstResponseReceived = false
+    
+    @IBOutlet weak var _loadSwitch: UISwitch!
+    @IBOutlet weak var _showButton: UIButton!
+    @IBOutlet weak var _status: UILabel!
+    private var _viewController: UIViewController!
     
     private func StartLoading() {
-        if _dynamicInterstitial == nil {
-            GetInsightsAndLoad(previousInsight: nil)
-        }
-        if _defaultInterstitial == nil {
-            LoadDefault()
-        }
+        Load(request: _adRequestA, otherState: _adRequestB._state)
+        Load(request: _adRequestB, otherState: _adRequestA._state)
     }
     
-    private func GetInsightsAndLoad(previousInsight: AdInsight?) {
-        NeftaPlugin._instance.GetInsights(Insights.Interstitial, previousInsight: previousInsight, callback: LoadWithInsights, timeout: 5)
-    }
-    
-    private func LoadWithInsights(insights: Insights) {
-        _dynamicInsight = insights._interstitial
-        if let insight = _dynamicInsight {
-            SetInfo("Loading Dynamic with floor: \(insight._floorPrice)")
-            
-            let config = LPMInterstitialAdConfigBuilder()
-                .set(bidFloor: insight._floorPrice as NSNumber)
-                .build()
-            _dynamicInterstitial = LPMInterstitialAd(adUnitId: _dynamicAdUnitId, config: config)
-            _dynamicInterstitial!.setDelegate(self)
-            _dynamicInterstitial!.loadAd()
-            
-            ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: _dynamicInterstitial!, adUnitId: _dynamicAdUnitId, insight: _dynamicInsight)
-        }
-    }
-    
-    private func LoadDefault() {
-        SetInfo("Loading Default")
-        
-        _defaultInterstitial = LPMInterstitialAd(adUnitId: _defaultAdUnitId)
-        _defaultInterstitial!.setDelegate(self)
-        _defaultInterstitial!.loadAd()
-        
-        ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: _defaultInterstitial!, adUnitId: _defaultAdUnitId, insight: nil)
-    }
-    
-    func didFailToLoadAd(withAdUnitId adUnitId: String, error: any Error) {
-        let lpError = error as NSError
-        ISNeftaCustomAdapter.onExternalMediationRequestFail(lpError)
-        
-        if _dynamicInterstitial != nil && _dynamicInterstitial!.adId == lpError.userInfo["adId"] as? String {
-            SetInfo("Load Dynamic failed \(adUnitId): \(error.localizedDescription)")
-            
-            _dynamicInterstitial = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                if self._loadSwitch.isOn {
-                    self.GetInsightsAndLoad(previousInsight: self._dynamicInsight)
-                }
-            }
-        } else {
-            SetInfo("Load Default failed \(adUnitId): \(error.localizedDescription)")
-            
-            _defaultInterstitial = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                if self._loadSwitch.isOn {
-                    self.LoadDefault()
-                }
+    private func Load(request: AdRequest, otherState: State) {
+        if request._state == State.Idle {
+            if otherState != State.LoadingWithInsights {
+                GetInsightsAndLoad(adRequest: request)
+            } else if (_isFirstResponseReceived) {
+                LoadDefault(adRequest: request)
             }
         }
     }
     
-    func didLoadAd(with adInfo: LPMAdInfo) {
-        ISNeftaCustomAdapter.onExternalMediationRequestLoad(adInfo)
+    private func GetInsightsAndLoad(adRequest: AdRequest) {
+        adRequest._state = State.LoadingWithInsights
         
-        if _dynamicInterstitial != nil && _dynamicInterstitial!.adId == adInfo.adId {
-            SetInfo("didLoadAd Dynamic \(adInfo)")
-            
-            _dynamicAdRevenue = adInfo.revenue.doubleValue;
-        } else {
-            SetInfo("didLoadAd Default \(adInfo)")
-            
-            _defaultAdRevenue = adInfo.revenue.doubleValue;
-        }
-        
-        UpdateShowButton()
+        NeftaPlugin._instance.GetInsights(Insights.Interstitial, previousInsight: adRequest._insight, callback: { insights in
+            self.Log("Load with insights: \(insights)")
+            if let insight = insights._interstitial {
+                adRequest._insight = insight
+                let config = LPMInterstitialAdConfigBuilder()
+                    .set(bidFloor: insight._floorPrice as NSNumber)
+                    .build()
+                adRequest._interstitial = LPMInterstitialAd(adUnitId: adRequest._adUnitId, config: config)
+                adRequest._interstitial!.setDelegate(adRequest)
+                
+                ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: adRequest._interstitial!, adUnitId: adRequest._adUnitId, insight: insight)
+                
+                self.Log("Loading \(adRequest._adUnitId) as Optimized with floor: \(insight._floorPrice)")
+                adRequest._interstitial!.loadAd()
+            } else {
+                adRequest.OnLoadFail()
+            }
+        }, timeout: TimeoutInSeconds)
     }
     
-    func didClickAd(with adInfo: LPMAdInfo) {
-        SetInfo("didClick \(adInfo.adNetwork)")
+    private func LoadDefault(adRequest: AdRequest) {
+        adRequest._state = State.Loading
         
-        ISNeftaCustomAdapter.onExternalMediationClick(adInfo)
+        Log("Loading \(adRequest._adUnitId) as Default")
+        
+        adRequest._interstitial = LPMInterstitialAd(adUnitId: AdUnitB)
+        adRequest._interstitial!.setDelegate(adRequest)
+        
+        ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: adRequest._interstitial!, adUnitId: adRequest._adUnitId, insight: nil)
+        
+        adRequest._interstitial!.loadAd()
     }
     
-    init(loadSwitch: UISwitch, showButton: UIButton, status: UILabel, viewController: UIViewController) {
-        _loadSwitch = loadSwitch
-        _showButton = showButton
-        _status = status
-        _viewController = viewController
+    public override func awakeFromNib() {
+        super.awakeFromNib()
         
-        super.init()
+        _viewController = findViewController()
+        
+        _adRequestA = AdRequest(controller: self, adUnitId: AdUnitA)
+        _adRequestB = AdRequest(controller: self, adUnitId: AdUnitB)
         
         _loadSwitch.addTarget(self, action: #selector(OnLoadSwitch), for: .valueChanged)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
         
-        _loadSwitch.isEnabled = false
         _showButton.isEnabled = false
-    }
-    
-    func Create() {
-        _loadSwitch.isEnabled = true
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
@@ -138,73 +179,54 @@ class Interstitial : NSObject, LPMInterstitialAdDelegate {
     
     @objc func OnShowClick() {
         var isShown = false
-        if _dynamicAdRevenue >= 0 {
-            if _defaultAdRevenue > _dynamicAdRevenue {
-                isShown = TryShowDefault()
+        if _adRequestA._state == State.Ready {
+            if _adRequestB._state == State.Ready && _adRequestB._revenue > _adRequestA._revenue {
+                isShown = TryShow(adRequest: _adRequestB)
             }
             if !isShown {
-                isShown = TryShowDynamic()
+                isShown = TryShow(adRequest: _adRequestA)
             }
         }
-        if !isShown && _defaultAdRevenue >= 0 {
-            isShown = TryShowDefault()
+        if !isShown && _adRequestB._state == State.Ready {
+            isShown = TryShow(adRequest: _adRequestB)
         }
         
         UpdateShowButton()
     }
     
-    private func TryShowDynamic() -> Bool {
-        var isShown = false
-        if _dynamicInterstitial!.isAdReady() {
-            _dynamicInterstitial!.showAd(viewController: _viewController, placementName: nil)
-            isShown = true
+    private func TryShow(adRequest: AdRequest) -> Bool {
+        adRequest._state = State.Idle
+        adRequest._revenue = -1
+
+        if adRequest._interstitial!.isAdReady() {
+            adRequest._interstitial!.showAd(viewController: _viewController, placementName: nil)
+            return true
         }
-        _dynamicAdRevenue = -1
-        _presentingInterstitial = _dynamicInterstitial
-        _dynamicInterstitial = nil
-        return isShown
+        RetryLoading()
+        return false
     }
     
-    private func TryShowDefault() -> Bool {
-        var isShown = false;
-        if _defaultInterstitial!.isAdReady() {
-            _defaultInterstitial!.showAd(viewController: _viewController, placementName: nil)
-            isShown = true
+    private func RetryLoading() {
+        if self._loadSwitch.isOn {
+            self.StartLoading()
         }
-        _defaultAdRevenue = -1
-        _presentingInterstitial = _defaultInterstitial
-        _defaultInterstitial = nil
-        return isShown
     }
     
-    func didChangeAdInfo(_ adInfo: LPMAdInfo) {
-        SetInfo("didChangeAdInfo \(adInfo.adNetwork)")
-    }
-    
-    func didFailToDisplayAd(withAdUnitId adUnitId: String, error: any Error) {
-        SetInfo("didFailToDisplayAd \(adUnitId): \(error.localizedDescription)")
-    }
-    
-    func didDisplayAd(with adInfo: LPMAdInfo) {
-        SetInfo("didOpen \(adInfo.adNetwork)")
-    }
-    
-    func didCloseAd(with adInfo: LPMAdInfo) {
-        SetInfo("didCloseAd \(adInfo.adNetwork)")
-        _presentingInterstitial = nil
+    private func OnTrackLoad(_ success: Bool) {
+        if success {
+            UpdateShowButton()
+        }
         
-        // start new load cycle
-        if (_loadSwitch.isOn) {
-            StartLoading();
-        }
+        _isFirstResponseReceived = true
+        RetryLoading()
     }
     
-    func UpdateShowButton() {
-        _showButton.isEnabled = _dynamicAdRevenue >= 0 || _defaultAdRevenue >= 0
+    private func UpdateShowButton() {
+        _showButton.isEnabled = _adRequestA._state == State.Ready || _adRequestB._state == State.Ready
     }
     
-    private func SetInfo(_ info: String) {
-        print("NeftaPluginIS Interstitial \(info)")
-        _status.text = info
+    private func Log(_ log: String) {
+        _status.text = log
+        ViewController._log.info("NeftaPluginIS Interstitial: \(log, privacy: .public)")
     }
 }

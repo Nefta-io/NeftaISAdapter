@@ -14,6 +14,12 @@
 		471A2A491E66D27A00217BE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471A2A471E66D27A00217BE4 /* LaunchScreen.storyboard */; };
 		4EA9D5994DE81F277E42317B /* libPods-ISIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E5DF57F8B6CAC5743291B2 /* libPods-ISIntegration.a */; };
 		902D08A42D154DF30003DD10 /* IronSource.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902D08A32D154DF30003DD10 /* IronSource.xcframework */; };
+		9035908F2EEFE19C00640456 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9035908E2EEFE19C00640456 /* config.plist */; };
+		903590952EEFE1D600640456 /* SLPMAdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903590942EEFE1D600640456 /* SLPMAdInfo.swift */; };
+		903590962EEFE1D600640456 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903590922EEFE1D600640456 /* SceneDelegate.swift */; };
+		903590972EEFE1D600640456 /* SimulatorAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903590932EEFE1D600640456 /* SimulatorAd.swift */; };
+		903590982EEFE1D600640456 /* InterstitialSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903590902EEFE1D600640456 /* InterstitialSim.swift */; };
+		903590992EEFE1D600640456 /* RewardedSim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903590912EEFE1D600640456 /* RewardedSim.swift */; };
 		908CE6CB2C2322D2002DF7D6 /* Rewarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CE6CA2C2322D2002DF7D6 /* Rewarded.swift */; };
 		908CE6D12C2322EE002DF7D6 /* Interstitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908CE6D02C2322EE002DF7D6 /* Interstitial.swift */; };
 		90A1693D2E74060600BB253D /* DebugServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1693C2E74060600BB253D /* DebugServer.swift */; };
@@ -30,6 +36,12 @@
 		6EEFB1842A3FEC162817778F /* Pods-ISIntegration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISIntegration.debug.xcconfig"; path = "Target Support Files/Pods-ISIntegration/Pods-ISIntegration.debug.xcconfig"; sourceTree = "<group>"; };
 		72E5DF57F8B6CAC5743291B2 /* libPods-ISIntegration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ISIntegration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902D08A32D154DF30003DD10 /* IronSource.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IronSource.xcframework; path = Pods/IronSourceSDK/IronSource/IronSource.xcframework; sourceTree = "<group>"; };
+		9035908E2EEFE19C00640456 /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		903590902EEFE1D600640456 /* InterstitialSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialSim.swift; sourceTree = "<group>"; };
+		903590912EEFE1D600640456 /* RewardedSim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedSim.swift; sourceTree = "<group>"; };
+		903590922EEFE1D600640456 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		903590932EEFE1D600640456 /* SimulatorAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorAd.swift; sourceTree = "<group>"; };
+		903590942EEFE1D600640456 /* SLPMAdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPMAdInfo.swift; sourceTree = "<group>"; };
 		903673502D5B882F00CCC3B9 /* ISIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
 		908CE6CA2C2322D2002DF7D6 /* Rewarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewarded.swift; sourceTree = "<group>"; };
 		908CE6D02C2322EE002DF7D6 /* Interstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interstitial.swift; sourceTree = "<group>"; };
@@ -53,6 +65,7 @@
 		471A2A321E66D27900217BE4 = {
 			isa = PBXGroup;
 			children = (
+				9035908E2EEFE19C00640456 /* config.plist */,
 				471A2A3D1E66D27900217BE4 /* ISIntegration */,
 				471A2A3C1E66D27900217BE4 /* Products */,
 				E442F24393CE3EB636E90D07 /* Pods */,
@@ -71,6 +84,11 @@
 		471A2A3D1E66D27900217BE4 /* ISIntegration */ = {
 			isa = PBXGroup;
 			children = (
+				903590902EEFE1D600640456 /* InterstitialSim.swift */,
+				903590912EEFE1D600640456 /* RewardedSim.swift */,
+				903590922EEFE1D600640456 /* SceneDelegate.swift */,
+				903590932EEFE1D600640456 /* SimulatorAd.swift */,
+				903590942EEFE1D600640456 /* SLPMAdInfo.swift */,
 				90A1693C2E74060600BB253D /* DebugServer.swift */,
 				903673502D5B882F00CCC3B9 /* ISIntegration-Bridging-Header.h */,
 				471A2A3E1E66D27900217BE4 /* AppDelegate.swift */,
@@ -168,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9035908F2EEFE19C00640456 /* config.plist in Resources */,
 				471A2A491E66D27A00217BE4 /* LaunchScreen.storyboard in Resources */,
 				471A2A461E66D27A00217BE4 /* Assets.xcassets in Resources */,
 				471A2A441E66D27A00217BE4 /* Main.storyboard in Resources */,
@@ -246,6 +265,11 @@
 			files = (
 				908CE6CB2C2322D2002DF7D6 /* Rewarded.swift in Sources */,
 				908CE6D12C2322EE002DF7D6 /* Interstitial.swift in Sources */,
+				903590952EEFE1D600640456 /* SLPMAdInfo.swift in Sources */,
+				903590962EEFE1D600640456 /* SceneDelegate.swift in Sources */,
+				903590972EEFE1D600640456 /* SimulatorAd.swift in Sources */,
+				903590982EEFE1D600640456 /* InterstitialSim.swift in Sources */,
+				903590992EEFE1D600640456 /* RewardedSim.swift in Sources */,
 				90A1693D2E74060600BB253D /* DebugServer.swift in Sources */,
 				471A2A411E66D27900217BE4 /* ViewController.swift in Sources */,
 				471A2A3F1E66D27900217BE4 /* AppDelegate.swift in Sources */,
@@ -396,12 +420,12 @@
 				DEVELOPMENT_TEAM = 2LJ985962L;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/ISIntegration/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.4.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nefta.is;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,12 +448,12 @@
 				DEVELOPMENT_TEAM = 2LJ985962L;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/ISIntegration/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.4.0;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nefta.is;
 				PRODUCT_NAME = "$(TARGET_NAME)";

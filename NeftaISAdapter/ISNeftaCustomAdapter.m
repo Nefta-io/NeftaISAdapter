@@ -26,17 +26,17 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
     [ISNeftaCustomAdapter OnExternalMediationRequest: AdTypeRewarded id: rewarded.adId requestedAdUnitId: adUnitId insight: insight];
 }
 + (void)OnExternalMediationRequest:(AdType)adType id:(NSString * _Nonnull)id requestedAdUnitId:(NSString * _Nonnull)requestedAdUnitId insight:(AdInsight * _Nullable)insight {
-    int adOpportunityId = -1;
+    int requestId = -1;
     double requestedFloor = -1;
     if (insight != nil) {
-        adOpportunityId = (int)insight._adOpportunityId;
+        requestId = (int)insight._requestId;
         requestedFloor = insight._floorPrice;
     }
-    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: (int)adType id: id requestedAdUnitId: requestedAdUnitId requestedFloorPrice: requestedFloor adOpportunityId: adOpportunityId];
+    [NeftaPlugin OnExternalMediationRequest: _mediationProvider adType: (int)adType id: id requestedAdUnitId: requestedAdUnitId requestedFloorPrice: requestedFloor requestId: requestId];
 }
 
 + (void) OnExternalMediationRequestLoad:(LPMAdInfo * _Nonnull)adInfo {
-    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adInfo.adId id2: adInfo.auctionId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil];
+    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adInfo.adId id2: adInfo.auctionId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil baseObject: nil];
 }
 
 + (void) OnExternalMediationRequestFail:(NSError * _Nonnull)error {
@@ -50,7 +50,7 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
     }
     NSString *providerStatus = [NSString stringWithFormat:@"%ld", error.code];
     NSString *adId = error.userInfo != nil ? error.userInfo[@"adId"] : @"";
-    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adId id2: nil revenue: -1 precision: nil status: status providerStatus: providerStatus networkStatus: nil];
+    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adId id2: nil revenue: -1 precision: nil status: status providerStatus: providerStatus networkStatus: nil baseObject: nil];
 }
 
 + (void)OnExternalMediationImpression:(LPMImpressionData * _Nonnull)impressionData {
@@ -89,7 +89,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 + (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL) sendImpressions {
-    _plugin = [NeftaPlugin InitWithAppId: appId];
+    _plugin = [NeftaPlugin InitWithAppId: appId integration: @"native-ironsource-levelplay"];
     if (sendImpressions) {
         _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
         [LevelPlay addImpressionDataDelegate: _impressionCollector];
@@ -122,7 +122,7 @@ static dispatch_semaphore_t _semaphore;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            _plugin = [NeftaPlugin InitWithAppId: appId];
+            _plugin = [NeftaPlugin InitWithAppId: appId integration: @"native-ironsource-levelplay"];
             
             dispatch_semaphore_signal(_semaphore);
             [delegate onInitDidSucceed];
@@ -135,7 +135,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"4.4.2";
+    return @"4.4.4";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {

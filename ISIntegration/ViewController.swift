@@ -10,82 +10,64 @@ import UIKit
 import Foundation
 import IronSource
 import NeftaSDK
-
-let kAPPKEY = "1c0431145"
+import OSLog
 
 class ViewController: UIViewController {
     
-    var _interstitial: Interstitial!
-    var _rewardedVideo: Rewarded!
+    public static var _log = Logger(subsystem: "com.nefta.is", category: "general")
     
     @IBOutlet weak var _demandControl: UISegmentedControl!
     @IBOutlet weak var _testSuite: UIButton!
-    @IBOutlet weak var _loadInterstitial: UISwitch!
-    @IBOutlet weak var _showInterstitial: UIButton!
-    @IBOutlet weak var _loadRewarded: UISwitch!
-    @IBOutlet weak var _showRewarded: UIButton!
-    @IBOutlet weak var _title: UILabel!
-    @IBOutlet weak var _interstitialStatus: UILabel!
-    @IBOutlet weak var _rewardedStatus: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = DebugServer(viewController: self)
-        
-        let arguments = ProcessInfo.processInfo.arguments
-        if arguments.count > 1 {
-            NeftaPlugin.SetOverride(url: arguments[1])
-        }
+        DebugServer.Init(viewController: self)
         
         NeftaPlugin.EnableLogging(enable: true)
-        NeftaPlugin.SetExtraParameter(key: NeftaPlugin.ExtParam_TestGroup, value: "split-is")
-        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400", sendImpressions: false)
-        
-        _title.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
-        
-        _interstitial = Interstitial(loadSwitch: _loadInterstitial, showButton: _showInterstitial, status: _interstitialStatus, viewController: self)
-        _rewardedVideo = Rewarded(loadSwitch: _loadRewarded, showButton: _showRewarded, status: _rewardedStatus, viewController: self)
-        
-        LevelPlay.setMetaDataWithKey("is_test_suite", value: "enable")
-        LevelPlay.add(ISNeftaImpressionCollector())
-        
-        let requestBuilder = LPMInitRequestBuilder(appKey: kAPPKEY)
-        let initRequest = requestBuilder.build()
-        LevelPlay.initWith(initRequest)
-        { config, error in
-            guard error == nil else {
-                print("NeftaPluginIS sdk initialization failed, error =\(error?.localizedDescription ?? "unknown error")")
-                return
-            }
-            print("NeftaPluginIS sdk initialization succeeded")
-            
-            self._interstitial.Create()
-            self._rewardedVideo.Create()
+        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400")
+        plugin.OnReady = { initConfig in
+            print("[NeftaPluginIS] Should bypass Nefta optimization? \(initConfig._skipOptimization)")
         }
         
-        _demandControl.addTarget(self, action: #selector(onDemandChanged(_:)), for: .valueChanged)
-        _testSuite.addTarget(self, action: #selector(onTestSuite), for: .touchUpInside)
-        
-        SetSegment(isIs: true)
+        if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
+            if let ironSourceKey = dict["IS_KEY"] as? String {
+                LevelPlay.setMetaDataWithKey("is_test_suite", value: "enable")
+                
+                let requestBuilder = LPMInitRequestBuilder(appKey: ironSourceKey)
+                let initRequest = requestBuilder.build()
+                LevelPlay.initWith(initRequest)
+                { config, error in
+                    guard error == nil else {
+                        print("NeftaPluginIS sdk initialization failed, error =\(error?.localizedDescription ?? "unknown error")")
+                        return
+                    }
+                    print("NeftaPluginIS sdk initialization succeeded")
+                }
+                
+                //_testSuite.addTarget(self, action: #selector(onTestSuite), for: .touchUpInside)
+            }
+        }
     }
     
     @objc func onTestSuite() {
         LevelPlay.launchTestSuite(self)
     }
     
-    @IBAction func onDemandChanged(_ sender: UISegmentedControl) {
-        SetSegment(isIs: _demandControl.selectedSegmentIndex == 1)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    private func SetSegment(isIs: Bool) {
-        let demandSegment = LPMSegment()
-        demandSegment.segmentName = isIs ? "is" : "nefta"
-        LevelPlay.setSegment(demandSegment)
+}
+
+extension UIView {
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
     }
 }
 

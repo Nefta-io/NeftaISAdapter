@@ -1,9 +1,8 @@
 //
 //  DebugServer.swift
-//  ISIntegration
+//  DirectIntegration
 //
-//  Created by Tomaz Treven on 10. 9. 25.
-//  Copyright © 2025 ironsrc. All rights reserved.
+//  Created by Tomaz Treven on 13. 8. 24.
 //
 
 import Foundation
@@ -19,62 +18,133 @@ import UIKit
     
     var _name: String?
     var _version: String?
+    var _bundleId: String?
     
+    var _broadcastIp: String?
+    var _listener: NWListener?
     var _broadcastConnection: NWConnection?
+    var _localPort: UInt16 = 0
     var _timer: Timer?
     var _logLines: [String] = []
+    var _isSimulator = false
     
-    @objc init(viewController: UIViewController) {
+    private static var _instance: DebugServer?
+    
+    @objc public static func Init(viewController: UIViewController) {
+        if _instance == nil {
+            _instance = DebugServer(viewController: viewController)
+        }
+    }
+    
+    init(viewController: UIViewController) {
         _viewController = viewController
         super.init()
+        
+        let title = _viewController.view.viewWithTag(10) as? UILabel
+        title!.text = "Nefta Adapter for\n IronSource \(LevelPlay.sdkVersion())"
+        let onClickHandler = UITapGestureRecognizer(target: self, action: #selector(onTitleClick))
+        title!.isUserInteractionEnabled = true
+        title!.addGestureRecognizer(onClickHandler)
+        
+        var isSimulator: Bool = false
+        if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
+            isSimulator = dict["IS_SIMULATOR"] as? Bool ?? false
+        }
+        ToggleUI(isSimulator: isSimulator)
 
         _name = UIDevice.current.model
+#if targetEnvironment(simulator)
+        if let simModelCode = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
+            _name = simModelCode
+        }
+#else
+        var size: size_t = 0
+        sysctlbyname("hw.machine", nil, &size, nil, 0)
+        var machine = [CChar](repeating: 0, count: Int(size))
+        sysctlbyname("hw.machine", &machine, &size, nil, 0)
+        _name = String(cString: machine)
+#endif
+        
         _version = "0.0.0"
         if let bundleInfo = Bundle.main.infoDictionary {
             _version = "\(bundleInfo["CFBundleShortVersionString"]!).\(bundleInfo["CFBundleVersion"]!)"
         }
+        _bundleId = Bundle.main.bundleIdentifier
         
         let arguments = ProcessInfo.processInfo.arguments
         if arguments.count > 1 {
             let overrideUrl = arguments[1]
             if  overrideUrl.count > 2 {
-                NeftaPlugin.SetOverride(url: "\(overrideUrl)/sdk/init")
+                NeftaPlugin.SetOverride(url: overrideUrl)
             }
         }
         
+        NeftaPlugin._instance = nil
         NeftaPlugin.SetDebugTime(offset: 0)
         NeftaPlugin.OnLog = { log in
             self._logLines.append(log)
         }
         
-        StartBroadcastServer()
+        _broadcastIp = GetBroadcastAddress()
+        if _broadcastIp == nil {
+            print("DS:No wifi")
+        } else {
+            StartListening()
+        }
     }
     
     deinit {
         print("DS:deinit")
-        StopBroadcastServer()
+
+        if _timer != nil {
+            _timer!.invalidate()
+            _timer = nil
+        }
+        
+        if _broadcastConnection != nil {
+            _broadcastConnection!.cancel()
+            _broadcastConnection = nil
+        }
+        
+        if _listener != nil {
+            _listener!.cancel()
+            _listener = nil
+        }
+    }
+    
+    @objc func onTitleClick() {
+        ToggleUI(isSimulator: !_isSimulator)
+    }
+    
+    private func ToggleUI(isSimulator: Bool) {
+        _isSimulator = isSimulator
+        
+        (_viewController.view.viewWithTag(11) as! InterstitialSim).isHidden = !isSimulator
+        (_viewController.view.viewWithTag(12) as! RewardedSim).isHidden = !isSimulator
+        
+        (_viewController.view.viewWithTag(13) as! Interstitial).isHidden = isSimulator
+        (_viewController.view.viewWithTag(14) as! Rewarded).isHidden = isSimulator
     }
     
     private func StartBroadcastServer() {
         let params = NWParameters.udp
         params.allowLocalEndpointReuse = true
-                
-        guard let broadcastIp = GetBroadcastAddress() else {
-            print("DS:No wifi")
-            return
-        }
+        params.allowFastOpen = true
         
-        let endpoint = NWEndpoint.hostPort(host: NWEndpoint.Host(broadcastIp), port: _broadcastPort!)
+        let endpoint = NWEndpoint.hostPort(host: NWEndpoint.Host(_broadcastIp!), port: _broadcastPort!)
         print("DS:Starting broadcast on: \(endpoint)")
         _broadcastConnection = NWConnection(to: endpoint, using: params)
         _broadcastConnection!.stateUpdateHandler = { state in
             switch state {
                 case .ready:
                     self.SendState(connection: self._broadcastConnection!, to: "master")
-                    print("DS:Broadcast started on: \(self._broadcastPort!): \(state)")
-                    if let endpoint = self._broadcastConnection!.currentPath?.localEndpoint,
-                       case let .hostPort(_, port) = endpoint {
-                        self.StartListening(on: port)
+                
+                    DispatchQueue.main.async {
+                        self._timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
+                            if let connection = self._broadcastConnection {
+                                self.SendState(connection: connection, to: "master")
+                            }
+                        }
                     }
                 case .failed(let error):
                     print("DS:Broadcast failed on: \(error)")
@@ -83,17 +153,10 @@ import UIKit
             }
         }
         _broadcastConnection!.start(queue: .global())
-        
-        _timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
-            if let connection = self._broadcastConnection {
-                self.SendState(connection: connection, to: "master")
-            }
-        }
     }
     
     private func SendUdp(connection: NWConnection, to: String, message: String) {
         let data = "\(self._name!)|\(to)|\(message)"
-        //print("DS:SendBroadcastTo: \(data)")
         connection.send(content: data.data(using: .utf8)!, completion: .contentProcessed { error in
             if let error = error {
                 print("DS:Error sending broadcast: \(message) |: \(error.localizedDescription)")
@@ -101,14 +164,28 @@ import UIKit
         })
     }
     
-    func StartListening(on port: NWEndpoint.Port) {
-        let listener = try? NWListener(using: .udp, on: port)
-        listener?.newConnectionHandler = { newConnection in
+    func StartListening() {
+        let parameters = NWParameters.udp
+        parameters.allowLocalEndpointReuse = true
+        _listener = try? NWListener(using: parameters)
+        _listener!.stateUpdateHandler = { newState in
+            switch newState {
+            case .ready:
+                if let port = self._listener?.port {
+                    print("DS:Listening on port \(port)")
+                    self._localPort = port.rawValue
+                    self.StartBroadcastServer()
+                }
+            default:
+                print("DS:Failed listening: \(newState)")
+                break
+            }
+        }
+        _listener!.newConnectionHandler = { newConnection in
             newConnection.start(queue: .global())
             self.ReceiveBroadcast(on: newConnection)
         }
-        listener?.start(queue: .global())
-        print("DS:Listening on port \(port)")
+        _listener!.start(queue: .global())
     }
     
     private func ReceiveBroadcast(on connection: NWConnection) {
@@ -324,7 +401,7 @@ import UIKit
                         if segments.count > 12 {
                             networkStatus = segments[12]
                         }
-                        NeftaPlugin.OnExternalMediationResponse(provider, id: id1, id2: id2, revenue: revenue, precision: precision, status: status, providerStatus: providerStatus, networkStatus: networkStatus)
+                        NeftaPlugin.OnExternalMediationResponse(provider, id: id1, id2: id2, revenue: revenue, precision: precision, status: status, providerStatus: providerStatus, networkStatus: networkStatus, baseObject: nil)
                         self.SendUdp(connection: connection, to: sourceName, message: "return|add_external_mediation_request")
                     }
                 case "add_external_mediation_impression":
@@ -379,6 +456,9 @@ import UIKit
                         print("DS:Error writing to '\(finalPath.absoluteString)': \(error)")
                     }
                     break
+                case "crash":
+                    fatalError("Simulated crash")
+                    break
                 default:
                     print("DS:Unrecognized command: \(control) m: \(message)")
                     break
@@ -388,28 +468,14 @@ import UIKit
         }
     }
     
-    private func StopBroadcastServer() {
-        if _timer != nil {
-            _timer!.invalidate()
-            _timer = nil
-        }
-        
-        if _broadcastConnection != nil {
-            _broadcastConnection!.cancel()
-            _broadcastConnection = nil
-        }
-    }
-    
     private func SendState(connection: NWConnection, to: String) {
-        var bundleId = ""
         var adUnits = [[String: Any]]()
         var payload: [String: Any] = [:]
             //"rest_url": NeftaPlugin._rtbUrl,
         //]
         
         if let NeftaInstance = NeftaPlugin._instance {
-            bundleId = NeftaInstance._info._bundleId
-            payload["app_id"] = NeftaInstance._info._appId!
+            payload["app_id"] = NeftaInstance._info._appId ?? ""
             payload["nuid"] = NeftaInstance._state._nuid
             
             if let placements = NeftaInstance._placements {
@@ -440,7 +506,7 @@ import UIKit
         
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: payload, options: [])
-            SendUdp(connection: connection, to: to, message: "state|ios|\(bundleId)|\(self._version!)|\(_logLines.count)|\(String(data:jsonData, encoding: .utf8)!)")
+            SendUdp(connection: connection, to: to, message: "state|ios|\(_localPort)|\(_bundleId!)|\(self._version!)|\(_logLines.count)|\(String(data:jsonData, encoding: .utf8)!)")
         } catch _ as NSError {
             
         }
