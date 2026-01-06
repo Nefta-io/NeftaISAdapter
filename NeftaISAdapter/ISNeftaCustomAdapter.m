@@ -135,7 +135,7 @@ static dispatch_semaphore_t _semaphore;
 }
 
 - (NSString *) adapterVersion {
-    return @"4.4.4";
+    return @"4.4.5";
 }
 
 + (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
