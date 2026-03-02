@@ -19,9 +19,10 @@ class Rewarded : UIView {
         case LoadingWithInsights
         case Loading
         case Ready
+        case Shown
     }
     
-    public class AdRequest: NSObject, LPMRewardedAdDelegate {
+    public class Track: NSObject, LPMRewardedAdDelegate {
         private let _controller: Rewarded
         
         public let _adUnitId: String
@@ -78,6 +79,9 @@ class Rewarded : UIView {
         
         func didFailToShowWithError(_ error: (any Error)!, andAdInfo adInfo: ISAdInfo!) {
             _controller.Log("didFailToShowWithError \(String(describing: error.self))")
+            
+            _state = .Idle
+            _controller.RetryLoadTracks()
         }
         
         func didDisplayAd(with adInfo: LPMAdInfo) {
@@ -87,19 +91,20 @@ class Rewarded : UIView {
         func didCloseAd(with adInfo: LPMAdInfo) {
             _controller.Log("didCloseAd \(String(describing: adInfo))")
             
-            _controller.RetryLoading()
+            _state = .Idle
+            _controller.RetryLoadTracks()
         }
         
         func retryLoad() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                self._state = State.Idle
-                self._controller.RetryLoading()
+                self._state = .Idle
+                self._controller.RetryLoadTracks()
             }
         }
     }
     
-    private var _adRequestA: AdRequest!
-    private var _adRequestB: AdRequest!
+    private var _adRequestA: Track!
+    private var _adRequestB: Track!
     private var _isFirstResponseReceived = false
     
     @IBOutlet weak var _loadSwitch: UISwitch!
@@ -107,53 +112,55 @@ class Rewarded : UIView {
     @IBOutlet weak var _status: UILabel!
     private var _viewController: UIViewController!
     
-    private func StartLoading() {
-        Load(request: _adRequestA, otherState: _adRequestB._state)
-        Load(request: _adRequestB, otherState: _adRequestA._state)
+    private func LoadTracks() {
+        LoadTrack(track: _adRequestA, otherState: _adRequestB._state)
+        LoadTrack(track: _adRequestB, otherState: _adRequestA._state)
     }
     
-    private func Load(request: AdRequest, otherState: State) {
-        if request._state == State.Idle {
-            if otherState != State.LoadingWithInsights {
-                GetInsightsAndLoad(adRequest: request)
-            } else if (_isFirstResponseReceived) {
-                LoadDefault(adRequest: request)
+    private func LoadTrack(track: Track, otherState: State) {
+        if track._state == .Idle {
+            if otherState == .LoadingWithInsights || otherState == .Shown {
+                if (_isFirstResponseReceived) {
+                    LoadDefault(track: track)
+                }
+            } else {
+                GetInsightsAndLoad(track: track)
             }
         }
     }
     
-    private func GetInsightsAndLoad(adRequest: AdRequest) {
-        adRequest._state = State.LoadingWithInsights
+    private func GetInsightsAndLoad(track: Track) {
+        track._state = .LoadingWithInsights
         
-        NeftaPlugin._instance.GetInsights(Insights.Rewarded, previousInsight: adRequest._insight, callback: { insights in
+        NeftaPlugin._instance!.GetInsights(Insights.Rewarded, previousInsight: track._insight, callback: { insights in
             self.Log("Load with insights: \(insights)")
             if let insight = insights._rewarded {
-                adRequest._insight = insight
+                track._insight = insight
                 let config = LPMRewardedAdConfigBuilder()
                     .set(bidFloor: insight._floorPrice as NSNumber)
                     .build()
-                adRequest._rewarded = LPMRewardedAd(adUnitId: adRequest._adUnitId, config: config)
-                adRequest._rewarded!.setDelegate(adRequest)
-                adRequest._rewarded!.loadAd()
+                track._rewarded = LPMRewardedAd(adUnitId: track._adUnitId, config: config)
+                track._rewarded!.setDelegate(track)
+                track._rewarded!.loadAd()
                 
-                ISNeftaCustomAdapter.onExternalMediationRequest(withRewarded: adRequest._rewarded!, adUnitId: adRequest._adUnitId, insight: insight)
+                ISNeftaCustomAdapter.onExternalMediationRequest(withRewarded: track._rewarded!, adUnitId: track._adUnitId, insight: insight)
             } else {
-                adRequest.OnLoadFail()
+                track.OnLoadFail()
             }
         }, timeout: TimeoutInSeconds)
     }
     
-    private func LoadDefault(adRequest: AdRequest) {
-        adRequest._state = State.Loading
+    private func LoadDefault(track: Track) {
+        track._state = .Loading
         
-        Log("Loading \(adRequest._adUnitId) as Default")
+        Log("Loading \(track._adUnitId) as Default")
         
-        adRequest._rewarded = LPMRewardedAd(adUnitId: AdUnitB)
-        adRequest._rewarded!.setDelegate(adRequest)
+        track._rewarded = LPMRewardedAd(adUnitId: AdUnitB)
+        track._rewarded!.setDelegate(track)
         
-        ISNeftaCustomAdapter.onExternalMediationRequest(withRewarded: adRequest._rewarded!, adUnitId: adRequest._adUnitId, insight: nil)
+        ISNeftaCustomAdapter.onExternalMediationRequest(withRewarded: track._rewarded!, adUnitId: track._adUnitId, insight: nil)
         
-        adRequest._rewarded!.loadAd()
+        track._rewarded!.loadAd()
     }
     
     public override func awakeFromNib() {
@@ -161,8 +168,8 @@ class Rewarded : UIView {
         
         _viewController = findViewController()
         
-        _adRequestA = AdRequest(controller: self, adUnitId: AdUnitA)
-        _adRequestB = AdRequest(controller: self, adUnitId: AdUnitB)
+        _adRequestA = Track(controller: self, adUnitId: AdUnitA)
+        _adRequestB = Track(controller: self, adUnitId: AdUnitB)
         
         _loadSwitch.addTarget(self, action: #selector(OnLoadSwitch), for: .valueChanged)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
@@ -171,15 +178,13 @@ class Rewarded : UIView {
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            StartLoading()
-        }
+        RetryLoadTracks()
     }
     
     @objc func OnShowClick() {
         var isShown = false
-        if _adRequestA._state == State.Ready {
-            if _adRequestB._state == State.Ready && _adRequestB._revenue > _adRequestA._revenue {
+        if _adRequestA._state == .Ready {
+            if _adRequestB._state == .Ready && _adRequestB._revenue > _adRequestA._revenue {
                 isShown = TryShow(adRequest: _adRequestB)
             }
             if !isShown {
@@ -193,21 +198,21 @@ class Rewarded : UIView {
         UpdateShowButton()
     }
     
-    private func TryShow(adRequest: AdRequest) -> Bool {
-        adRequest._state = State.Idle
+    private func TryShow(adRequest: Track) -> Bool {
         adRequest._revenue = -1
-
         if adRequest._rewarded!.isAdReady() {
+            adRequest._state = .Shown
             adRequest._rewarded!.showAd(viewController: _viewController, placementName: nil)
             return true
         }
-        RetryLoading()
+        adRequest._state = .Idle
+        RetryLoadTracks()
         return false
     }
     
-    private func RetryLoading() {
+    private func RetryLoadTracks() {
         if self._loadSwitch.isOn {
-            self.StartLoading()
+            self.LoadTracks()
         }
     }
     
@@ -217,7 +222,7 @@ class Rewarded : UIView {
         }
         
         _isFirstResponseReceived = true
-        RetryLoading()
+        RetryLoadTracks()
     }
     
     private func UpdateShowButton() {

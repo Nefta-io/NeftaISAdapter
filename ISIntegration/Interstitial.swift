@@ -20,9 +20,10 @@ class Interstitial : UIView {
         case LoadingWithInsights
         case Loading
         case Ready
+        case Shown
     }
     
-    public class AdRequest: NSObject, LPMInterstitialAdDelegate {
+    public class Track: NSObject, LPMInterstitialAdDelegate {
         private let _controller: Interstitial
         
         public let _adUnitId: String
@@ -60,7 +61,7 @@ class Interstitial : UIView {
             _insight = nil
             _consecutiveAdFails = 0
             _revenue = adInfo.revenue.doubleValue
-            _state = State.Ready
+            _state = .Ready
             
             _controller.OnTrackLoad(true)
         }
@@ -77,6 +78,9 @@ class Interstitial : UIView {
         
         func didFailToDisplayAd(withAdUnitId adUnitId: String, error: any Error) {
             _controller.Log("didFailToDisplayAd \(adUnitId): \(error.localizedDescription)")
+            
+            _state = .Idle
+            _controller.RetryLoadTracks()
         }
         
         func didDisplayAd(with adInfo: LPMAdInfo) {
@@ -86,19 +90,20 @@ class Interstitial : UIView {
         func didCloseAd(with adInfo: LPMAdInfo) {
             _controller.Log("didCloseAd \(adInfo.adNetwork)")
             
-            _controller.RetryLoading()
+            _state = .Idle
+            _controller.RetryLoadTracks()
         }
         
         func retryLoad() {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                self._state = State.Idle
-                self._controller.RetryLoading()
+                self._state = .Idle
+                self._controller.RetryLoadTracks()
             }
         }
     }
     
-    private var _adRequestA: AdRequest!
-    private var _adRequestB: AdRequest!
+    private var _trackA: Track!
+    private var _trackB: Track!
     private var _isFirstResponseReceived = false
     
     @IBOutlet weak var _loadSwitch: UISwitch!
@@ -106,55 +111,57 @@ class Interstitial : UIView {
     @IBOutlet weak var _status: UILabel!
     private var _viewController: UIViewController!
     
-    private func StartLoading() {
-        Load(request: _adRequestA, otherState: _adRequestB._state)
-        Load(request: _adRequestB, otherState: _adRequestA._state)
+    private func LoadTracks() {
+        LoadTrack(track: _trackA, otherState: _trackB._state)
+        LoadTrack(track: _trackB, otherState: _trackA._state)
     }
     
-    private func Load(request: AdRequest, otherState: State) {
-        if request._state == State.Idle {
-            if otherState != State.LoadingWithInsights {
-                GetInsightsAndLoad(adRequest: request)
-            } else if (_isFirstResponseReceived) {
-                LoadDefault(adRequest: request)
+    private func LoadTrack(track: Track, otherState: State) {
+        if track._state == .Idle {
+            if otherState == .LoadingWithInsights || otherState == .Shown {
+                if (_isFirstResponseReceived) {
+                    LoadDefault(track: track)
+                }
+            } else {
+                GetInsightsAndLoad(track: track)
             }
         }
     }
     
-    private func GetInsightsAndLoad(adRequest: AdRequest) {
-        adRequest._state = State.LoadingWithInsights
+    private func GetInsightsAndLoad(track: Track) {
+        track._state = .LoadingWithInsights
         
-        NeftaPlugin._instance.GetInsights(Insights.Interstitial, previousInsight: adRequest._insight, callback: { insights in
+        NeftaPlugin._instance!.GetInsights(Insights.Interstitial, previousInsight: track._insight, callback: { insights in
             self.Log("Load with insights: \(insights)")
             if let insight = insights._interstitial {
-                adRequest._insight = insight
+                track._insight = insight
                 let config = LPMInterstitialAdConfigBuilder()
                     .set(bidFloor: insight._floorPrice as NSNumber)
                     .build()
-                adRequest._interstitial = LPMInterstitialAd(adUnitId: adRequest._adUnitId, config: config)
-                adRequest._interstitial!.setDelegate(adRequest)
+                track._interstitial = LPMInterstitialAd(adUnitId: track._adUnitId, config: config)
+                track._interstitial!.setDelegate(track)
                 
-                ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: adRequest._interstitial!, adUnitId: adRequest._adUnitId, insight: insight)
+                ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: track._interstitial!, adUnitId: track._adUnitId, insight: insight)
                 
-                self.Log("Loading \(adRequest._adUnitId) as Optimized with floor: \(insight._floorPrice)")
-                adRequest._interstitial!.loadAd()
+                self.Log("Loading \(track._adUnitId) as Optimized with floor: \(insight._floorPrice)")
+                track._interstitial!.loadAd()
             } else {
-                adRequest.OnLoadFail()
+                track.OnLoadFail()
             }
         }, timeout: TimeoutInSeconds)
     }
     
-    private func LoadDefault(adRequest: AdRequest) {
-        adRequest._state = State.Loading
+    private func LoadDefault(track: Track) {
+        track._state = .Loading
         
-        Log("Loading \(adRequest._adUnitId) as Default")
+        Log("Loading \(track._adUnitId) as Default")
         
-        adRequest._interstitial = LPMInterstitialAd(adUnitId: AdUnitB)
-        adRequest._interstitial!.setDelegate(adRequest)
+        track._interstitial = LPMInterstitialAd(adUnitId: AdUnitB)
+        track._interstitial!.setDelegate(track)
         
-        ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: adRequest._interstitial!, adUnitId: adRequest._adUnitId, insight: nil)
+        ISNeftaCustomAdapter.onExternalMediationRequest(withInterstitial: track._interstitial!, adUnitId: track._adUnitId, insight: nil)
         
-        adRequest._interstitial!.loadAd()
+        track._interstitial!.loadAd()
     }
     
     public override func awakeFromNib() {
@@ -162,8 +169,8 @@ class Interstitial : UIView {
         
         _viewController = findViewController()
         
-        _adRequestA = AdRequest(controller: self, adUnitId: AdUnitA)
-        _adRequestB = AdRequest(controller: self, adUnitId: AdUnitB)
+        _trackA = Track(controller: self, adUnitId: AdUnitA)
+        _trackB = Track(controller: self, adUnitId: AdUnitB)
         
         _loadSwitch.addTarget(self, action: #selector(OnLoadSwitch), for: .valueChanged)
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
@@ -172,43 +179,41 @@ class Interstitial : UIView {
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            StartLoading()
-        }
+        RetryLoadTracks()
     }
     
     @objc func OnShowClick() {
         var isShown = false
-        if _adRequestA._state == State.Ready {
-            if _adRequestB._state == State.Ready && _adRequestB._revenue > _adRequestA._revenue {
-                isShown = TryShow(adRequest: _adRequestB)
+        if _trackA._state == .Ready {
+            if _trackB._state == .Ready && _trackB._revenue > _trackA._revenue {
+                isShown = TryShow(adRequest: _trackB)
             }
             if !isShown {
-                isShown = TryShow(adRequest: _adRequestA)
+                isShown = TryShow(adRequest: _trackA)
             }
         }
-        if !isShown && _adRequestB._state == State.Ready {
-            isShown = TryShow(adRequest: _adRequestB)
+        if !isShown && _trackB._state == .Ready {
+            isShown = TryShow(adRequest: _trackB)
         }
         
         UpdateShowButton()
     }
     
-    private func TryShow(adRequest: AdRequest) -> Bool {
-        adRequest._state = State.Idle
+    private func TryShow(adRequest: Track) -> Bool {
         adRequest._revenue = -1
-
         if adRequest._interstitial!.isAdReady() {
+            adRequest._state = .Shown
             adRequest._interstitial!.showAd(viewController: _viewController, placementName: nil)
             return true
         }
-        RetryLoading()
+        adRequest._state = .Idle
+        RetryLoadTracks()
         return false
     }
     
-    private func RetryLoading() {
+    private func RetryLoadTracks() {
         if self._loadSwitch.isOn {
-            self.StartLoading()
+            self.LoadTracks()
         }
     }
     
@@ -218,11 +223,11 @@ class Interstitial : UIView {
         }
         
         _isFirstResponseReceived = true
-        RetryLoading()
+        RetryLoadTracks()
     }
     
     private func UpdateShowButton() {
-        _showButton.isEnabled = _adRequestA._state == State.Ready || _adRequestB._state == State.Ready
+        _showButton.isEnabled = _trackA._state == .Ready || _trackB._state == .Ready
     }
     
     private func Log(_ log: String) {
