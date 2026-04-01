@@ -30,7 +30,6 @@ class Rewarded : UIView {
         public var _state: State = State.Idle
         public var _insight: AdInsight? = nil
         public var _revenue: Float64 = -1
-        public var _consecutiveAdFails: Int = 0
         
         public init(controller: Rewarded, adUnitId: String) {
             _controller = controller
@@ -48,7 +47,6 @@ class Rewarded : UIView {
         }
         
         public func OnLoadFail() {
-            _consecutiveAdFails += 1
             retryLoad()
             
             _controller.OnTrackLoad(false)
@@ -60,7 +58,6 @@ class Rewarded : UIView {
             _controller.Log("Loaded \(adInfo) at: \(adInfo.revenue.doubleValue)")
             
             _insight = nil
-            _consecutiveAdFails = 0
             _revenue = adInfo.revenue.doubleValue
             _state = State.Ready
             
@@ -96,7 +93,7 @@ class Rewarded : UIView {
         }
         
         func retryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + ISNeftaCustomAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = .Idle
                 self._controller.RetryLoadTracks()
             }
@@ -147,7 +144,7 @@ class Rewarded : UIView {
             } else {
                 track.OnLoadFail()
             }
-        }, timeout: TimeoutInSeconds)
+        })
     }
     
     private func LoadDefault(track: Track) {

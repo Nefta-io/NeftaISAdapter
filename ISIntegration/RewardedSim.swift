@@ -31,7 +31,6 @@ public class RewardedSim : UIView {
         public var _state: State = State.Idle
         public var _insight: AdInsight? = nil
         public var _revenue: Float64 = -1
-        public var _consecutiveAdFails: Int = 0
         
         public init(controller: RewardedSim, adUnitId: String) {
             _controller = controller
@@ -49,7 +48,6 @@ public class RewardedSim : UIView {
         }
         
         public func OnLoadFail() {
-            _consecutiveAdFails += 1
             retryLoad()
             
             _controller.OnTrackLoad(false)
@@ -61,7 +59,6 @@ public class RewardedSim : UIView {
             _controller.Log("Loaded \(adInfo.adUnitId) at: \(adInfo.revenue.doubleValue)")
             
             _insight = nil
-            _consecutiveAdFails = 0
             _revenue = adInfo.revenue.doubleValue
             _state = .Ready
             
@@ -101,7 +98,7 @@ public class RewardedSim : UIView {
         }
         
         func retryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + ISNeftaCustomAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = .Idle
                 self._controller.RetryLoading()
             }
@@ -127,8 +124,6 @@ public class RewardedSim : UIView {
     @IBOutlet weak var _bNoFill: UIButton!
     @IBOutlet weak var _bOther: UIButton!
     @IBOutlet weak var _bStatus: UILabel!
-    
-    @IBOutlet weak var _simulatorAd: SimulatorAd!
     
     public static var Instance: RewardedSim!
     
@@ -169,7 +164,7 @@ public class RewardedSim : UIView {
             } else {
                 track.OnLoadFail()
             }
-        }, timeout: TimeoutInSeconds)
+        })
     }
     
     private func LoadDefault(track: Track) {
@@ -254,7 +249,7 @@ public class RewardedSim : UIView {
         adRequest._revenue = -1
 
         if adRequest._rewarded!.isAdReady() {
-            adRequest._rewarded!.showAd(viewController: GetViewController()!, placementName: nil)
+            adRequest._rewarded!.showAd(viewController: GetUIViewController(), placementName: nil)
             return true
         }
         RetryLoading()
@@ -283,6 +278,15 @@ public class RewardedSim : UIView {
     private func Log(_ log: String) {
         _status.text = log
         ViewController._log.info("NeftaPluginMAX Simulator: \(log, privacy: .public)")
+    }
+    
+    private func GetUIViewController() -> UIViewController {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+
+        return (keyWindow!.rootViewController?.presentedViewController ?? keyWindow!.rootViewController)!
     }
     
     public class SimRewarded : LPMRewardedAd {
@@ -327,14 +331,16 @@ public class RewardedSim : UIView {
        
             ISNeftaCustomAdapter.onExternalMediationImpression((self._adInfo as! SLPMAdInfo).GetImpression())
             
-            InterstitialSim.Instance.Show(title: "Rewarded",
-                                          onShow: { self._delegate!.didDisplayAd(with: self._adInfo!) },
-                                          onClick: { self._delegate!.didClickAd?(with: self._adInfo!) },
-                                          onReward: { self._delegate!.didRewardAd(with: self._adInfo!, reward: LPMReward(name:"sim reward", amount: 1)) },
-                                          onClose: {
+            NDebug.Open(
+                title: "Rewarded",
+                viewController: viewController,
+                onShow: { self._delegate!.didDisplayAd(with: self._adInfo!) },
+                onClick: { self._delegate!.didClickAd?(with: self._adInfo!) },
+                onClose: {
                     self._delegate!.didCloseAd!(with: self._adInfo!)
                     self._adInfo = nil
-                }
+                },
+                onReward: { self._delegate!.didRewardAd(with: self._adInfo!, reward: LPMReward(name:"sim reward", amount: 1)) }
             )
             
             if _adUnitId == InterstitialSim.AdUnitA {
@@ -488,20 +494,5 @@ public class RewardedSim : UIView {
     
     public func SetStatusB(_ status: String) {
         _bStatus.text = status
-    }
-    
-    public func Show(title: String, onShow: @escaping (() -> Void), onClick: @escaping (() -> Void), onReward: (() -> Void)!, onClose: @escaping (() -> Void)) {
-        _simulatorAd.Show(title: title, onShow: onShow, onClick: onClick, onReward: onReward, onClose: onClose)
-    }
-    
-    private func GetViewController() -> UIViewController? {
-        var responder: UIResponder? = self
-        while responder != nil {
-            responder = responder?.next
-            if let vc = responder as? UIViewController {
-                return vc
-            }
-        }
-        return nil
     }
 }

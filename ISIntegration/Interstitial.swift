@@ -31,7 +31,6 @@ class Interstitial : UIView {
         public var _state: State = State.Idle
         public var _insight: AdInsight? = nil
         public var _revenue: Float64 = -1
-        public var _consecutiveAdFails: Int = 0
         
         public init(controller: Interstitial, adUnitId: String) {
             _adUnitId = adUnitId
@@ -49,7 +48,6 @@ class Interstitial : UIView {
         }
         
         public func OnLoadFail() {
-            _consecutiveAdFails += 1
             retryLoad()
             
             _controller.OnTrackLoad(false)
@@ -59,7 +57,6 @@ class Interstitial : UIView {
             ISNeftaCustomAdapter.onExternalMediationRequestLoad(adInfo)
             
             _insight = nil
-            _consecutiveAdFails = 0
             _revenue = adInfo.revenue.doubleValue
             _state = .Ready
             
@@ -95,7 +92,7 @@ class Interstitial : UIView {
         }
         
         func retryLoad() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + ISNeftaCustomAdapter.GetRetryDelayInSeconds(insight: _insight)) {
                 self._state = .Idle
                 self._controller.RetryLoadTracks()
             }
@@ -148,7 +145,7 @@ class Interstitial : UIView {
             } else {
                 track.OnLoadFail()
             }
-        }, timeout: TimeoutInSeconds)
+        })
     }
     
     private func LoadDefault(track: Track) {

@@ -16,19 +16,21 @@ class ViewController: UIViewController {
     
     public static var _log = Logger(subsystem: "com.nefta.is", category: "general")
     
+    @IBOutlet weak var _titleLabel: UILabel!
     @IBOutlet weak var _demandControl: UISegmentedControl!
     @IBOutlet weak var _testSuite: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _titleLabel.text = "LevelPlay \(LevelPlay.sdkVersion())"
+        
         DebugServer.Init(viewController: self)
         
         NeftaPlugin.EnableLogging(enable: true)
-        let plugin = ISNeftaCustomAdapter.initWithAppId("5759667955302400")
-        plugin.OnReady = { initConfig in
+        ISNeftaCustomAdapter.Init(appId: "5759667955302400", sendImpressions: true, onReady: { initConfig in
             print("[NeftaPluginIS] Should bypass Nefta optimization? \(initConfig._skipOptimization)")
-        }
+        })
         
         if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
             if let ironSourceKey = dict["IS_KEY"] as? String {

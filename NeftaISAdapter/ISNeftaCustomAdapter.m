@@ -6,15 +6,16 @@
 //
 
 #import "ISNeftaCustomAdapter.h"
-#import "ISNeftaCustomBanner.h"
-#import "ISNeftaCustomInterstitial.h"
-#import "ISNeftaCustomRewardedVideo.h"
 
 #import <os/log.h>
 
 NSString * const _mediationProvider = @"ironsource-levelplay";
 
 @implementation ISNeftaCustomAdapter
+
++ (double) GetRetryDelayInSeconds:(AdInsight * _Nullable)insight {
+    return (double)[NeftaPlugin GetRetryDelayInSeconds: insight];
+}
 
 + (void)OnExternalMediationRequestWithBanner:(LPMBannerAdView * _Nonnull)banner adUnitId:(NSString *)adUnitId insight:(AdInsight * _Nullable)insight {
     [ISNeftaCustomAdapter OnExternalMediationRequest: AdTypeBanner id: banner.adId requestedAdUnitId: adUnitId insight: insight];
@@ -36,7 +37,9 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
 }
 
 + (void) OnExternalMediationRequestLoad:(LPMAdInfo * _Nonnull)adInfo {
-    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adInfo.adId id2: adInfo.auctionId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil baseObject: nil];
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    [data setObject: adInfo.adNetwork forKey: @"adNetwork"];
+    [NeftaPlugin OnExternalMediationResponse: _mediationProvider id: adInfo.adId id2: adInfo.auctionId revenue: adInfo.revenue.doubleValue precision: adInfo.precision status: 1 providerStatus: nil networkStatus: nil baseObject: data];
 }
 
 + (void) OnExternalMediationRequestFail:(NSError * _Nonnull)error {
@@ -67,6 +70,9 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
     if (adInfo.adFormat != nil) {
         [data setObject: adInfo.adFormat forKey: @"adFormat"];
     }
+    if (adInfo.adFormat != nil) {
+        [data setObject: adInfo.adNetwork forKey: @"adNetwork"];
+    }
     if (adInfo.revenue != nil) {
         [data setObject: adInfo.revenue forKey: @"revenue"];
     }
@@ -82,14 +88,9 @@ NSString * const _mediationProvider = @"ironsource-levelplay";
 
 static NeftaPlugin *_plugin;
 static ISNeftaImpressionCollector *_impressionCollector;
-static dispatch_semaphore_t _semaphore;
 
-+ (NeftaPlugin*)initWithAppId:(NSString *)appId {
-    return [ISNeftaCustomAdapter initWithAppId: appId sendImpressions: TRUE];
-}
-
-+ (NeftaPlugin*)initWithAppId:(NSString *)appId sendImpressions:(BOOL) sendImpressions {
-    _plugin = [NeftaPlugin InitWithAppId: appId integration: @"native-ironsource-levelplay"];
++ (NeftaPlugin*)InitWithAppId:(NSString *)appId sendImpressions:(BOOL)sendImpressions onReady:(void (^_Nullable)(InitConfiguration *_Nonnull))onReady {
+    _plugin = [NeftaPlugin NativeInitWithAppId: appId clientId: nil onReady: onReady integration: @"native-ironsource-levelplay" mediationVersion: LevelPlay.sdkVersion];
     if (sendImpressions) {
         _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
         [LevelPlay addImpressionDataDelegate: _impressionCollector];
@@ -97,55 +98,22 @@ static dispatch_semaphore_t _semaphore;
     return _plugin;
 }
 
-- (void)setAdapterDebug:(BOOL)adapterDebug {
-    //[NeftaPlugin EnableLogging: adapterDebug];
-}
-
-- (void)init:(ISAdData *)adData delegate:(id<ISNetworkInitializationDelegate>)delegate {
-    @synchronized (NeftaPlugin.Version) {
-        if (_semaphore == nil) {
-            _semaphore = dispatch_semaphore_create(1);
-        }
-        
-        dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
-        if (_plugin != nil) {
-            dispatch_semaphore_signal(_semaphore);
-            [delegate onInitDidSucceed];
-            return;
-        }
-        
-        NSString *appId = [adData getString: @"appId"];
-        if (appId == nil || appId.length == 0) {
-            dispatch_semaphore_signal(_semaphore);
-            [delegate onInitDidFailWithErrorCode:ISAdapterErrorMissingParams errorMessage:@"Missing appId"];
-            return;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _plugin = [NeftaPlugin InitWithAppId: appId integration: @"native-ironsource-levelplay"];
-            
-            dispatch_semaphore_signal(_semaphore);
-            [delegate onInitDidSucceed];
-        });
++ (NeftaPlugin*)InitWithClientId:(NSString *)clientId sendImpressions:(BOOL)sendImpressions onReady:(void (^_Nullable)(InitConfiguration *_Nonnull))onReady {
+    _plugin = [NeftaPlugin NativeInitWithAppId: nil clientId: clientId onReady: onReady integration: @"native-ironsource-levelplay" mediationVersion: LevelPlay.sdkVersion];
+    if (sendImpressions) {
+        _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
+        [LevelPlay addImpressionDataDelegate: _impressionCollector];
     }
+    return _plugin;
 }
 
-- (NSString *) networkSDKVersion {
-    return NeftaPlugin.Version;
-}
-
-- (NSString *) adapterVersion {
-    return @"4.4.5";
-}
-
-+ (ISAdapterErrorType) NLoadToAdapterError:(NError *)error {
-    if (error._code == CodeNoFill) {
-        return ISAdapterErrorTypeNoFill;
++ (NeftaPlugin*)UnityInit:(NSString *)appId clientId:(NSString *)clientId sendImpressions:(BOOL)sendImpressions onReadyAsString:(void (^_Nonnull)(NSString *_Nonnull))onReadyAsString {
+    _plugin = [NeftaPlugin UnityInitWithAppId: appId clientId: clientId onReadyAsString: onReadyAsString integration: @"unity-ironsource-levelplay" mediationVersion: LevelPlay.sdkVersion];
+    if (sendImpressions) {
+        _impressionCollector = [[ISNeftaImpressionCollector alloc] init];
+        [LevelPlay addImpressionDataDelegate: _impressionCollector];
     }
-    if (error._code == CodeExpired) {
-        return ISAdapterErrorTypeAdExpired;
-    }
-    return ISAdapterErrorTypeInternal;
+    return _plugin;
 }
 @end
 

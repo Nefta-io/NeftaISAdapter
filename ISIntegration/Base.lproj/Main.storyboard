@@ -169,7 +169,6 @@
                                             <outlet property="_bStatus" destination="8Qo-Pi-FoL" id="WrG-9e-soM"/>
                                             <outlet property="_loadSwitch" destination="w9n-z7-VdJ" id="q3h-kA-rc7"/>
                                             <outlet property="_showButton" destination="aW3-Gu-5gm" id="dxm-a6-Ts2"/>
-                                            <outlet property="_simulatorAd" destination="Pca-pd-KVg" id="0mq-9a-BKQ"/>
                                             <outlet property="_status" destination="lpr-yR-h3N" id="bCr-yG-De3"/>
                                         </connections>
                                     </view>
@@ -426,56 +425,19 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pca-pd-KVg" customClass="SimulatorAd" customModule="ISIntegration">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4r-yA-bq1" userLabel="Close">
-                                        <rect key="frame" x="323" y="100" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Pua-b6-xKO"/>
-                                            <constraint firstAttribute="height" constant="40" id="gRd-Uo-rLz"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="X"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8o-9p-bHO" userLabel="Title">
-                                        <rect key="frame" x="70" y="200" width="253" height="28.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="d4r-yA-bq1" firstAttribute="top" secondItem="Pca-pd-KVg" secondAttribute="top" constant="100" id="91W-VP-hju"/>
-                                    <constraint firstItem="e8o-9p-bHO" firstAttribute="centerX" secondItem="Pca-pd-KVg" secondAttribute="centerX" id="PZK-te-hAi"/>
-                                    <constraint firstItem="e8o-9p-bHO" firstAttribute="top" secondItem="Pca-pd-KVg" secondAttribute="top" constant="200" id="Rpg-Hb-65o"/>
-                                    <constraint firstAttribute="trailing" secondItem="d4r-yA-bq1" secondAttribute="trailing" constant="30" id="pT8-IZ-Bzg"/>
-                                    <constraint firstItem="d4r-yA-bq1" firstAttribute="leading" secondItem="e8o-9p-bHO" secondAttribute="trailing" id="qWK-QU-ebN"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="_closeButton" destination="d4r-yA-bq1" id="gMU-zO-5B4"/>
-                                    <outlet property="_title" destination="e8o-9p-bHO" id="Yf2-Wa-jyi"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Pca-pd-KVg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D8y-5H-Jfe"/>
                             <constraint firstItem="sgf-TX-Yq0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fbv-Oa-E3E"/>
                             <constraint firstItem="sgf-TX-Yq0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fcx-Gk-oKs"/>
-                            <constraint firstItem="Pca-pd-KVg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FiX-FL-dyd"/>
-                            <constraint firstItem="Pca-pd-KVg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GaK-Rw-dX0"/>
                             <constraint firstItem="3DT-XR-XY2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GrF-wi-jGf"/>
                             <constraint firstItem="3DT-XR-XY2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Iqd-sz-4ov"/>
-                            <constraint firstItem="Pca-pd-KVg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OLd-Z6-Qzc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pca-pd-KVg" secondAttribute="trailing" id="s9G-3n-jbp"/>
-                            <constraint firstAttribute="bottom" secondItem="Pca-pd-KVg" secondAttribute="bottom" id="zFk-G3-IVT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="_title" destination="3DT-XR-XY2" id="Jh2-W4-WAh"/>
+                        <outlet property="_titleLabel" destination="3DT-XR-XY2" id="Vkz-M2-Vtu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
