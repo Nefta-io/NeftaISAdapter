@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         NeftaPlugin.EnableLogging(enable: true)
         ISNeftaCustomAdapter.Init(appId: "5759667955302400", sendImpressions: true, onReady: { initConfig in
-            print("[NeftaPluginIS] Should bypass Nefta optimization? \(initConfig._skipOptimization)")
+            print("[NeftaPluginIS] Should skip Nefta optimization: \(initConfig._skipOptimization) for \(initConfig._nuid)")
         })
         
         if let path = Bundle.main.path(forResource: "config", ofType: "plist"), let dict = NSDictionary(contentsOfFile: path) {
