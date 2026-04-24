@@ -277,7 +277,7 @@ public class RewardedSim : UIView {
     
     private func Log(_ log: String) {
         _status.text = log
-        ViewController._log.info("NeftaPluginMAX Simulator: \(log, privacy: .public)")
+        ViewController._log.info("NeftaPluginIS Simulator: \(log, privacy: .public)")
     }
     
     private func GetUIViewController() -> UIViewController {
