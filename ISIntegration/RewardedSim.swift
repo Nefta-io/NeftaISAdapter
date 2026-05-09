@@ -125,6 +125,7 @@ public class RewardedSim : UIView {
     @IBOutlet weak var _bOther: UIButton!
     @IBOutlet weak var _bStatus: UILabel!
     
+    private var _viewController: ViewController!
     public static var Instance: RewardedSim!
     
     private func LoadTracks() {
@@ -180,8 +181,8 @@ public class RewardedSim : UIView {
         track._rewarded!.loadAd()
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
+    func Init(viewController: ViewController) {
+        _viewController = viewController
         RewardedSim.Instance = self
         
         _trackA = Track(controller: self, adUnitId: InterstitialSim.AdUnitA)
@@ -219,6 +220,7 @@ public class RewardedSim : UIView {
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
         
         _showButton.isEnabled = false
+        isHidden = false
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
@@ -249,7 +251,7 @@ public class RewardedSim : UIView {
         adRequest._revenue = -1
 
         if adRequest._rewarded!.isAdReady() {
-            adRequest._rewarded!.showAd(viewController: GetUIViewController(), placementName: nil)
+            adRequest._rewarded!.showAd(viewController: _viewController, placementName: nil)
             return true
         }
         RetryLoading()
@@ -277,16 +279,7 @@ public class RewardedSim : UIView {
     
     private func Log(_ log: String) {
         _status.text = log
-        ViewController._log.info("NeftaPluginIS Simulator: \(log, privacy: .public)")
-    }
-    
-    private func GetUIViewController() -> UIViewController {
-        let keyWindow = UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }
-
-        return (keyWindow!.rootViewController?.presentedViewController ?? keyWindow!.rootViewController)!
+        _viewController._log.info("NeftaPluginIS Simulator: \(log, privacy: .public)")
     }
     
     public class SimRewarded : LPMRewardedAd {

@@ -101,6 +101,7 @@ public class InterstitialSim : UIView {
         }
     }
     
+    private var _viewController: ViewController!
     private var _trackA: Track!
     private var _trackB: Track!
     private var _isFirstResponseReceived = false
@@ -176,8 +177,8 @@ public class InterstitialSim : UIView {
         track._interstitial!.loadAd()
     }
     
-    public override func awakeFromNib() {
-        super.awakeFromNib()
+    func Init(viewController: ViewController) {
+        _viewController = viewController
         InterstitialSim.Instance = self
         
         _trackA = Track(controller: self, adUnitId: InterstitialSim.AdUnitA)
@@ -215,6 +216,7 @@ public class InterstitialSim : UIView {
         _showButton.addTarget(self, action: #selector(OnShowClick), for: .touchUpInside)
         
         _showButton.isEnabled = false
+        isHidden = false
     }
     
     @objc private func OnLoadSwitch(_ sender: UISwitch) {
@@ -244,7 +246,7 @@ public class InterstitialSim : UIView {
         adRequest._revenue = -1
         if adRequest._interstitial!.isAdReady() {
             adRequest._state = .Shown
-            adRequest._interstitial!.showAd(viewController: GetUIViewController(), placementName: nil)
+            adRequest._interstitial!.showAd(viewController: _viewController, placementName: nil)
             return true
         }
         adRequest._state = .Idle
@@ -273,16 +275,7 @@ public class InterstitialSim : UIView {
     
     private func Log(_ log: String) {
         _status.text = log
-        ViewController._log.info("NeftaPluginMAX Simulator: \(log, privacy: .public)")
-    }
-    
-    private func GetUIViewController() -> UIViewController {
-        let keyWindow = UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }
-
-        return (keyWindow!.rootViewController?.presentedViewController ?? keyWindow!.rootViewController)!
+        _viewController._log.info("NeftaPluginMAX Simulator: \(log, privacy: .public)")
     }
     
     public class SimInterstitial : LPMInterstitialAd {
